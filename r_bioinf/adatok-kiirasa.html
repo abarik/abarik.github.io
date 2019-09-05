@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.7 Adatok kiírása | R alapok I. - RNS szekvenálási példákkal</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.7 Adatok kiírása | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.7 Adatok kiírása | R alapok I. - RNS szekvenálási példákkal" />
+  
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Abari Kálmán" />
+
+
+<meta name="date" content="2019-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="a-rio-csomag.html">
+<link rel="next" href="grafika-az-r-ben.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
+<li class="chapter" data-level="1.1" data-path="az-r.html"><a href="az-r.html"><i class="fa fa-check"></i><b>1.1</b> Az R</a></li>
+<li class="chapter" data-level="1.2" data-path="alapelvek-az-r-hasznalatahoz.html"><a href="alapelvek-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>1.2</b> Alapelvek az R használatához</a></li>
+<li class="chapter" data-level="1.3" data-path="Ralaptudas.html"><a href="Ralaptudas.html"><i class="fa fa-check"></i><b>1.3</b> Az R alaptudás</a></li>
+<li class="chapter" data-level="1.4" data-path="a-modern-r.html"><a href="a-modern-r.html"><i class="fa fa-check"></i><b>1.4</b> A modern R</a></li>
+<li class="chapter" data-level="1.5" data-path="jelolesi-konvenciok.html"><a href="jelolesi-konvenciok.html"><i class="fa fa-check"></i><b>1.5</b> Jelölési konvenciók</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="alapok.html"><a href="alapok.html"><i class="fa fa-check"></i><b>2</b> Alapok</a><ul>
+<li class="chapter" data-level="2.1" data-path="szereplok-es-fogalmak.html"><a href="szereplok-es-fogalmak.html"><i class="fa fa-check"></i><b>2.1</b> Szereplők és fogalmak</a></li>
+<li class="chapter" data-level="2.2" data-path="telepitesek.html"><a href="telepitesek.html"><i class="fa fa-check"></i><b>2.2</b> Telepítések</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="telepitesek.html"><a href="telepitesek.html#az-alap-r-telepitese"><i class="fa fa-check"></i><b>2.2.1</b> Az Alap R telepítése</a></li>
+<li class="chapter" data-level="2.2.2" data-path="telepitesek.html"><a href="telepitesek.html#az-rstudio-telepitese"><i class="fa fa-check"></i><b>2.2.2</b> Az RStudio telepítése</a></li>
+<li class="chapter" data-level="2.2.3" data-path="telepitesek.html"><a href="telepitesek.html#Csomagok_telepitese"><i class="fa fa-check"></i><b>2.2.3</b> Csomagok telepítése</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html"><i class="fa fa-check"></i><b>2.3</b> Az első lépések</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#a-konzol-hasznalata"><i class="fa fa-check"></i><b>2.3.1</b> A konzol használata</a></li>
+<li class="chapter" data-level="2.3.2" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok"><i class="fa fa-check"></i><b>2.3.2</b> Parancsállományok</a></li>
+<li class="chapter" data-level="2.3.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok-futtatasa"><i class="fa fa-check"></i><b>2.3.3</b> Parancsállományok futtatása</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="az-rstudio.html"><a href="az-rstudio.html"><i class="fa fa-check"></i><b>2.4</b> Az RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="az-rstudio.html"><a href="az-rstudio.html#panelek"><i class="fa fa-check"></i><b>2.4.1</b> Panelek</a></li>
+<li class="chapter" data-level="2.4.2" data-path="az-rstudio.html"><a href="az-rstudio.html#munka-az-rstudio-ban"><i class="fa fa-check"></i><b>2.4.2</b> Munka az RStudio-ban</a></li>
+<li class="chapter" data-level="2.4.3" data-path="az-rstudio.html"><a href="az-rstudio.html#projektek-hasznalata"><i class="fa fa-check"></i><b>2.4.3</b> Projektek használata</a></li>
+<li class="chapter" data-level="2.4.4" data-path="az-rstudio.html"><a href="az-rstudio.html#az-rmarkdown-hasznalata"><i class="fa fa-check"></i><b>2.4.4</b> Az RMarkdown használata</a></li>
+<li class="chapter" data-level="2.4.5" data-path="az-rstudio.html"><a href="az-rstudio.html#billenytuparancsok"><i class="fa fa-check"></i><b>2.4.5</b> Billenytűparancsok</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="segitseg-az-r-hasznalatahoz.html"><a href="segitseg-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>2.5</b> Segítség az R használatához</a></li>
+<li class="chapter" data-level="2.6" data-path="feladatok.html"><a href="feladatok.html"><i class="fa fa-check"></i><b>2.6</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>I Az R nyelv</b></span></li>
+<li class="chapter" data-level="3" data-path="adatobjektumok.html"><a href="adatobjektumok.html"><i class="fa fa-check"></i><b>3</b> Adatobjektumok</a><ul>
+<li class="chapter" data-level="3.1" data-path="szamolas-az-r-ben.html"><a href="szamolas-az-r-ben.html"><i class="fa fa-check"></i><b>3.1</b> Számolás az R-ben</a></li>
+<li class="chapter" data-level="3.2" data-path="objektumok.html"><a href="objektumok.html"><i class="fa fa-check"></i><b>3.2</b> Objektumok</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="objektumok.html"><a href="objektumok.html#objektumok-letrehozasa"><i class="fa fa-check"></i><b>3.2.1</b> Objektumok létrehozása</a></li>
+<li class="chapter" data-level="3.2.2" data-path="objektumok.html"><a href="objektumok.html#objektumok-ertekenek-lekerdezese"><i class="fa fa-check"></i><b>3.2.2</b> Objektumok értékének lekérdezése</a></li>
+<li class="chapter" data-level="3.2.3" data-path="objektumok.html"><a href="objektumok.html#objektumok-elnevezese"><i class="fa fa-check"></i><b>3.2.3</b> Objektumok elnevezése</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="feladatok-1.html"><a href="feladatok-1.html"><i class="fa fa-check"></i><b>3.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="fuggvenyek.html"><a href="fuggvenyek.html"><i class="fa fa-check"></i><b>4</b> Függvények</a><ul>
+<li class="chapter" data-level="4.1" data-path="a-fuggvenyhivas-szabalyai.html"><a href="a-fuggvenyhivas-szabalyai.html"><i class="fa fa-check"></i><b>4.1</b> A függvényhívás szabályai</a></li>
+<li class="chapter" data-level="4.2" data-path="a-munkaterulet-fuggvenyei.html"><a href="a-munkaterulet-fuggvenyei.html"><i class="fa fa-check"></i><b>4.2</b> A munkaterület függvényei</a></li>
+<li class="chapter" data-level="4.3" data-path="a-munkakonyvtar-fuggvenyei.html"><a href="a-munkakonyvtar-fuggvenyei.html"><i class="fa fa-check"></i><b>4.3</b> A munkakönyvtár függvényei</a></li>
+<li class="chapter" data-level="4.4" data-path="csomagkezelo-fuggvenyek.html"><a href="csomagkezelo-fuggvenyek.html"><i class="fa fa-check"></i><b>4.4</b> Csomagkezelő függvények</a></li>
+<li class="chapter" data-level="4.5" data-path="feladatok-2.html"><a href="feladatok-2.html"><i class="fa fa-check"></i><b>4.5</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="adatszerkezetek.html"><a href="adatszerkezetek.html"><i class="fa fa-check"></i><b>5</b> Adatszerkezetek</a><ul>
+<li class="chapter" data-level="5.1" data-path="alaptipusok.html"><a href="alaptipusok.html"><i class="fa fa-check"></i><b>5.1</b> Alaptípusok</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="alaptipusok.html"><a href="alaptipusok.html#numerikus-ertekek"><i class="fa fa-check"></i><b>5.1.1</b> Numerikus értékek</a></li>
+<li class="chapter" data-level="5.1.2" data-path="alaptipusok.html"><a href="alaptipusok.html#karakteres-ertekek"><i class="fa fa-check"></i><b>5.1.2</b> Karakteres értékek</a></li>
+<li class="chapter" data-level="5.1.3" data-path="alaptipusok.html"><a href="alaptipusok.html#logikai-ertekek"><i class="fa fa-check"></i><b>5.1.3</b> Logikai értékek</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="adatszerkezetek-attekintese.html"><a href="adatszerkezetek-attekintese.html"><i class="fa fa-check"></i><b>5.2</b> Adatszerkezetek áttekintése</a></li>
+<li class="chapter" data-level="5.3" data-path="vektor.html"><a href="vektor.html"><i class="fa fa-check"></i><b>5.3</b> Vektor</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="vektor.html"><a href="vektor.html#vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.1</b> Vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vektor.html"><a href="vektor.html#muveletek-vektorokkal"><i class="fa fa-check"></i><b>5.3.2</b> Műveletek vektorokkal</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vektor.html"><a href="vektor.html#fuggvenyek-vektorokkal"><i class="fa fa-check"></i><b>5.3.3</b> Függvények vektorokkal</a></li>
+<li class="chapter" data-level="5.3.4" data-path="vektor.html"><a href="vektor.html#az-na-hianyzo-ertek"><i class="fa fa-check"></i><b>5.3.4</b> Az <code>NA</code> hiányzó érték</a></li>
+<li class="chapter" data-level="5.3.5" data-path="vektor.html"><a href="vektor.html#objektumok-attributumai"><i class="fa fa-check"></i><b>5.3.5</b> Objektumok attribútumai</a></li>
+<li class="chapter" data-level="5.3.6" data-path="vektor.html"><a href="vektor.html#vektorok-indexelese"><i class="fa fa-check"></i><b>5.3.6</b> Vektorok indexelése</a></li>
+<li class="chapter" data-level="5.3.7" data-path="vektor.html"><a href="vektor.html#vektorok-rendezese"><i class="fa fa-check"></i><b>5.3.7</b> Vektorok rendezése</a></li>
+<li class="chapter" data-level="5.3.8" data-path="vektor.html"><a href="vektor.html#elore-definialt-objektumok-nevesitett-konstansok"><i class="fa fa-check"></i><b>5.3.8</b> Előre definiált objektumok, nevesített konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="faktorok.html"><a href="faktorok.html"><i class="fa fa-check"></i><b>5.4</b> Faktorok</a></li>
+<li class="chapter" data-level="5.5" data-path="matrixok-es-tombok.html"><a href="matrixok-es-tombok.html"><i class="fa fa-check"></i><b>5.5</b> Mátrixok és tömbök</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="matrixok-es-tombok.html"><a href="matrixok-es-tombok.html#szamitasok-a-matrix-soraiban-es-oszlopaiban"><i class="fa fa-check"></i><b>5.5.1</b> Számítások a mátrix soraiban és oszlopaiban</a></li>
+<li class="chapter" data-level="5.5.2" data-path="matrixok-es-tombok.html"><a href="matrixok-es-tombok.html#sorok-es-oszlopok-kezelese"><i class="fa fa-check"></i><b>5.5.2</b> Sorok és oszlopok kezelése</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="listak.html"><a href="listak.html"><i class="fa fa-check"></i><b>5.6</b> Listák</a></li>
+<li class="chapter" data-level="5.7" data-path="adattablak-dataframes.html"><a href="adattablak-dataframes.html"><i class="fa fa-check"></i><b>5.7</b> Adattáblák (dataframes)</a></li>
+<li class="chapter" data-level="5.8" data-path="feladatok-3.html"><a href="feladatok-3.html"><i class="fa fa-check"></i><b>5.8</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>II Adatelemzés</b></span></li>
+<li class="chapter" data-level="6" data-path="adatok-beolvasasa-es-kiirasa.html"><a href="adatok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6</b> Adatok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.1" data-path="adatok-beolvasasa.html"><a href="adatok-beolvasasa.html"><i class="fa fa-check"></i><b>6.1</b> Adatok beolvasása</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="adatok-beolvasasa.html"><a href="adatok-beolvasasa.html#inline-beolvasas"><i class="fa fa-check"></i><b>6.1.1</b> Inline beolvasás</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tagolt-szoveges-allomanyok-beolvasasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa.html"><i class="fa fa-check"></i><b>6.2</b> Tagolt szöveges állományok beolvasása</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tagolt-szoveges-allomanyok-beolvasasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa.html#a-read.table-csalad-ar"><i class="fa fa-check"></i><b>6.2.1</b> A <code>read.table()</code> család (AR)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tagolt-szoveges-allomanyok-beolvasasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa.html#a-read_delim-fuggvenycsalad-tr"><i class="fa fa-check"></i><b>6.2.2</b> A <code>read_delim()</code> függvénycsalád (TR)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fix-szeles-allomanyok.html"><a href="fix-szeles-allomanyok.html"><i class="fa fa-check"></i><b>6.3</b> Fix széles állományok</a></li>
+<li class="chapter" data-level="6.4" data-path="univerzalis-megoldas.html"><a href="univerzalis-megoldas.html"><i class="fa fa-check"></i><b>6.4</b> Univerzális megoldás</a></li>
+<li class="chapter" data-level="6.5" data-path="r-objektomok-irasa-es-olvasasa.html"><a href="r-objektomok-irasa-es-olvasasa.html"><i class="fa fa-check"></i><b>6.5</b> R objektomok írása és olvasása</a></li>
+<li class="chapter" data-level="6.6" data-path="a-rio-csomag.html"><a href="a-rio-csomag.html"><i class="fa fa-check"></i><b>6.6</b> A <strong>rio</strong> csomag</a></li>
+<li class="chapter" data-level="6.7" data-path="adatok-kiirasa.html"><a href="adatok-kiirasa.html"><i class="fa fa-check"></i><b>6.7</b> Adatok kiírása</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="grafika-az-r-ben.html"><a href="grafika-az-r-ben.html"><i class="fa fa-check"></i><b>7</b> Grafika az R-ben</a><ul>
+<li class="chapter" data-level="7.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html"><i class="fa fa-check"></i><b>7.1</b> Hagyományos grafika</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#grafikus-eszkozok"><i class="fa fa-check"></i><b>7.1.1</b> Grafikus eszközök</a></li>
+<li class="chapter" data-level="7.1.2" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-felosztasa"><i class="fa fa-check"></i><b>7.1.2</b> Az eszközfelület felosztása</a></li>
+<li class="chapter" data-level="7.1.3" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-reszei"><i class="fa fa-check"></i><b>7.1.3</b> Az eszközfelület részei</a></li>
+<li class="chapter" data-level="7.1.4" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#magas-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.4</b> Magas-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.5" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#alacsony-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.5</b> Alacsony-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.6" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#interaktiv-grafikus-fuggvenyek"><i class="fa fa-check"></i><b>7.1.6</b> Interaktív grafikus függvények</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> A modern grafika (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="az-r-programozasa.html"><a href="az-r-programozasa.html"><i class="fa fa-check"></i><b>8</b> Az R programozása</a><ul>
+<li class="chapter" data-level="8.1" data-path="blokk-utasitas.html"><a href="blokk-utasitas.html"><i class="fa fa-check"></i><b>8.1</b> Blokk utasítás</a></li>
+<li class="chapter" data-level="8.2" data-path="felteteles-utasitasok.html"><a href="felteteles-utasitasok.html"><i class="fa fa-check"></i><b>8.2</b> Feltételes utasítások</a></li>
+<li class="chapter" data-level="8.3" data-path="ciklus-utasitasok.html"><a href="ciklus-utasitasok.html"><i class="fa fa-check"></i><b>8.3</b> Ciklus utasítások</a></li>
+<li class="chapter" data-level="8.4" data-path="fuggveny-letrehozasa.html"><a href="fuggveny-letrehozasa.html"><i class="fa fa-check"></i><b>8.4</b> Függvény létrehozása</a></li>
+<li class="chapter" data-level="8.5" data-path="eleresi-ut.html"><a href="eleresi-ut.html"><i class="fa fa-check"></i><b>8.5</b> Elérési út</a></li>
+<li class="chapter" data-level="8.6" data-path="hataskor.html"><a href="hataskor.html"><i class="fa fa-check"></i><b>8.6</b> Hatáskör</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="feladatok-megoldasa.html"><a href="feladatok-megoldasa.html"><i class="fa fa-check"></i><b>9</b> Feladatok megoldása</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="adatok-kiirasa" class="section level2">
+<h2><span class="header-section-number">6.7</span> Adatok kiírása</h2>
+<p>4.2.2. A write.table() család
+Adattáblák és mátrixok kiírására a write.table() függvényt használhatjuk. Az első paraméter a kiírandó objektum neve, a második pedig a kimenti állomány elérési útja. A row.names és a col.names logikai paraméterek szabályozzák, hogy a sor és oszlopnevek szerepeljenek-e a kimeneti állományban. Ezek alapértelmezett értéke TRUE.
+&gt; xmat&lt;-matrix(1:12,nrow=3)
+&gt; write.table(xmat,“table.txt”,col.names=F,row.names=F)
+Mátrixok kiírásánál sokszor a sor- és oszlopnevek kiírásától eltekintünk, adattáblák esetében azonban ez fontos lehet. Arra is van lehetőségünk, hogy az állomány helyett a vágóasztalt válasszuk kimenetnek. Ekkor a
+&gt; write.table(women,“clipboard”, sep=", col.names=NA)
+sorral a vágóasztalra helyezhetjük az adattáblát, amit egy táblázatkezelőbe azonnal beilleszthetünk (CTRL+V). A fenti példa a sorneveket is kiírja, így a helyes beillesztéshez az első sorban, a sor elején egy új oszlopnévre is szükség van. A col.names argumentum NA értéke üres oszlopnév mezőt helyez el az első sorban.
+A write.table() paramétereinek alapértelmezett értékén változtat a write.csv() és write.csv2() függvény.
+5. Adattáblák kezelése
+Az adatkezelés szempontjából legfontosabb R objektum az adattábla (dataframe). Mint korábban láttuk, a mátrixhoz hasonlóan sorokat és oszlopokat tartalmaz, illetve a listához hasonlóan elemekből, méghozzá azonos hosszúságú oszlopvektorokból, épül fel. Az adattábla kettős eredete jelentősen megkönnyíti az ilyen adatok kezelését.
+Az adattábla sorai egyedekre (személyek, tárgyak, dolgok, stb.) vonatkozó megfigyelések, az oszlopok pedig a megfigyelt tulajdonságok. A statisztikában úgy mondanánk, hogy az adattáblában az adatmátrixunkat/többdimenziós mintánkat rögzíthetjük, a sorok a mintaelemek, az oszlopok a megfigyelt változók.
+Az adattábla inhomogén adatszerkezet, oszlopai különböző típusú adatokat is tartalmazhatnak. Jellemzően kvalitatív (nominális és ordinális skálán mért) adatok tárolására a faktort használjuk, kvantitatív (intervallum és arányskálán mért) adatok tárolására a numerikus vektort. Természetesen adattáblában karakteres és logikai vektorok is szerepelhetnek, sőt dátumokat és időpontokat is kezelhetünk az adattáblában.
+Az adatok adattáblába szervezésénél vezérlő elv, hogy az azonos változóhoz tartozó adatértékek kerüljenek azonos oszlopba. Tekintsünk egy egyszerű kísérletet, ahol arra keressük a választ, hogy a táplálkozás módja befolyásolja-e a vér alvadási idejét. Véletlenszerűen kiválasztunk 24 állatot az egyes diétákhoz (A, B, C, D) és adatainkat papíron a következőképpen rendezzük:
+A B C D
+62 63 68 56
+60 67 66 62
+63 71 71 60
+59 64 67 61
+65 68 63
+66 68 64
+63
+59</p>
+<p>Az egyes numerikus értékek másodpercben mért véralvadási időket jelentenek. Ahhoz, hogy helyesen hozhassuk létre az adattáblánkat, a következőképpen kell átalakítani a fenti táblázatot.
+A 62
+A 60
+A 63
+A 59
+B 63
+B 67
+B 71
+B 64
+B 65
+B 66
+C 68
+C 66
+C 71
+C 67
+C 68
+C 68
+D 56
+D 62
+D 60
+D 61
+D 63
+D 64
+D 63
+D 59</p>
+<p>Ezt a táblázatot már rögzíthetjük az R egy adattáblájába.
+5.1. Adattáblák létrehozása
+Korábban már láttuk, hogy a data.frame() függvénnyel hogyan hozhatunk létre adattáblát (3.5. fejezet): a függvény argumentumában az adattáblát alkotó oszlopvektorokat kell felsorolnunk. Állományban rögzített adattábla beolvasására is láttunk példát a 4.1.2. fejezetben: pl. a read.table() függvénnyel adattáblába olvashatjuk adatainkat.
+További lehetőség a fix() és az edit() függvények használata, melyekkel az Excel munkalapjához hasonló, kényelmes felületen hozhatjuk létre új, vagy módosíthatjuk meglévő adattábláinkat. A függvények a paraméterükben várják a módosítandó adattábla nevét, de az edit() – a fix()-szel ellentétben – nem változtatja meg a paraméter értékét, hanem a módosított adattábla lesz a visszatérési értéke.</p>
+<blockquote>
+<p>fix(d) # módosítja d-t
+d.uj&lt;-edit(d) # d változatlan, a módosítások d.uj-ba kerülnek
+Az R számos beépített dataset-tel (többnyire adattábla, mátrix, idősor) rendelkezik. A data() függvény segítségével fedezhetjük fel a parancssorból már is elérhető adattáblák nevét és rövid leírását. További információt is kérhetünk egy kiválasztott adattábláról (pl. women):
+?women
+Az alapértelmezetten betöltött csomagok közül a datasets tartalmaz adattáblákat, de számos más csomagban is találhatók dataset-ek, pl: MASS, survival, nlme. A telepített csomagban lévő összes dataset is lekérdezhető következő sorral:
+data(package = .packages(all.available = TRUE))</p>
+</blockquote>
+<p>5.2. Adattáblák indexelése
+Az adattáblák indexelésére a mátrixok és listák indexelési eljárásait is használhatjuk. A 3.5. fejezetben már áttekintettük ezeket a lehetőségeket.
+A következő példákban a datasets csomag mtcars adattábláját használjuk, amely a parancssorból azonnal elérhető. Az 32 db régi autó fogyasztását és 10 további jellemzőjét tartalmazó adattábla első 10 sorát láthatjuk itt:
+&gt; mtcars[1:10,]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Mazda RX4 21.0 6 160.0 110 3.90 2.620 16.46 0 1 4 4
+Mazda RX4 Wag 21.0 6 160.0 110 3.90 2.875 17.02 0 1 4 4
+Datsun 710 22.8 4 108.0 93 3.85 2.320 18.61 1 1 4 1
+Hornet 4 Drive 21.4 6 258.0 110 3.08 3.215 19.44 1 0 3 1
+Hornet Sportabout 18.7 8 360.0 175 3.15 3.440 17.02 0 0 3 2
+Valiant 18.1 6 225.0 105 2.76 3.460 20.22 1 0 3 1
+Duster 360 14.3 8 360.0 245 3.21 3.570 15.84 0 0 3 4
+Merc 240D 24.4 4 146.7 62 3.69 3.190 20.00 1 0 4 2
+Merc 230 22.8 4 140.8 95 3.92 3.150 22.90 1 0 4 2
+Merc 280 19.2 6 167.6 123 3.92 3.440 18.30 1 0 4 4
+Az adattábla változóinak részletes leírását a következő parancs szolgáltatja:
+&gt; ?mtcars
+Indexeléssel elérhetjük adattábla tetszőleges értékét:
+&gt; mtcars[6,3]
+[1] 225
+&gt; mtcars<span class="math inline">\(disp[6] [1] 225 vagy tetszőleges sorát:  &gt; mtcars[6,] mpg cyl disp hp drat wt qsec vs am gear carb Valiant 18.1 6 225 105 2.76 3.46 20.22 1 0 3 1 vagy oszlopát:  &gt; mtcars[,8] [1] 0 0 1 1 0 1 0 1 1 1 1 0 0 0 0 0 0 1 1 1 1 0 0 0 0 1 0 [28] 1 0 0 0 1 &gt; mtcars\)</span>am
+[1] 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 0 0 1 1
+[28] 1 1 1 1 1
+Az adattábla értékeinek egy tetszőleges tartománya is elérhető, ha vektorokkal indexelünk:
+&gt; mtcars[11:15,c(1,3,8)]
+mpg disp vs
+Merc 280C 17.8 167.6 1
+Merc 450SE 16.4 275.8 0
+Merc 450SL 17.3 275.8 0
+Merc 450SLC 15.2 275.8 0
+Cadillac Fleetwood 10.4 472.0 0
+Ha az indexvektorban használt numerikus értékek sorrendjét felcseréljük, akkor az adattábla oszlopait, esetleg sorait cserélhetjük fel:
+&gt; mtcars[15:11,c(3,8,1)]
+disp vs mpg
+Cadillac Fleetwood 472.0 0 10.4
+Merc 450SLC 275.8 0 15.2
+Merc 450SL 275.8 0 17.3
+Merc 450SE 275.8 0 16.4
+Merc 280C 167.6 1 17.8
+Amikor az adattábla egyetlen oszlopából válogatunk le adatot, akkor az eredmény nem adattábla, hanem egy vektor lesz. Ezt elkerülhetjük, ha a drop=FALSE argumentumot használjuk:
+&gt; mtcars[c(2,4,6),8]
+[1] 0 1 1
+&gt; mtcars[c(2,4,6),8,drop=F]
+vs
+Mazda RX4 Wag 0
+Hornet 4 Drive 1
+Valiant 1
+Bizonyos esetekben szükség lehet az adattábla sorainak véletlen kiválasztására. Ekkor a sample() függvényt használjuk:
+&gt; mtcars[sample(1:32,10),]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Chrysler Imperial 14.7 8 440.0 230 3.23 5.345 17.42 0 0 3 4
+Ford Pantera L 15.8 8 351.0 264 4.22 3.170 14.50 0 1 5 4
+Merc 450SLC 15.2 8 275.8 180 3.07 3.780 18.00 0 0 3 3
+Merc 280 19.2 6 167.6 123 3.92 3.440 18.30 1 0 4 4
+Porsche 914-2 26.0 4 120.3 91 4.43 2.140 16.70 0 1 5 2
+Hornet 4 Drive 21.4 6 258.0 110 3.08 3.215 19.44 1 0 3 1
+Pontiac Firebird 19.2 8 400.0 175 3.08 3.845 17.05 0 0 3 2
+Fiat 128 32.4 4 78.7 66 4.08 2.200 19.47 1 1 4 1
+Merc 240D 24.4 4 146.7 62 3.69 3.190 20.00 1 0 4 2
+Merc 230 22.8 4 140.8 95 3.92 3.150 22.90 1 0 4 2
+A sample() függvény alapértelmezés szerint visszatevés nélküli választ véletlen értékeket az első paraméterből (esetünkben 32 számból 10-et), de ha a replace=TRUE argumentumot használjuk, akkor visszatevéssel fog választani:
+&gt; d&lt;-mtcars[sample(11:13,4,replace=T),]; d
+mpg cyl disp hp drat wt qsec vs am gear carb
+Merc 280C 17.8 6 167.6 123 3.92 3.44 18.9 1 0 4 4
+Merc 450SL 17.3 8 275.8 180 3.07 3.73 17.6 0 0 3 3
+Merc 280C.1 17.8 6 167.6 123 3.92 3.44 18.9 1 0 4 4
+Merc 450SE 16.4 8 275.8 180 3.07 4.07 17.4 0 0 3 3
+A sample() függvény fenti paraméterezése mellett biztosan előfordul sorismétlés az új d adattáblában. Most az 1. és a 3. sor azonos, de mivel a sorok nevének az adattáblában különbözőnek kell lennie a ”Merc 280C” egy ”.1” résszel egészült ki a megismételt 3. sorban.
+Az sorismétléseket tartalmazó adattáblák kezelésére a duplicated() és a unique() függvényeket használhatjuk. A sorismétlések felderítésére a duplicated() függvényt használjuk:
+&gt; duplicated(d)
+[1] FALSE FALSE TRUE FALSE
+&gt; d[duplicated(d),]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Merc 280C.1 17.8 6 167.6 123 3.92 3.44 18.9 1 0 4 4
+A sorismétlések eltávolítására a unique() függvényt használhatjuk:
+&gt; unique(d)
+mpg cyl disp hp drat wt qsec vs am gear carb
+Merc 280C 17.8 6 167.6 123 3.92 3.44 18.9 1 0 4 4
+Merc 450SL 17.3 8 275.8 180 3.07 3.73 17.6 0 0 3 3
+Merc 450SE 16.4 8 275.8 180 3.07 4.07 17.4 0 0 3 3
+5.3. A with() és az attach()
+Az adattáblák változóinak indexelés nélküli elérésére több módszert is nyújt az R. Egyrészt számos statisztikai függvény rendelkezik data argumentummal, amelynek ha egy adattábla nevét adjuk értékül, akkor illető adattábla oszlopneveit mindenfajta indexelés nélkül használhatjuk a statisztikai függvény többi argumentumában.
+&gt; names(women)
+[1] “height” “weight”
+&gt; lm(height~weight,data=women)
+További lehetőségünk a with() függvény használata, amelyben ha az első argumentumban az adattábla nevét szerepeltetjük, a második argumentumban szereplő kifejezésben nem kell indexelnünk az adattábla változóit:
+&gt; with(women, lm(height~weight))
+Ha több utasítást szeretnénk végrehajtani a with() függvény használata során, akkor a második argumentumban használjunk kapcsos zárójelet ({}), az utasításokat pedig írjuk külön sorba, vagy válasszuk el pontosvesszővel őket.
+&gt; with(women, {plot(height~weight); abline(lm(height~weight))})
+Az attach() függvény használatával is megtakaríthatjuk a változók indexelését. A függvény argumentumában szereplő adattáblát az elérési útba helyezzük, így a névfeloldás során az adattáblánkat is végignézi az R.
+&gt; names(women)
+[1] “height” “weight”
+&gt; height
+Error: object “height” not found
+&gt; weight
+Error: object “weight” not found
+&gt; attach(women)
+&gt; height
+[1] 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72
+&gt; weight
+[1] 115 117 120 123 126 129 132 135 139 142 146 150 154 159 164
+Az elérési útból a detach() függvénnyel törölhetünk adattáblát (vagy csomagot).
+&gt; detach(women)
+&gt; height
+Error: object “height” not found
+&gt; weight
+Error: object “weight” not found
+Az attach() használatával azonban óvatosnak kell lennünk, mert a munkaterület egyéb változóival könnyen ütközhetnek az adattábla változónevei:
+&gt; height&lt;-1:10
+&gt; attach(women)</p>
+<p>The following object(s) are masked <em>by</em> .GlobalEnv :</p>
+<p>height</p>
+<blockquote>
+<p>height
+[1] 1 2 3 4 5 6 7 8 9 10
+weight
+[1] 115 117 120 123 126 129 132 135 139 142 146 150 154 159 164
+5.4. Sorok és oszlopok nevei
+Az adattábla sorait a row.names, az oszlopait a names attribútum használatával nevezhetjük el. A sornevek egymástól különböző, karakteres vagy numerikus egész értékek lehetnek, míg az oszlopnevek csak karakteres adatok. A sor- és oszlopnevek lekérdezésére és beállítására korábban már láttunk példát (3.5. fejezet).
+Sokszor előfordul, hogy egy adattábla valamely változójának értékeivel szeretnénk a sorokat elnevezni, ill. fordítva, az adattábla sorneveit oszlopvektorban szeretnénk látni. Az adattábla állományból történő beolvasása során a read.table() függvényben a ”row.names=n” argumentum megadásával a szöveges állomány n. oszlopából nyerjük a sorok neveit.
+Az mtcars adattábla sorneveit a következő parancs segítségével vihetjük be változóba:
+mtcars2&lt;-data.frame(name=rownames(mtcars),mtcars,row.names=1:32)
+mtcars2[1:10,]
+name mpg cyl disp hp drat wt qsec vs am gear carb
+1 Mazda RX4 21.0 6 160.0 110 3.90 2.620 16.46 0 1 4 4
+2 Mazda RX4 Wag 21.0 6 160.0 110 3.90 2.875 17.02 0 1 4 4
+3 Datsun 710 22.8 4 108.0 93 3.85 2.320 18.61 1 1 4 1
+4 Hornet 4 Drive 21.4 6 258.0 110 3.08 3.215 19.44 1 0 3 1
+5 Hornet Sportabout 18.7 8 360.0 175 3.15 3.440 17.02 0 0 3 2
+6 Valiant 18.1 6 225.0 105 2.76 3.460 20.22 1 0 3 1
+7 Duster 360 14.3 8 360.0 245 3.21 3.570 15.84 0 0 3 4
+8 Merc 240D 24.4 4 146.7 62 3.69 3.190 20.00 1 0 4 2
+9 Merc 230 22.8 4 140.8 95 3.92 3.150 22.90 1 0 4 2
+10 Merc 280 19.2 6 167.6 123 3.92 3.440 18.30 1 0 4 4
+A fordított irányhoz a következő parancsot kell használnunk:
+mtcars3&lt;-mtcars2 # új adattábla
+rownames(mtcars3)&lt;-mtcars3<span class="math inline">\(name # sornevek meghatározása mtcars3&lt;-mtcars3[2:11] # a felesleges első oszlop törlése mtcars3[1:10,] mpg cyl disp hp drat wt qsec vs am gear Mazda RX4 21.0 6 160.0 110 3.90 2.620 16.46 0 1 4 Mazda RX4 Wag 21.0 6 160.0 110 3.90 2.875 17.02 0 1 4 Datsun 710 22.8 4 108.0 93 3.85 2.320 18.61 1 1 4 Hornet 4 Drive 21.4 6 258.0 110 3.08 3.215 19.44 1 0 3 Hornet Sportabout 18.7 8 360.0 175 3.15 3.440 17.02 0 0 3 Valiant 18.1 6 225.0 105 2.76 3.460 20.22 1 0 3 Duster 360 14.3 8 360.0 245 3.21 3.570 15.84 0 0 3 Merc 240D 24.4 4 146.7 62 3.69 3.190 20.00 1 0 4 Merc 230 22.8 4 140.8 95 3.92 3.150 22.90 1 0 4 Merc 280 19.2 6 167.6 123 3.92 3.440 18.30 1 0 4 5.5. Rendezés A vektorok rendezésénél már megismertük az order() függvényt (3.1.8. fejezet), amelyet adattáblák rendezésére is használhatunk. Az mtcars adattábla sorait a fogyasztási adatok (mpg változó) alapján növekvő sorrendbe rendezhetjük, ha a sorok indexelésére az order() függvény visszatérési értékét használjuk: order(mtcars\)</span>mpg)
+[1] 15 16 24 7 17 31 14 23 22 29 12 13 11 6 5 10 25 30 1 2
+[21] 4 32 21 3 9 8 27 26 19 28 18 20
+A fenti indexeket a sorkoordináta helyére írva, megkapjuk a rendezett adattáblát (helytakarékosságból az első 10 sorát írjuk ki):
+mtcars[order(mtcars$mpg)[1:10],]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Cadillac Fleetwood 10.4 8 472.0 205 2.93 5.250 17.98 0 0 3 4
+Lincoln Continental 10.4 8 460.0 215 3.00 5.424 17.82 0 0 3 4
+Camaro Z28 13.3 8 350.0 245 3.73 3.840 15.41 0 0 3 4
+Duster 360 14.3 8 360.0 245 3.21 3.570 15.84 0 0 3 4
+Chrysler Imperial 14.7 8 440.0 230 3.23 5.345 17.42 0 0 3 4
+Maserati Bora 15.0 8 301.0 335 3.54 3.570 14.60 0 1 5 8
+Merc 450SLC 15.2 8 275.8 180 3.07 3.780 18.00 0 0 3 3
+AMC Javelin 15.2 8 304.0 150 3.15 3.435 17.30 0 0 3 2
+Dodge Challenger 15.5 8 318.0 150 2.76 3.520 16.87 0 0 3 2
+Ford Pantera L 15.8 8 351.0 264 4.22 3.170 14.50 0 1 5 4
+Rendezési szempontnak a sorneveket is használhatjuk:
+mtcars[order(rownames(mtcars))[1:10],]
+mpg cyl disp hp drat wt qsec vs am gear carb
+AMC Javelin 15.2 8 304.0 150 3.15 3.435 17.30 0 0 3 2
+Cadillac Fleetwood 10.4 8 472.0 205 2.93 5.250 17.98 0 0 3 4
+Camaro Z28 13.3 8 350.0 245 3.73 3.840 15.41 0 0 3 4
+Chrysler Imperial 14.7 8 440.0 230 3.23 5.345 17.42 0 0 3 4
+Datsun 710 22.8 4 108.0 93 3.85 2.320 18.61 1 1 4 1
+Dodge Challenger 15.5 8 318.0 150 2.76 3.520 16.87 0 0 3 2
+Duster 360 14.3 8 360.0 245 3.21 3.570 15.84 0 0 3 4
+Ferrari Dino 19.7 6 145.0 175 3.62 2.770 15.50 0 1 5 6
+Fiat 128 32.4 4 78.7 66 4.08 2.200 19.47 1 1 4 1
+Fiat X1-9 27.3 4 79.0 66 4.08 1.935 18.90 1 1 4 1
+Rendezésnél egynél több változót is figyelembe vehetünk, ekkor az order() függvényben több változónevet kell felsorolnunk vesszővel elválasztva:
+mtcars[order(mtcars<span class="math inline">\(mpg,mtcars\)</span>disp)[1:10],c(“mpg”,“disp”)]
+mpg disp
+Lincoln Continental 10.4 460.0
+Cadillac Fleetwood 10.4 472.0
+Camaro Z28 13.3 350.0
+Duster 360 14.3 360.0
+Chrysler Imperial 14.7 440.0
+Maserati Bora 15.0 301.0
+Merc 450SLC 15.2 275.8
+AMC Javelin 15.2 304.0
+Dodge Challenger 15.5 318.0
+Ford Pantera L 15.8 351.0
+Csökkenő sorrendű rendezéshez használhatjuk az order() függvény ”decreasing=TRUE” argumentumát, vagy a rev() függvényt. Több rendezési szempont esetén ha keverni szeretnénk a rendezési irányokatt, akkor numerikus oszlopvektorok előtt a mínusz (-) jellel fordíthatjuk meg a rendezés irányát csökkenőre.
+mtcars[order(mtcars<span class="math inline">\(mpg,-mtcars\)</span>disp)[1:10],c(“mpg”,“disp”)]
+mpg disp
+Cadillac Fleetwood 10.4 472.0
+Lincoln Continental 10.4 460.0
+Camaro Z28 13.3 350.0
+Duster 360 14.3 360.0
+Chrysler Imperial 14.7 440.0
+Maserati Bora 15.0 301.0
+AMC Javelin 15.2 304.0
+Merc 450SLC 15.2 275.8
+Dodge Challenger 15.5 318.0
+Ford Pantera L 15.8 351.0
+5.5. Adattábla szűrése
+Sokszor előfordul, hogy az adattábla sorait egy vagy több változó (oszlop) értéke szerint szeretnénk leválogatni. Az adattábla indexelése során a sorkoordináta helyén logikai kifejezést szerepeltetünk. Ha például le szeretnénk kérdezni, azokat a sorokat, amelyekben a fogyásztás értéke kisebb mint 15 mérföld/gallon, akkor a következő logikai kifejezést használhatjuk:
+mtcars<span class="math inline">\(mpg&lt;15 [1] FALSE FALSE FALSE FALSE FALSE FALSE TRUE FALSE FALSE FALSE [11] FALSE FALSE FALSE FALSE TRUE TRUE TRUE FALSE FALSE FALSE [21] FALSE FALSE FALSE TRUE FALSE FALSE FALSE FALSE FALSE FALSE [31] FALSE FALSE A fenti logikai vekorban pontosan azokban a pozíciókban szerepel TRUE érték, amelyik sorban fogyásztás értéke kisebb mint 15 mérföld/gallon. Ha ezt szerpeltetjük a sorkoordináta helyén, a kívánt sorokhoz jutunk: mtcars[mtcars\)</span>mpg&lt;15,]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Duster 360 14.3 8 360 245 3.21 3.570 15.84 0 0 3 4
+Cadillac Fleetwood 10.4 8 472 205 2.93 5.250 17.98 0 0 3 4
+Lincoln Continental 10.4 8 460 215 3.00 5.424 17.82 0 0 3 4
+Chrysler Imperial 14.7 8 440 230 3.23 5.345 17.42 0 0 3 4
+Camaro Z28 13.3 8 350 245 3.73 3.840 15.41 0 0 3 4
+Több váltózón alapuló feltétel megadásához összetett logikai kifejezést kell írnunk:
+mtcars[mtcars<span class="math inline">\(mpg&lt;15 &amp; mtcars\)</span>disp&gt;400,]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Cadillac Fleetwood 10.4 8 472 205 2.93 5.250 17.98 0 0 3 4
+Lincoln Continental 10.4 8 460 215 3.00 5.424 17.82 0 0 3 4
+Chrysler Imperial 14.7 8 440 230 3.23 5.345 17.42 0 0 3 4
+Adattáblák szűrését egyszerűsíti a subset() függvény, amely az első paraméterében egy adattáblát, második paraméterében pedig a szűrést jelentő logikai kifejezést várja. A fenti szűrés subset() függvény használatával:
+subset(mtcars, mpg&lt;15 &amp; disp&gt;400)
+mpg cyl disp hp drat wt qsec vs am gear carb
+Cadillac Fleetwood 10.4 8 472 205 2.93 5.250 17.98 0 0 3 4
+Lincoln Continental 10.4 8 460 215 3.00 5.424 17.82 0 0 3 4
+Chrysler Imperial 14.7 8 440 230 3.23 5.345 17.42 0 0 3 4
+A subset() függvény egy select argumentumot is tartalmazhat, melynek sgítségével a szűrés eredményében megjelenő oszlopokat határozhatjuk meg:
+subset(mtcars, mpg&lt;15 &amp; disp&gt;400, select=c(“mpg”,“disp”))
+mpg disp
+Cadillac Fleetwood 10.4 472
+Lincoln Continental 10.4 460
+Chrysler Imperial 14.7 440
+5.6. Hiányzó értékeket tatalmazó sorok eltávolítása
+Az NA értéket is tartalmazó adattáblánkból az na.omit() függvény használatával távolíthatjuk el azokat a sorokat, amelyekben a hiányzó érték előfordul.
+data(mtcars)
+mtcars[c(2,5,7),1]&lt;-NA
+mtcars[1:10,]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Mazda RX4 21.0 6 160.0 110 3.90 2.620 16.46 0 1 4 4
+Mazda RX4 Wag NA 6 160.0 110 3.90 2.875 17.02 0 1 4 4
+Datsun 710 22.8 4 108.0 93 3.85 2.320 18.61 1 1 4 1
+Hornet 4 Drive 21.4 6 258.0 110 3.08 3.215 19.44 1 0 3 1
+Hornet Sportabout NA 8 360.0 175 3.15 3.440 17.02 0 0 3 2
+Valiant 18.1 6 225.0 105 2.76 3.460 20.22 1 0 3 1
+Duster 360 NA 8 360.0 245 3.21 3.570 15.84 0 0 3 4
+Merc 240D 24.4 4 146.7 62 3.69 3.190 20.00 1 0 4 2
+Merc 230 22.8 4 140.8 95 3.92 3.150 22.90 1 0 4 2
+Merc 280 19.2 6 167.6 123 3.92 3.440 18.30 1 0 4 4
+na.omit(mtcars)[1:10,]
+mpg cyl disp hp drat wt qsec vs am gear carb
+Mazda RX4 21.0 6 160.0 110 3.90 2.620 16.46 0 1 4 4
+Datsun 710 22.8 4 108.0 93 3.85 2.320 18.61 1 1 4 1
+Hornet 4 Drive 21.4 6 258.0 110 3.08 3.215 19.44 1 0 3 1
+Valiant 18.1 6 225.0 105 2.76 3.460 20.22 1 0 3 1
+Merc 240D 24.4 4 146.7 62 3.69 3.190 20.00 1 0 4 2
+Merc 230 22.8 4 140.8 95 3.92 3.150 22.90 1 0 4 2
+Merc 280 19.2 6 167.6 123 3.92 3.440 18.30 1 0 4 4
+Merc 280C 17.8 6 167.6 123 3.92 3.440 18.90 1 0 4 4
+Merc 450SE 16.4 8 275.8 180 3.07 4.070 17.40 0 0 3 3
+Merc 450SL 17.3 8 275.8 180 3.07 3.730 17.60 0 0 3 3
+5.7. Adattábla oszlopainak transzformálása
+Számos esetben szükség lehet az adattábla oszlopaiban lévő értéke átalakítására (transzformálására). Az értékeket vagy helyben (ugyanabban az oszlopban) változtatjuk meg, vagy új oszlopként szúrjuk be az adattáblába.
+Adatok transzformálásához tekintsük a women adattáblát, amely a weight változójában font-ban mért értékeket tartalmaz. Ezt alakítsuk át kg-ban mért adatokká egy új oszlopban:
+data(women); women
+height weight
+1 58 115
+2 59 117
+3 60 120
+4 61 123
+5 62 126
+6 63 129
+7 64 132
+8 65 135
+9 66 139
+10 67 142
+11 68 146
+12 69 150
+13 70 154
+14 71 159
+15 72 164
+women<span class="math inline">\(suly&lt;-round(women\)</span>weight<em>0.45)
+women
+height weight suly
+1 58 115 52
+2 59 117 53
+3 60 120 54
+4 61 123 55
+5 62 126 57
+6 63 129 58
+7 64 132 59
+8 65 135 61
+9 66 139 63
+10 67 142 64
+11 68 146 66
+12 69 150 68
+13 70 154 69
+14 71 159 72
+15 72 164 74
+Ugyanezt az eredményt a transform() függvény segítségével is elérhetjük, ahol a subset()-hez hasonlóan némileg egyszerűbben hivatkozhatunk az adattábla változóira. Most alakítsuk át height változót inch-ről cm-re.
+transform(women,magassag=round(height</em>2.45))
+height weight suly magassag
+1 58 115 52 142
+2 59 117 53 145
+3 60 120 54 147
+4 61 123 55 149
+5 62 126 57 152
+6 63 129 58 154
+7 64 132 59 157
+8 65 135 61 159
+9 66 139 63 162
+10 67 142 64 164
+11 68 146 66 167
+12 69 150 68 169
+13 70 154 69 172
+14 71 159 72 174
+15 72 164 74 176
+Amennyiben a fenti példákban nem új változónevek az átalakítás célpontjai, hanem már létező oszlopok, akkor helyben végezzük a transzformációt:
+transform(women,height=height-10)
+height weight suly
+1 48 115 52
+2 49 117 53
+3 50 120 54
+4 51 123 55
+5 52 126 57
+6 53 129 58
+7 54 132 59
+8 55 135 61
+9 56 139 63
+10 57 142 64
+11 58 146 66
+12 59 150 68
+13 60 154 69
+14 61 159 72
+15 62 164 74
+A változók átalakításának másik gyakori esete, amikor az eredetileg folytonos változót kategórikus változóvá alakítjuk. A cut() függvény segítségével numerikus vektorból faktort állíthatunk elő.
+cut(1:10,3)
+[1] (0.991,4] (0.991,4] (0.991,4] (4,7] (4,7] (4,7] (4,7]
+[8] (7,10] (7,10] (7,10]
+Levels: (0.991,4] (4,7] (7,10]
+A fenti példában a 10 elemű bemenő vektortból 3 szintű faktort hoztunk létre. Ha az intervallumok határát magunk szeretnénk megadni, akkor a második (breaks) argumentumban egy vektort kell megadnunk:
+cut(1:10,breaks=c(0,2,10))
+[1] (0,2] (0,2] (2,10] (2,10] (2,10] (2,10] (2,10] (2,10] (2,10] (2,10]
+Levels: (0,2] (2,10]
+A létrejövő faktor szintjei az intervallumok leírásaiból állnak, természetesen ezeket megvaáltoztathatjuk, csak a labels paramétert kell használnunk:
+cut(1:10,breaks=c(0,2,7,10),label=c(“gyenge”,“közepes”,“erős”))
+[1] gyenge gyenge közepes közepes közepes közepes közepes erős erős
+[10] erős
+Levels: gyenge közepes erős
+Adattáblák esetében a cut() függvény használatára láthatunk egy példát:
+transform(women,height=cut(height,breaks=c(0,60,70,100),
++ labels=c(“alacsony”,“közepes”,“magas”)))
+height weight suly
+1 alacsony 115 52
+2 alacsony 117 53
+3 alacsony 120 54
+4 közepes 123 55
+5 közepes 126 57
+6 közepes 129 58
+7 közepes 132 59
+8 közepes 135 61
+9 közepes 139 63
+10 közepes 142 64
+11 közepes 146 66
+12 közepes 150 68
+13 közepes 154 69
+14 magas 159 72
+15 magas 164 74</p>
+</blockquote>
+
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="a-rio-csomag.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="grafika-az-r-ben.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/06-Beolvas-Kiiras.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["r_bioinf.pdf", "r_bioinf.epub", "r_bioinf.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
