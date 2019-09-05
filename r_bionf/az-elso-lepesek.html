@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.3 Az első lépések | R alapok I. - RNS szekvenálási példákkal</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.3 Az első lépések | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.3 Az első lépések | R alapok I. - RNS szekvenálási példákkal" />
+  
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Abari Kálmán" />
+
+
+<meta name="date" content="2019-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="telepitesek.html">
+<link rel="next" href="az-rstudio.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
+<li class="chapter" data-level="1.1" data-path="az-r.html"><a href="az-r.html"><i class="fa fa-check"></i><b>1.1</b> Az R</a></li>
+<li class="chapter" data-level="1.2" data-path="alapelvek-az-r-hasznalatahoz.html"><a href="alapelvek-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>1.2</b> Alapelvek az R használatához</a></li>
+<li class="chapter" data-level="1.3" data-path="Ralaptudas.html"><a href="Ralaptudas.html"><i class="fa fa-check"></i><b>1.3</b> Az R alaptudás</a></li>
+<li class="chapter" data-level="1.4" data-path="a-modern-r.html"><a href="a-modern-r.html"><i class="fa fa-check"></i><b>1.4</b> A modern R</a></li>
+<li class="chapter" data-level="1.5" data-path="jelolesi-konvenciok.html"><a href="jelolesi-konvenciok.html"><i class="fa fa-check"></i><b>1.5</b> Jelölési konvenciók</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="alapok.html"><a href="alapok.html"><i class="fa fa-check"></i><b>2</b> Alapok</a><ul>
+<li class="chapter" data-level="2.1" data-path="szereplok-es-fogalmak.html"><a href="szereplok-es-fogalmak.html"><i class="fa fa-check"></i><b>2.1</b> Szereplők és fogalmak</a></li>
+<li class="chapter" data-level="2.2" data-path="telepitesek.html"><a href="telepitesek.html"><i class="fa fa-check"></i><b>2.2</b> Telepítések</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="telepitesek.html"><a href="telepitesek.html#az-alap-r-telepitese"><i class="fa fa-check"></i><b>2.2.1</b> Az Alap R telepítése</a></li>
+<li class="chapter" data-level="2.2.2" data-path="telepitesek.html"><a href="telepitesek.html#az-rstudio-telepitese"><i class="fa fa-check"></i><b>2.2.2</b> Az RStudio telepítése</a></li>
+<li class="chapter" data-level="2.2.3" data-path="telepitesek.html"><a href="telepitesek.html#Csomagok_telepitese"><i class="fa fa-check"></i><b>2.2.3</b> Csomagok telepítése</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html"><i class="fa fa-check"></i><b>2.3</b> Az első lépések</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#a-konzol-hasznalata"><i class="fa fa-check"></i><b>2.3.1</b> A konzol használata</a></li>
+<li class="chapter" data-level="2.3.2" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok"><i class="fa fa-check"></i><b>2.3.2</b> Parancsállományok</a></li>
+<li class="chapter" data-level="2.3.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok-futtatasa"><i class="fa fa-check"></i><b>2.3.3</b> Parancsállományok futtatása</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="az-rstudio.html"><a href="az-rstudio.html"><i class="fa fa-check"></i><b>2.4</b> Az RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="az-rstudio.html"><a href="az-rstudio.html#panelek"><i class="fa fa-check"></i><b>2.4.1</b> Panelek</a></li>
+<li class="chapter" data-level="2.4.2" data-path="az-rstudio.html"><a href="az-rstudio.html#munka-az-rstudio-ban"><i class="fa fa-check"></i><b>2.4.2</b> Munka az RStudio-ban</a></li>
+<li class="chapter" data-level="2.4.3" data-path="az-rstudio.html"><a href="az-rstudio.html#projektek-hasznalata"><i class="fa fa-check"></i><b>2.4.3</b> Projektek használata</a></li>
+<li class="chapter" data-level="2.4.4" data-path="az-rstudio.html"><a href="az-rstudio.html#az-rmarkdown-hasznalata"><i class="fa fa-check"></i><b>2.4.4</b> Az RMarkdown használata</a></li>
+<li class="chapter" data-level="2.4.5" data-path="az-rstudio.html"><a href="az-rstudio.html#billenytuparancsok"><i class="fa fa-check"></i><b>2.4.5</b> Billenytűparancsok</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="segitseg-az-r-hasznalatahoz.html"><a href="segitseg-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>2.5</b> Segítség az R használatához</a></li>
+<li class="chapter" data-level="2.6" data-path="feladatok.html"><a href="feladatok.html"><i class="fa fa-check"></i><b>2.6</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>I Az R nyelv</b></span></li>
+<li class="chapter" data-level="3" data-path="adatobjektumok.html"><a href="adatobjektumok.html"><i class="fa fa-check"></i><b>3</b> Adatobjektumok</a><ul>
+<li class="chapter" data-level="3.1" data-path="szamolas-az-r-ben.html"><a href="szamolas-az-r-ben.html"><i class="fa fa-check"></i><b>3.1</b> Számolás az R-ben</a></li>
+<li class="chapter" data-level="3.2" data-path="objektumok.html"><a href="objektumok.html"><i class="fa fa-check"></i><b>3.2</b> Objektumok</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="objektumok.html"><a href="objektumok.html#objektumok-letrehozasa"><i class="fa fa-check"></i><b>3.2.1</b> Objektumok létrehozása</a></li>
+<li class="chapter" data-level="3.2.2" data-path="objektumok.html"><a href="objektumok.html#objektumok-ertekenek-lekerdezese"><i class="fa fa-check"></i><b>3.2.2</b> Objektumok értékének lekérdezése</a></li>
+<li class="chapter" data-level="3.2.3" data-path="objektumok.html"><a href="objektumok.html#objektumok-elnevezese"><i class="fa fa-check"></i><b>3.2.3</b> Objektumok elnevezése</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="feladatok-1.html"><a href="feladatok-1.html"><i class="fa fa-check"></i><b>3.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="fuggvenyek.html"><a href="fuggvenyek.html"><i class="fa fa-check"></i><b>4</b> Függvények</a><ul>
+<li class="chapter" data-level="4.1" data-path="a-fuggvenyhivas-szabalyai.html"><a href="a-fuggvenyhivas-szabalyai.html"><i class="fa fa-check"></i><b>4.1</b> A függvényhívás szabályai</a></li>
+<li class="chapter" data-level="4.2" data-path="a-munkaterulet-fuggvenyei.html"><a href="a-munkaterulet-fuggvenyei.html"><i class="fa fa-check"></i><b>4.2</b> A munkaterület függvényei</a></li>
+<li class="chapter" data-level="4.3" data-path="a-munkakonyvtar-fuggvenyei.html"><a href="a-munkakonyvtar-fuggvenyei.html"><i class="fa fa-check"></i><b>4.3</b> A munkakönyvtár függvényei</a></li>
+<li class="chapter" data-level="4.4" data-path="csomagkezelo-fuggvenyek.html"><a href="csomagkezelo-fuggvenyek.html"><i class="fa fa-check"></i><b>4.4</b> Csomagkezelő függvények</a></li>
+<li class="chapter" data-level="4.5" data-path="feladatok-2.html"><a href="feladatok-2.html"><i class="fa fa-check"></i><b>4.5</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="adatszerkezetek.html"><a href="adatszerkezetek.html"><i class="fa fa-check"></i><b>5</b> Adatszerkezetek</a><ul>
+<li class="chapter" data-level="5.1" data-path="alaptipusok.html"><a href="alaptipusok.html"><i class="fa fa-check"></i><b>5.1</b> Alaptípusok</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="alaptipusok.html"><a href="alaptipusok.html#numerikus-ertekek"><i class="fa fa-check"></i><b>5.1.1</b> Numerikus értékek</a></li>
+<li class="chapter" data-level="5.1.2" data-path="alaptipusok.html"><a href="alaptipusok.html#karakteres-ertekek"><i class="fa fa-check"></i><b>5.1.2</b> Karakteres értékek</a></li>
+<li class="chapter" data-level="5.1.3" data-path="alaptipusok.html"><a href="alaptipusok.html#logikai-ertekek"><i class="fa fa-check"></i><b>5.1.3</b> Logikai értékek</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="adatszerkezetek-attekintese.html"><a href="adatszerkezetek-attekintese.html"><i class="fa fa-check"></i><b>5.2</b> Adatszerkezetek áttekintése</a></li>
+<li class="chapter" data-level="5.3" data-path="vektor.html"><a href="vektor.html"><i class="fa fa-check"></i><b>5.3</b> Vektor</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="vektor.html"><a href="vektor.html#vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.1</b> Vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vektor.html"><a href="vektor.html#muveletek-vektorokkal"><i class="fa fa-check"></i><b>5.3.2</b> Műveletek vektorokkal</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vektor.html"><a href="vektor.html#fuggvenyek-vektorokkal"><i class="fa fa-check"></i><b>5.3.3</b> Függvények vektorokkal</a></li>
+<li class="chapter" data-level="5.3.4" data-path="vektor.html"><a href="vektor.html#az-na-hianyzo-ertek"><i class="fa fa-check"></i><b>5.3.4</b> Az <code>NA</code> hiányzó érték</a></li>
+<li class="chapter" data-level="5.3.5" data-path="vektor.html"><a href="vektor.html#objektumok-attributumai"><i class="fa fa-check"></i><b>5.3.5</b> Objektumok attribútumai</a></li>
+<li class="chapter" data-level="5.3.6" data-path="vektor.html"><a href="vektor.html#vektorok-indexelese"><i class="fa fa-check"></i><b>5.3.6</b> Vektorok indexelése</a></li>
+<li class="chapter" data-level="5.3.7" data-path="vektor.html"><a href="vektor.html#vektorok-rendezese"><i class="fa fa-check"></i><b>5.3.7</b> Vektorok rendezése</a></li>
+<li class="chapter" data-level="5.3.8" data-path="vektor.html"><a href="vektor.html#elore-definialt-objektumok-nevesitett-konstansok"><i class="fa fa-check"></i><b>5.3.8</b> Előre definiált objektumok, nevesített konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="faktorok.html"><a href="faktorok.html"><i class="fa fa-check"></i><b>5.4</b> Faktorok</a></li>
+<li class="chapter" data-level="5.5" data-path="matrixok-es-tombok.html"><a href="matrixok-es-tombok.html"><i class="fa fa-check"></i><b>5.5</b> Mátrixok és tömbök</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="matrixok-es-tombok.html"><a href="matrixok-es-tombok.html#szamitasok-a-matrix-soraiban-es-oszlopaiban"><i class="fa fa-check"></i><b>5.5.1</b> Számítások a mátrix soraiban és oszlopaiban</a></li>
+<li class="chapter" data-level="5.5.2" data-path="matrixok-es-tombok.html"><a href="matrixok-es-tombok.html#sorok-es-oszlopok-kezelese"><i class="fa fa-check"></i><b>5.5.2</b> Sorok és oszlopok kezelése</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="listak.html"><a href="listak.html"><i class="fa fa-check"></i><b>5.6</b> Listák</a></li>
+<li class="chapter" data-level="5.7" data-path="adattablak-dataframes.html"><a href="adattablak-dataframes.html"><i class="fa fa-check"></i><b>5.7</b> Adattáblák (dataframes)</a></li>
+<li class="chapter" data-level="5.8" data-path="feladatok-3.html"><a href="feladatok-3.html"><i class="fa fa-check"></i><b>5.8</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>II Adatelemzés</b></span></li>
+<li class="chapter" data-level="6" data-path="adatok-beolvasasa-es-kiirasa.html"><a href="adatok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6</b> Adatok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.1" data-path="adatok-beolvasasa.html"><a href="adatok-beolvasasa.html"><i class="fa fa-check"></i><b>6.1</b> Adatok beolvasása</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="adatok-beolvasasa.html"><a href="adatok-beolvasasa.html#inline-beolvasas"><i class="fa fa-check"></i><b>6.1.1</b> Inline beolvasás</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="tagolt-szoveges-allomanyok-beolvasasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa.html"><i class="fa fa-check"></i><b>6.2</b> Tagolt szöveges állományok beolvasása</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tagolt-szoveges-allomanyok-beolvasasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa.html#a-read.table-csalad-ar"><i class="fa fa-check"></i><b>6.2.1</b> A <code>read.table()</code> család (AR)</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tagolt-szoveges-allomanyok-beolvasasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa.html#a-read_delim-fuggvenycsalad-tr"><i class="fa fa-check"></i><b>6.2.2</b> A <code>read_delim()</code> függvénycsalád (TR)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fix-szeles-allomanyok.html"><a href="fix-szeles-allomanyok.html"><i class="fa fa-check"></i><b>6.3</b> Fix széles állományok</a></li>
+<li class="chapter" data-level="6.4" data-path="univerzalis-megoldas.html"><a href="univerzalis-megoldas.html"><i class="fa fa-check"></i><b>6.4</b> Univerzális megoldás</a></li>
+<li class="chapter" data-level="6.5" data-path="r-objektomok-irasa-es-olvasasa.html"><a href="r-objektomok-irasa-es-olvasasa.html"><i class="fa fa-check"></i><b>6.5</b> R objektomok írása és olvasása</a></li>
+<li class="chapter" data-level="6.6" data-path="a-rio-csomag.html"><a href="a-rio-csomag.html"><i class="fa fa-check"></i><b>6.6</b> A <strong>rio</strong> csomag</a></li>
+<li class="chapter" data-level="6.7" data-path="adatok-kiirasa.html"><a href="adatok-kiirasa.html"><i class="fa fa-check"></i><b>6.7</b> Adatok kiírása</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="grafika-az-r-ben.html"><a href="grafika-az-r-ben.html"><i class="fa fa-check"></i><b>7</b> Grafika az R-ben</a><ul>
+<li class="chapter" data-level="7.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html"><i class="fa fa-check"></i><b>7.1</b> Hagyományos grafika</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#grafikus-eszkozok"><i class="fa fa-check"></i><b>7.1.1</b> Grafikus eszközök</a></li>
+<li class="chapter" data-level="7.1.2" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-felosztasa"><i class="fa fa-check"></i><b>7.1.2</b> Az eszközfelület felosztása</a></li>
+<li class="chapter" data-level="7.1.3" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-reszei"><i class="fa fa-check"></i><b>7.1.3</b> Az eszközfelület részei</a></li>
+<li class="chapter" data-level="7.1.4" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#magas-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.4</b> Magas-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.5" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#alacsony-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.5</b> Alacsony-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.6" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#interaktiv-grafikus-fuggvenyek"><i class="fa fa-check"></i><b>7.1.6</b> Interaktív grafikus függvények</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> A modern grafika (ggplot2)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="az-r-programozasa.html"><a href="az-r-programozasa.html"><i class="fa fa-check"></i><b>8</b> Az R programozása</a><ul>
+<li class="chapter" data-level="8.1" data-path="blokk-utasitas.html"><a href="blokk-utasitas.html"><i class="fa fa-check"></i><b>8.1</b> Blokk utasítás</a></li>
+<li class="chapter" data-level="8.2" data-path="felteteles-utasitasok.html"><a href="felteteles-utasitasok.html"><i class="fa fa-check"></i><b>8.2</b> Feltételes utasítások</a></li>
+<li class="chapter" data-level="8.3" data-path="ciklus-utasitasok.html"><a href="ciklus-utasitasok.html"><i class="fa fa-check"></i><b>8.3</b> Ciklus utasítások</a></li>
+<li class="chapter" data-level="8.4" data-path="fuggveny-letrehozasa.html"><a href="fuggveny-letrehozasa.html"><i class="fa fa-check"></i><b>8.4</b> Függvény létrehozása</a></li>
+<li class="chapter" data-level="8.5" data-path="eleresi-ut.html"><a href="eleresi-ut.html"><i class="fa fa-check"></i><b>8.5</b> Elérési út</a></li>
+<li class="chapter" data-level="8.6" data-path="hataskor.html"><a href="hataskor.html"><i class="fa fa-check"></i><b>8.6</b> Hatáskör</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="feladatok-megoldasa.html"><a href="feladatok-megoldasa.html"><i class="fa fa-check"></i><b>9</b> Feladatok megoldása</a></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="az-elso-lepesek" class="section level2">
+<h2><span class="header-section-number">2.3</span> Az első lépések</h2>
+<p>Hogyan tudjuk működésre bírni az R-t? Tegyük fel, hogy van egy adatfeldolgozási problémánk (szeretnénk megtudni például a Csillagok háborúja c. film karaktereinek átlagos testmagasságát). Az R nyelv egy interpretált szkript nyelv, azaz szöveges parancsokat kell begépelnünk az R környezet megfelelő helyére. Az Alap R telepítése és indítása után pontosan egy ilyen környezetbe kerülünk. Nézzük meg hogyan?</p>
+<p>Az Alap R sikeres telepítése után az R futtatása, az adott platformon a megfelelő bináris állomány elindítását jelenti.</p>
+<ul>
+<li>Windows operációs rendszerekben az R indítása többnyire az Asztalon lévő R ikon segítségével lehetséges. Így indíthatjuk el az <code>RGui.exe</code> grafikus felhasználói felülettel rendelkező alkalmazást, amelynek legfontosabb része a külön ablakban megjelenő konzol (<a href="az-elso-lepesek.html#fig:konzol-win">2.1</a> ábra).</li>
+<li>MacOs környezetben indítsuk el az <code>R.app</code> alkalmazást, amely egyetlen konzolt tartalmaz.</li>
+<li>Linux környezetben az <code>R</code> parancssori futtatásával szintén egy konzolt kapunk.</li>
+</ul>
+<div id="a-konzol-hasznalata" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> A konzol használata</h3>
+<p>A konzol tehát az R környezet központi része mindegyik platformon. A konzol működése nagyon egyszerű: egysoros parancsokat gépelünk be a <code>&gt;</code> prompt után, majd <code>Enter</code>-t nyomunk, az R értelmezi és végrehajtja a begépelt parancsot, majd az eredményt itt konzolban meg is jeleníti. Ezt követően egy újabb sor begépelésére van lehetőségünk, <code>Enter</code> után annak az értelmezése következhet, majd az eredmény megjelenítése jön, és így tovább. A <a href="az-elso-lepesek.html#fig:konzol-win">2.1</a> ábra két parancs begépelése utáni konzol állapotot mutatja meg, a Windows környezetben megjelenő RGui alkalmazásban.</p>
+<div class="figure" style="text-align: center"><span id="fig:konzol-win"></span>
+<a href="" target="_blank"><img src="images/konzol_win.png" alt="RGui alkalmazás a konzollal Windows környezetben" width="70%" /></a>
+<p class="caption">
+ÁBRA 2.1: RGui alkalmazás a konzollal Windows környezetben
+</p>
+</div>
+<p>Próbáljuk ki mi is a konzolt. Bátran gépeljünk be parancsokat! Az R-el végzett munkáink publikálásánál fontos lehet, hogy hogyan hivatkozzunk erre a programra. Az R indítása után a konzolban megjelenő fejrészből ez is kiolvasható, de bármikor mi is kiírathatjuk ezt az információt a konzolba.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">citation</span>()</a></code></pre></div>
+<p>Fontos lehet, hogy tudjuk a használt R pontos verziószámát.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">R.Version</span>()</a></code></pre></div>
+<p>A munka során van egy alapértelmezett munkakönyvtárunk, amelynek a helyét a <code>getwd()</code> függvénnyel kérdezhetjük le (munkakönyvtár beállítása a <code>setwd()</code>-vel történik):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">getwd</span>()</a></code></pre></div>
+<p>A konzol szisztematikus megismerését folytassuk egy egyszerű paranccsal:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="dv">1</span><span class="op">+</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>A konzolban most is megjelent az eredmény (3), ahogy az összes eddigi parancsunk esetében ezt láthattuk, ha kipróbáltuk őket a saját konzolunkban. Azonban nem minden parancs ad választ az R-ben.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">x &lt;-<span class="st"> </span><span class="dv">0</span>   <span class="co"># Nincs válasz a konzolban</span></a></code></pre></div>
+<p>Sőt, az is előfordulhat, hogy az R nem talált valamit „rendben” a parancsban. Ekkor természetesen nem hajtja/hajthatja végre a begépelt sort, helyette hibát (error) jelez.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">Ez nem lesz jó.</a></code></pre></div>
+<p>A válasz az <code>Error: unexpected symbol in "Ez nem"</code> hibaüzenet. Alapvető szabály, hogy ha a válaszban megjelenik az <code>Error:</code> szócska, akkor a parancsunkat valamilyen ok miatt nem tudta végrehajtani az R értelmező, és az <code>Error:</code> utáni részből tájékozódhatunk a hiba okáról. Minden más esetben sikeres volt a végrehajtás.</p>
+<p>Hosszabb, bonyolult parancsok gépelésénél gyakran előfordul, hogy valamiért nem sikerül „teljessé” tenni a begépelt parancsot, valami még hiányzik belőle (például egy záró kerek zárójel). Ezt az R értelmező észreveszi és az <code>Enter</code> megnyomása után egy <code>+</code> folytatás prompt megjelenítésével jelzi ezt számunkra. A <code>+</code> prompt után van lehetőségünk a hiányzó részek pótlására, majd ha készen vagyunk az <code>Enter</code> billentyűvel az összes eddig még végre nem hajtott sort elküldhetjük az értelmezőnek.</p>
+<p>Gépeljük be a következő parancsot, három egymás utáni sorba.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">paste</span>(<span class="st">&quot;Ez már&quot;</span>,</a>
+<a class="sourceLine" id="cb13-2" title="2">       <span class="st">&quot;jó&quot;</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="st">      )</span></a></code></pre></div>
+<pre><code>## [1] &quot;Ez már jó&quot;</code></pre>
+<p>A <code>paste("Ez már",</code> kerüljön az első sorba, majd nyomjunk <code>Enter</code>-t. Az R nem hajtja végre a sort, de erre a nyilvánvalóan hibás, befejezetlen parancsra hibaüzenetet sem jelenít meg. Helyette felajánlja a parancs folytatását, befejezését egy új sorba, amely már a <code>+</code> prompttal kezdődik. (Ez a fenti példában nem jelenik meg, csak a saját konzolunkban láthatjuk.) A második sorba gépeljük be az <code>"egy"</code> parancsot, nyomjuk meg az <code>Enter</code>-t. Sajnos még ez sem tette teljessé a parancsunkat, így további folytatásra van lehetőségünk a <code>+</code> után a harmadik sorban. Ide gépeljük be a hiányzó <code>)</code> részt, és üssünk <code>Enter</code>-t. A parancsunk teljessé vált, megkapjuk az eredményt a konzolban, pont úgy, mintha a három sort egyetlen sorba gépeltük volna.</p>
+<p>Legyünk nagyon óvatosak a konzol folytatás prompt funkciójával. Ha például az R nem találja a parancs hiányzó részét, akkor a konzol ezen kényelmi funkciója oda vezethet, hogy örökké <code>+</code> promptot kapjuk az <code>Enter</code> megnyomása után. Ezt a helyzetet hivatott megoldani az ESC billentyű, mellyel megszakíthatjuk az értelmező parancsfeldolgozási kísérletét erre a parancsra nézve. Az ESC megnyomása után visszakapjuk a <code>&gt;</code> prompttal kezdődő (üres) sort, vagyis tiszta lappal, új, lehetőség szerint teljes parancs gépelésébe kezdhetünk. <strong>A parancssorba mindig teljes parancsot gépeljünk, amint megjelenik a <code>+</code> folytatás prompt, azonnal szakítsuk meg ESC megnyomásával az értelmezési folyamatot.</strong></p>
+<p>Az R konzolos használatát két funkció valóban kényelmesebbé teszi. Egyrészt a korábban végrehajtott parancsainkat (history, parancsok története) visszahívhatjuk, lapozhatunk bennük előre, hátra. Erre a FEL/LE NYÍL billentyűkkel van lehetőségünk. Természetesen az így visszahívott parancsot tetszőleges módon átszerkeszthetjük: navigálhatunk a sorban előre hátra, beszúrhatunk/törölhetünk karaktereket vagy használhatjuk a vágóasztal billentyűparancsait. A visszahívott és módosított parancsot az <code>Enter</code> segítségével újra végrehajthatjuk, és ehhez még a sor végére sem kell a szövegkurzort pozícionálni, az a sorban tetszőleges helyen állhat, az R mégis a teljes sort fogja értelmezni.</p>
+<p>A másik kényelmi lehetőség a TAB billentyű használata, amellyel az elkezdett, még be nem fejezett sorokat egészíthetjük ki. Ha egy sort többféleképpen is kiegészíthet az R, akkor egy listát kapunk a lehetőségekről, amelyet továbbgépeléssel szűkíthetünk, ha pedig csak egyetlen szóba jöhető befejezése van a begépelt karaktereknek, akkor a TAB megnyomása után ezzel a résszel kiegészül az elkezdett sorunk. Így nemcsak egyszerűen gépelést, illetve időt takaríthatunk meg, hanem például tájékozódhatunk a korábban létrehozott objektumok nevéről vagy az elérhető függvények névéről és paramétereiről is.</p>
+<p>Az objektum, a függvények és az egyéb ebben a fejezetben homályosan hagyott fogalmak definícióit a könyv későbbi részeiben részletesen tárgyaljuk.</p>
+</div>
+<div id="parancsallomanyok" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Parancsállományok</h3>
+<p>Láthattuk, hogy a konzolba egyszerre csak egy parancsot gépelhetünk be, úgy is gondolhatunk rá, mint egy egysoros szövegszerkesztőre. Begépelünk egy sort és végrehajtjuk az <code>Enter</code>-rel. A problémáink többsége viszont nem oldható meg egyetlen paranccsal (csak több tízzel vagy százzal), ezért ez interaktív (vagy konzolos) használat nem alkalmas hosszabb elemzésre.</p>
+<p>Parancsainkat begépelhetjük egy parancsállományba is, amely egy egyszerű, formázás nélküli szöveges állomány <code>.R</code> kiterjesztéssel. Ezt a szöveges állományt tetszőleges szövegszerkesztővel létrehozhatjuk, minden operációs rendszeren találunk jegyzettömbszerű, formázás nélküli szöveges állományok létrehozására alkalmas szövegszerkesztőt. Egyszerűen begépeljük külön sorokba a konzolba szánt parancsainkat és elmentjük <code>.R</code> kiterjesztéssel. Kész is a parancsállomány vagy más néven szkriptállomány.</p>
+<p>Parancsállományok létrehozását az Alap R Windows platformos változata közvetlenül is támogatja. Az RGui-ban találunk menüpontokat (<code>File/New script</code>, <code>File/Open script...</code> és <code>File/Save</code>), amelyekkel létrehozhatunk parancsállományokat, már létező szkriptállományt megnyithatunk, és szerkesztés után elmenthetünk. A parancsállományok használata lényegesen leegyszerűsíti az adatelemzés folyamatát, hiszen a konzol egysoros szövegszerkesztője helyett egy gyakorlatilag végtelen sok sor vagy parancs begépelésére alkalmas szövegszerkesztő áll rendelkezésünkre. Mint minden szövegszerkesztőben, a különböző billentyűparancsok és a vágóasztal megkönnyíti a több tíz vagy akár több száz sornyi parancs begépelését és tetszőleges szerkesztését. Az <code>Enter</code> jelentése parancsállományos környezetben a szövegszerkesztőkben megszokott újsor beszúrása, ami lényegesen különbözik a konzolos használat parancsvégrahjatási funkciójától. Ezért ha parancsainkat továbbra is szeretnénk interaktívan végrehajtani, akkor a megfelelő környezetben meg kell találnunk a speciális menüpont vagy billentyűparancsot. Az RGui-ban ez az <code>Edit/Run line or selection</code> vagy az <code>Edit/Run all</code> menüpontokkal, vagy a <code>Ctrl+R</code> billentyűkombinációval lehetséges, amelynek kiadása az első menüpont funkciójának felel meg.</p>
+<p>Próbáljuk ki a parancsállományok használatát a Windows platformos RGui segítségével. Nyissunk egy új parancsállományt a <code>File/New script</code> menüponttal, és írjuk bele a következő sorokat:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb15-1" title="1"><span class="fu"># Első parancsállomány </span></a>
+<a class="sourceLine" id="cb15-2" title="2">1+23</a>
+<a class="sourceLine" id="cb15-3" title="3">getwd()          # munkakönyvtár kiírása</a>
+<a class="sourceLine" id="cb15-4" title="4">mean(1:100)</a>
+<a class="sourceLine" id="cb15-5" title="5">cat(&quot;- Vége -\n&quot;)</a></code></pre></div>
+<p>A fenti 5 sor begépelése után mentsük el a parancsállományunkat a <code>File/Save</code> menüpont, vagy a <code>Ctrl+S</code> segítségével <code>elso.R</code> néven az alapértelmezés szerint felajánlott könyvtárba. Ezt az állományt később meg tudjuk nyitni a <code>File/Open script...</code> menüponttal. Most azonban hajtsuk végre soronként. A álljunk a szövegkurzorral az első sorba (bármelyik pozíció jó a soron belül), majd egyesével adjunk ki öt <code>Ctrl+R</code> billentyűparancsot. Mindegyik esetben 3 dolog történik: (1) az aktuális sor átkerül a konzolba, (2) a konzol végrehajtja a parancsot és (3) a szövegkurzor egy sorral lejjebb lép, így egy újabb <code>Ctrl+R</code> már a következő sort hajtja végre. Látható, hogy parancsaink a szkriptállományból mégis a konzolba tudjuk küldeni végrehajtásra. Valami hasonlót kell látnunk a konzolban:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb16-1" title="1">&gt;<span class="dt"> # Első parancsállomány </span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="dt">&gt; 1+23</span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="dt">[1] 24</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="dt">&gt; getwd()          # munkakönyvtár kiírása</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="dt">[1] &quot;C:/Users/Kali2/Documents&quot;</span></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="dt">&gt; mean(1:100)</span></a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="dt">[1] 50.5</span></a>
+<a class="sourceLine" id="cb16-8" title="8"><span class="dt">&gt; cat(&quot;- Vége -\n&quot;)</span></a>
+<a class="sourceLine" id="cb16-9" title="9"><span class="dt">- Vége -</span></a>
+<a class="sourceLine" id="cb16-10" title="10"><span class="dt">&gt; </span></a></code></pre></div>
+<p>A soronkénti végrehajtás mellett nagyon gyakori a kijelölt szövegrészek végrehajtása, amit szintén a <code>Ctrl+R</code>-rel tudunk kezdeményezni. A kijelölt rész lehet több sor, a teljes parancsállomány, vagy valamelyik sor egy része. Ez utóbbi próbáljuk ki úgy, hogy a parancsállomány 2. sorában csak az <code>1+2</code> részt jelöljük ki, és hajtsuk végre a <code>Ctrl+R</code> segítségével. Az eredmény a konzolban a 3 lesz.</p>
+<p>A parancsállományok használatát a következő részben ismertetendő RStudio kapcsán részletesebben bemutatjuk, így a Linux és macOs felhasználók is hamarosan kipróbálhatják a parancsállományos használat előnyeit.</p>
+</div>
+<div id="parancsallomanyok-futtatasa" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Parancsállományok futtatása</h3>
+<p>A parancsaink összegyűjtése és hosszú távú tárolása sok előnnyel jár a korábban megismert konzolos használathoz képest. Azonban a parancsállományaink sorait nem kizárólag interaktívan hajthatjuk végre, hanem kötegelt felhasználásra is mód van. Ez azt jelenti, hogy vagy az R konzolon belül vagy akár az Alap R eddig nem említett programja segítségével a parancsállomány összes sorát egyszerre végrehajthatjuk.</p>
+<p>A <code>source()</code> paranccsal az <code>elso.R</code> összes sorát végrehajthatjuk a konzolban.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">source</span>(<span class="st">&quot;elso.R&quot;</span>, <span class="dt">echo =</span> T)</a></code></pre></div>
+<p>A <code>source()</code> függvény kicsit másként közelít a parancsainkhoz, mint amit megszoktunk az interaktív konzolos és parancsállományos használat során. A <code>source()</code> a teljes állományban ellenőrzi a parancsok szintaktikai helyességét, és csak akkor kezdi el az első majd az azt követő parancsok végrehajtásához, ha mindent rendben talált.</p>
+<p>Parancsállomány kötegelt futtatására az operációs rendszer parancssorából is van lehetőségünk, ehhez az Alap R telepítése után van lehetőségünk, de nem kell elindítanunk az R konzolt tartalmazó alkalmazást.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb18-1" title="1">Rscript --vanilla elso.R &gt; output.txt</a></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="telepitesek.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="az-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/01-Alapok.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["r_bioinf.pdf", "r_bioinf.epub", "r_bioinf.mobi"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
