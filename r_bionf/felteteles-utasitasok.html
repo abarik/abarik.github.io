@@ -266,19 +266,19 @@ utasítás-2</p>
 <p>A feltétel egy logikai értéket szolgáltató kifejezés, amely ha <code>TRUE</code> értéket vesz fel, akkor a teljes <code>if</code> utasítás értéke az utasítás-1, ha pedig <code>FALSE</code>-t, akkor az utasítás2 értéke lesz. Vagyis, igaz feltétel esetén az utasítás1 programrészt, hamis esetben pedig az utasítás2 programrészt hajtjuk végre.</p>
 <p>A feltétel lehet numerikus érték is, ekkor a szokásos módon konvertálja az R logikai értékre (0=FALSE, minden más érték=TRUE).</p>
 <p>Összetett logikai kifejezések is szerepelhetnek a feltételben, ezeket többnyire a <code>&amp;&amp;</code> és <code>||</code> logikai operátorokkal építjük fel. A korábban megismert elemenkénti művelet-végrehajtást támogató <code>&amp;</code> és <code>|</code> logikai operátorokhoz képest a <code>&amp;&amp;</code> és <code>||</code> operátorok mindig egyetlen logikai értékkel térnek vissza:</p>
-<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb757-1" title="1"><span class="kw">c</span>(T,F) <span class="op">&amp;</span><span class="st"> </span><span class="kw">c</span>(F,T)</a></code></pre></div>
+<div class="sourceCode" id="cb733"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb733-1" title="1"><span class="kw">c</span>(T,F) <span class="op">&amp;</span><span class="st"> </span><span class="kw">c</span>(F,T)</a></code></pre></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
-<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb759-1" title="1"><span class="kw">c</span>(T,F) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">c</span>(F,T)</a></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb735-1" title="1"><span class="kw">c</span>(T,F) <span class="op">&amp;&amp;</span><span class="st"> </span><span class="kw">c</span>(F,T)</a></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>A <code>&amp;&amp;</code> és <code>||</code> operátorok támogatják a rövidzár végrehajtást, vagyis csak akkor értékelik ki a második argumentumot ha az szükséges:</p>
-<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb761-1" title="1">x&lt;-<span class="dv">0</span></a>
-<a class="sourceLine" id="cb761-2" title="2"><span class="dv">1</span> <span class="op">||</span><span class="st"> </span>(x&lt;-<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb737-1" title="1">x&lt;-<span class="dv">0</span></a>
+<a class="sourceLine" id="cb737-2" title="2"><span class="dv">1</span> <span class="op">||</span><span class="st"> </span>(x&lt;-<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb763-1" title="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb739-1" title="1">x</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb765-1" title="1"><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>(x&lt;-<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb741-1" title="1"><span class="dv">1</span> <span class="op">&amp;&amp;</span><span class="st"> </span>(x&lt;-<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb767-1" title="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb743-1" title="1">x</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>A feltételes utasítás rövidebb formájában a teljes else részt elhagyhatjuk:</p>
 <pre><code>if (feltétel)
@@ -298,14 +298,14 @@ utasításn-1
 else
 utasításn</p>
 <p>Ezen túl, a feltételes utasításnak egy <code>ifelse()</code> nevű függvényváltozata is létezik. A függvény három argumentuma (<code>test=</code>, <code>yes=</code>, <code>no=</code>) megfelel az <code>if</code> utasítás feltétel, utasítás1, és utasítás2 részeinek, azzal az engedmény, hogy a vektorizált végrehajtás is megengedett:</p>
-<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb770-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb770-2" title="2"><span class="kw">ifelse</span>(x<span class="op">&lt;=</span><span class="dv">5</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb746-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb746-2" title="2"><span class="kw">ifelse</span>(x<span class="op">&lt;=</span><span class="dv">5</span>,<span class="st">&quot;yes&quot;</span>,<span class="st">&quot;no&quot;</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;yes&quot; &quot;yes&quot; &quot;yes&quot; &quot;yes&quot; &quot;yes&quot; &quot;no&quot;  &quot;no&quot;  &quot;no&quot; 
 ##  [9] &quot;no&quot;  &quot;no&quot;</code></pre>
 <p>Többszörös feltételvizsgálatra a <code>switch()</code> függvényt is használhatjuk.</p>
-<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb772-1" title="1"><span class="cf">switch</span>(<span class="dv">2</span>,<span class="dt">elso=</span><span class="dv">10</span>,<span class="dt">masodik=</span><span class="dv">20</span>,<span class="dt">harmadik=</span><span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb748-1" title="1"><span class="cf">switch</span>(<span class="dv">2</span>,<span class="dt">elso=</span><span class="dv">10</span>,<span class="dt">masodik=</span><span class="dv">20</span>,<span class="dt">harmadik=</span><span class="dv">30</span>)</a></code></pre></div>
 <pre><code>## [1] 20</code></pre>
-<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb774-1" title="1"><span class="cf">switch</span>(<span class="st">&quot;elso&quot;</span>,<span class="dt">elso=</span><span class="dv">10</span>,<span class="dt">masodik=</span><span class="dv">20</span>,<span class="dt">harmadik=</span><span class="dv">30</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb750-1" title="1"><span class="cf">switch</span>(<span class="st">&quot;elso&quot;</span>,<span class="dt">elso=</span><span class="dv">10</span>,<span class="dt">masodik=</span><span class="dv">20</span>,<span class="dt">harmadik=</span><span class="dv">30</span>)</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>A <code>switch()</code> első paramétere egy numerikus vagy karakteres skalár, amely segítségével a többi paraméterből választhatunk visszatérési értéket.</p>
 </div>

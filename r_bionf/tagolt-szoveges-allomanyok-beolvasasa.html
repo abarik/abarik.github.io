@@ -260,9 +260,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="a-read.table-csalad-ar" class="section level3">
 <h3><span class="header-section-number">6.2.1</span> A <code>read.table()</code> család (AR)</h3>
 <p>A leggyakoribb módszer külső állomány beolvasására a <code>read.table()</code> függvény használata. Az adatokat táblázatszerűen tartalmazó, tagolt (adott karakterrel elválasztott) szöveges állományok olvasására használhatjuk. A paraméterekben többek között gondoskodhatunk az első sorban lévő oszlopnevekről (header), az elválasztó karakterről (sep), a tizedesvessző alakjáról (dec) és a hiányzó értékek jelöléséről (na.strings). Érdemes még három további argumentumot észben tartani: a comment, asStringAsFactor és quote.</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb687-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
-<a class="sourceLine" id="cb687-2" title="2">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> data.file, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb687-3" title="3"><span class="kw">summary</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb663-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
+<a class="sourceLine" id="cb663-2" title="2">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> data.file, <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb663-3" title="3"><span class="kw">summary</span>(d.df)</a></code></pre></div>
 <pre><code>##     hallgato       Height         neme    
 ##  Min.   :  1   Min.   :54.0   female:435  
 ##  1st Qu.:165   1st Qu.:64.0   male  :222  

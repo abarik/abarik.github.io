@@ -262,21 +262,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">6.1.1</span> Inline beolvasás</h3>
 <p>Az adatok inline beolvasása azt jelenti, hogy nem külsö állományból, hanem az R parancsállományba gépelt adatokból indulunk ki. Ezek tipikusan a <code>c()</code>, <code>factor()</code> és <code>data.frame()</code> függvények az Alap R-ből, valamint a<code>tibble()</code> és <code>tribble()</code> függvények a Tidyverse R-ből. De ide tartozik a <code>read.table()</code> (Alap R) és <code>read_csv()</code> (Tidyverse) függvénycsalád is.</p>
 <p>A legegyszerűbb adatfeldolgozási feladatok egyetlen változót érintenek, ezek pedig numerikus vektorban vagy faktorban is tárolhatók az R-ben.</p>
-<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb667-1" title="1">magassag &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>) <span class="co"># 4 óvodás testmagassága cm-ben</span></a>
-<a class="sourceLine" id="cb667-2" title="2"><span class="kw">mean</span>(magassag)</a></code></pre></div>
+<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb643-1" title="1">magassag &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>) <span class="co"># 4 óvodás testmagassága cm-ben</span></a>
+<a class="sourceLine" id="cb643-2" title="2"><span class="kw">mean</span>(magassag)</a></code></pre></div>
 <pre><code>## [1] 137.25</code></pre>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb669-1" title="1">nem &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;)) <span class="co"># a 4 óvodás neme</span></a>
-<a class="sourceLine" id="cb669-2" title="2"><span class="kw">table</span>(nem)</a></code></pre></div>
+<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb645-1" title="1">nem &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;)) <span class="co"># a 4 óvodás neme</span></a>
+<a class="sourceLine" id="cb645-2" title="2"><span class="kw">table</span>(nem)</a></code></pre></div>
 <pre><code>## nem
 ##  fiú lány 
 ##    2    2</code></pre>
 <p>Több változó esetén:</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" title="1">d.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(magassag, nem) <span class="co"># data frame létrehozása</span></a>
-<a class="sourceLine" id="cb671-2" title="2"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb647-1" title="1">d.df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(magassag, nem) <span class="co"># data frame létrehozása</span></a>
+<a class="sourceLine" id="cb647-2" title="2"><span class="kw">str</span>(d.df)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4 obs. of  2 variables:
 ##  $ magassag: num  132 143 129 145
 ##  $ nem     : Factor w/ 2 levels &quot;fiú&quot;,&quot;lány&quot;: 1 2 2 1</code></pre>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" title="1"><span class="kw">summary</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb649-1" title="1"><span class="kw">summary</span>(d.df)</a></code></pre></div>
 <pre><code>##     magassag       nem   
 ##  Min.   :129.0   fiú :2  
 ##  1st Qu.:131.2   lány:2  
@@ -284,13 +284,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :137.2           
 ##  3rd Qu.:143.5           
 ##  Max.   :145.0</code></pre>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb675-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb675-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">tibble</span>(magassag, nem) <span class="co"># data frame létrehozása</span></a>
-<a class="sourceLine" id="cb675-3" title="3"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
+<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb651-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb651-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">tibble</span>(magassag, nem) <span class="co"># data frame létrehozása</span></a>
+<a class="sourceLine" id="cb651-3" title="3"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    4 obs. of  2 variables:
 ##  $ magassag: num  132 143 129 145
 ##  $ nem     : Factor w/ 2 levels &quot;fiú&quot;,&quot;lány&quot;: 1 2 2 1</code></pre>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb677-1" title="1"><span class="kw">summary</span>(d.tbl)</a></code></pre></div>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb653-1" title="1"><span class="kw">summary</span>(d.tbl)</a></code></pre></div>
 <pre><code>##     magassag       nem   
 ##  Min.   :129.0   fiú :2  
 ##  1st Qu.:131.2   lány:2  
@@ -298,19 +298,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :137.2           
 ##  3rd Qu.:143.5           
 ##  Max.   :145.0</code></pre>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb679-1" title="1">d.tbl<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
-<a class="sourceLine" id="cb679-2" title="2">  <span class="op">~</span>tortenelem,  <span class="op">~</span>matek, <span class="op">~</span>nem,</a>
-<a class="sourceLine" id="cb679-3" title="3">  <span class="dv">3</span>, <span class="dv">2</span>, <span class="st">&quot;fiú&quot;,</span></a>
-<a class="sourceLine" id="cb679-4" title="4"><span class="st">  2, 4, &quot;</span>fiú&quot;,</a>
-<a class="sourceLine" id="cb679-5" title="5">  <span class="dv">3</span>, <span class="dv">5</span>, <span class="st">&quot;lány&quot;</span></a>
-<a class="sourceLine" id="cb679-6" title="6">) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span> (<span class="dt">nem=</span><span class="kw">as_factor</span>(nem))</a>
-<a class="sourceLine" id="cb679-7" title="7"></a>
-<a class="sourceLine" id="cb679-8" title="8"><span class="kw">str</span>(d.tbl<span class="fl">.2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb655-1" title="1">d.tbl<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb655-2" title="2">  <span class="op">~</span>tortenelem,  <span class="op">~</span>matek, <span class="op">~</span>nem,</a>
+<a class="sourceLine" id="cb655-3" title="3">  <span class="dv">3</span>, <span class="dv">2</span>, <span class="st">&quot;fiú&quot;,</span></a>
+<a class="sourceLine" id="cb655-4" title="4"><span class="st">  2, 4, &quot;</span>fiú&quot;,</a>
+<a class="sourceLine" id="cb655-5" title="5">  <span class="dv">3</span>, <span class="dv">5</span>, <span class="st">&quot;lány&quot;</span></a>
+<a class="sourceLine" id="cb655-6" title="6">) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span> (<span class="dt">nem=</span><span class="kw">as_factor</span>(nem))</a>
+<a class="sourceLine" id="cb655-7" title="7"></a>
+<a class="sourceLine" id="cb655-8" title="8"><span class="kw">str</span>(d.tbl<span class="fl">.2</span>)</a></code></pre></div>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    3 obs. of  3 variables:
 ##  $ tortenelem: num  3 2 3
 ##  $ matek     : num  2 4 5
 ##  $ nem       : Factor w/ 2 levels &quot;fiú&quot;,&quot;lány&quot;: 1 1 2</code></pre>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb681-1" title="1"><span class="kw">summary</span>(d.tbl<span class="fl">.2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb657-1" title="1"><span class="kw">summary</span>(d.tbl<span class="fl">.2</span>)</a></code></pre></div>
 <pre><code>##    tortenelem        matek         nem   
 ##  Min.   :2.000   Min.   :2.000   fiú :2  
 ##  1st Qu.:2.500   1st Qu.:3.000   lány:1  
@@ -318,22 +318,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :2.667   Mean   :3.667           
 ##  3rd Qu.:3.000   3rd Qu.:4.500           
 ##  Max.   :3.000   Max.   :5.000</code></pre>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb683-1" title="1">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="kw">textConnection</span>(<span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb683-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
-<a class="sourceLine" id="cb683-3" title="3"><span class="st">5 5 8</span></a>
-<a class="sourceLine" id="cb683-4" title="4"><span class="st">10 7 10</span></a>
-<a class="sourceLine" id="cb683-5" title="5"><span class="st">7 9 8</span></a>
-<a class="sourceLine" id="cb683-6" title="6"><span class="st">3 8 9</span></a>
-<a class="sourceLine" id="cb683-7" title="7"><span class="st">5 2 11</span></a>
-<a class="sourceLine" id="cb683-8" title="8"><span class="st">7 5 15</span></a>
-<a class="sourceLine" id="cb683-9" title="9"><span class="st">11 6 7</span></a>
-<a class="sourceLine" id="cb683-10" title="10"><span class="st">2 6 11</span></a>
-<a class="sourceLine" id="cb683-11" title="11"><span class="st">3 4 8</span></a>
-<a class="sourceLine" id="cb683-12" title="12"><span class="st">5 4 8</span></a>
-<a class="sourceLine" id="cb683-13" title="13"><span class="st">6 8 17</span></a>
-<a class="sourceLine" id="cb683-14" title="14"><span class="st">6 10 11</span></a>
-<a class="sourceLine" id="cb683-15" title="15"><span class="st">&quot;</span>), <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb683-16" title="16"><span class="kw">summary</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb659-1" title="1">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="kw">textConnection</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb659-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
+<a class="sourceLine" id="cb659-3" title="3"><span class="st">5 5 8</span></a>
+<a class="sourceLine" id="cb659-4" title="4"><span class="st">10 7 10</span></a>
+<a class="sourceLine" id="cb659-5" title="5"><span class="st">7 9 8</span></a>
+<a class="sourceLine" id="cb659-6" title="6"><span class="st">3 8 9</span></a>
+<a class="sourceLine" id="cb659-7" title="7"><span class="st">5 2 11</span></a>
+<a class="sourceLine" id="cb659-8" title="8"><span class="st">7 5 15</span></a>
+<a class="sourceLine" id="cb659-9" title="9"><span class="st">11 6 7</span></a>
+<a class="sourceLine" id="cb659-10" title="10"><span class="st">2 6 11</span></a>
+<a class="sourceLine" id="cb659-11" title="11"><span class="st">3 4 8</span></a>
+<a class="sourceLine" id="cb659-12" title="12"><span class="st">5 4 8</span></a>
+<a class="sourceLine" id="cb659-13" title="13"><span class="st">6 8 17</span></a>
+<a class="sourceLine" id="cb659-14" title="14"><span class="st">6 10 11</span></a>
+<a class="sourceLine" id="cb659-15" title="15"><span class="st">&quot;</span>), <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb659-16" title="16"><span class="kw">summary</span>(d.df)</a></code></pre></div>
 <pre><code>##     placebo       alacsony.alkohol magas.alkohol  
 ##  Min.   : 2.000   Min.   : 2.000   Min.   : 7.00  
 ##  1st Qu.: 4.500   1st Qu.: 4.750   1st Qu.: 8.00  
@@ -341,22 +341,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   : 5.833   Mean   : 6.167   Mean   :10.25  
 ##  3rd Qu.: 7.000   3rd Qu.: 8.000   3rd Qu.:11.00  
 ##  Max.   :11.000   Max.   :10.000   Max.   :17.00</code></pre>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb685-1" title="1">d.tbl &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="st">&quot;</span></a>
-<a class="sourceLine" id="cb685-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
-<a class="sourceLine" id="cb685-3" title="3"><span class="st">5 5 8</span></a>
-<a class="sourceLine" id="cb685-4" title="4"><span class="st">10 7 10</span></a>
-<a class="sourceLine" id="cb685-5" title="5"><span class="st">7 9 8</span></a>
-<a class="sourceLine" id="cb685-6" title="6"><span class="st">3 8 9</span></a>
-<a class="sourceLine" id="cb685-7" title="7"><span class="st">5 2 11</span></a>
-<a class="sourceLine" id="cb685-8" title="8"><span class="st">7 5 15</span></a>
-<a class="sourceLine" id="cb685-9" title="9"><span class="st">11 6 7</span></a>
-<a class="sourceLine" id="cb685-10" title="10"><span class="st">2 6 11</span></a>
-<a class="sourceLine" id="cb685-11" title="11"><span class="st">3 4 8</span></a>
-<a class="sourceLine" id="cb685-12" title="12"><span class="st">5 4 8</span></a>
-<a class="sourceLine" id="cb685-13" title="13"><span class="st">6 8 17</span></a>
-<a class="sourceLine" id="cb685-14" title="14"><span class="st">6 10 11</span></a>
-<a class="sourceLine" id="cb685-15" title="15"><span class="st">&quot;</span>, <span class="dt">col_names=</span>T, <span class="dt">delim=</span><span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb685-16" title="16"><span class="kw">summary</span>(d.tbl)</a></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb661-1" title="1">d.tbl &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb661-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
+<a class="sourceLine" id="cb661-3" title="3"><span class="st">5 5 8</span></a>
+<a class="sourceLine" id="cb661-4" title="4"><span class="st">10 7 10</span></a>
+<a class="sourceLine" id="cb661-5" title="5"><span class="st">7 9 8</span></a>
+<a class="sourceLine" id="cb661-6" title="6"><span class="st">3 8 9</span></a>
+<a class="sourceLine" id="cb661-7" title="7"><span class="st">5 2 11</span></a>
+<a class="sourceLine" id="cb661-8" title="8"><span class="st">7 5 15</span></a>
+<a class="sourceLine" id="cb661-9" title="9"><span class="st">11 6 7</span></a>
+<a class="sourceLine" id="cb661-10" title="10"><span class="st">2 6 11</span></a>
+<a class="sourceLine" id="cb661-11" title="11"><span class="st">3 4 8</span></a>
+<a class="sourceLine" id="cb661-12" title="12"><span class="st">5 4 8</span></a>
+<a class="sourceLine" id="cb661-13" title="13"><span class="st">6 8 17</span></a>
+<a class="sourceLine" id="cb661-14" title="14"><span class="st">6 10 11</span></a>
+<a class="sourceLine" id="cb661-15" title="15"><span class="st">&quot;</span>, <span class="dt">col_names=</span>T, <span class="dt">delim=</span><span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb661-16" title="16"><span class="kw">summary</span>(d.tbl)</a></code></pre></div>
 <pre><code>##     placebo       alacsony.alkohol magas.alkohol  
 ##  Min.   : 2.000   Min.   : 2.000   Min.   : 7.00  
 ##  1st Qu.: 4.500   1st Qu.: 4.750   1st Qu.: 8.00  

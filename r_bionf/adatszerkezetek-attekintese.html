@@ -257,40 +257,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="adatszerkezetek-attekintese" class="section level2">
 <h2><span class="header-section-number">5.2</span> Adatszerkezetek áttekintése</h2>
-<p>Az előző fejezetben láttuk, hogy az R-ben leírható értékek alapvetően 4 típusba sorolhatók. Ezek az integer, a double, a karakteres és a logikai alaptípusok voltak. Ezen értékek felhasználásával nagyon egyszerűen tudunk objektumokat létrehozni.</p>
+<p>Az előző fejezetben láttuk, hogy az R-ben leírható értékek alapvetően 4 típusba sorolhatók. Ezek az integer, a double, a karakteres és a logikai alaptípusok voltak. Ezen értékek felhasználásával nagyon egyszerűen tudunk objektumokat létrehozni. Ezek az objektumok, mindjárt látjuk, az R legalapvetőbb adateszerkezetének, a vektornak az egyelemű változatai.</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1">obj.integer    &lt;-<span class="st"> </span>12L</a>
 <a class="sourceLine" id="cb213-2" title="2">obj.double     &lt;-<span class="st"> </span><span class="fl">12.03</span></a>
 <a class="sourceLine" id="cb213-3" title="3">obj.karakteres &lt;-<span class="st"> &#39;Péter&#39;</span></a>
 <a class="sourceLine" id="cb213-4" title="4">obj.logikai    &lt;-<span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
-<p>A fenti objektumok alaptípusa rendre integer, double, karakteres és logikai. Ezt könnyen ellenőrizhetjük a <code>typeof()</code> vagy <code>class()</code> függvényekkel:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">typeof</span>(obj.integer)</a></code></pre></div>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1"><span class="kw">class</span>(obj.integer)</a></code></pre></div>
-<pre><code>## [1] &quot;integer&quot;</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="kw">typeof</span>(obj.double)</a></code></pre></div>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">class</span>(obj.double)</a></code></pre></div>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1"><span class="kw">typeof</span>(obj.karakteres)</a></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">class</span>(obj.karakteres)</a></code></pre></div>
-<pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1"><span class="kw">typeof</span>(obj.logikai)</a></code></pre></div>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="kw">class</span>(obj.logikai)</a></code></pre></div>
-<pre><code>## [1] &quot;logical&quot;</code></pre>
-<p>Az adatelemzési problémáink megoldásához egyszerre több adatérték feldolgozása szükséges. Mivel az R nyelvet statisztikai adatfeldolgozásra tervezték, így nem csodálkozunk, hogy több értéket is eltárolhatunk egymás utáni memórihelyeken a fenti 4 alaptípusból. Ezt többféleképp megtehetjük, így kapjuk meg az R különböző adatszerkezeteit:</p>
+<p>A fenti objektumok alaptípusa rendre integer, double, karakteres és logikai. Ezt könnyen ellenőrizhetjük a <code>typeof()</code> vagy <code>class()</code> függvényekkel.</p>
+<p>Az adatelemzési problémáink megoldásához azonban egyszerre több adatérték feldolgozása szükséges. Mivel az R nyelvet statisztikai adatfeldolgozásra tervezték, így nem csodálkozunk, hogy több értéket is eltárolhatunk egymás utáni memórihelyeken a fenti 4 alaptípusból. Ezt többféleképp megtehetjük, így kapjuk meg az R különböző adatszerkezeteit, amelyeket tipikusan mért vagy származtatott adatok tárolására használunk:</p>
 <ul>
-<li>vektor: azonos típusú értékekeket egymás után teszünk, egyvonalba</li>
-<li>mátrix: azonos típusú értékekből egy kétdimenziós szerkezetet hozunk létre, amelynek vannak sorai és oszlopai</li>
-<li>tömb: azonos típusú értékekből 3 vagy több dimenzió mentén készítünk adatszerkezetet</li>
-<li>faktor: integer értékeket egymás után teszünk, egyvonalba, de megadjuk, hogy melyik szám milyen címkét jelöl</li>
-<li>dátum:</li>
-<li>dátum-idő:</li>
-<li>időtartam:</li>
-<li>lista:</li>
-<li>dataframe:</li>
-<li>tibble:</li>
+<li>vektor: azonos alaptípusú értékekeket egymás után teszünk, egyvonalba, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>mátrix: azonos alaptípusú értékekből egy kétdimenziós szerkezetet hozunk létre, amelynek vannak sorai és oszlopai, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>tömb: azonos alaptípusú értékekből 3 vagy több dimenzió mentén készítünk adatszerkezetet, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>faktor: integer értékeket egymás után teszünk, egyvonalba, de megadjuk, hogy melyik szám milyen címkét jelöl, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>dátum: egyetlen double szám, amelynek jelentése az 1970-01-01 óta eltelt napok száma</li>
+<li>dátum-idő: egyetlen double szám, amelynek jelentése az 1970-01-01 óta eltelt másodpercek száma</li>
+<li>időtartam: egyetlen double szám, amelynek különböző mértékegységekben mutatja két időpont közötti különséget</li>
+<li>lista: tetszőleges típusú objektumokat egymás után teszünk, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>dataframe: tetszőleges típusú, de azonos elemszámú típusú objektumokat egymás után teszünk</li>
+<li>tibble: a Tidyverse R dataframe típusa</li>
 </ul>
 <table>
 <caption><span id="tab:unnamed-chunk-106">TÁBLÁZAT 5.6: </span>Adatszerkezetek</caption>
@@ -382,7 +366,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <td align="left"><code>factor</code></td>
 </tr>
 <tr class="even">
-<td align="left">dátum:</td>
+<td align="left">dátum</td>
 <td align="left"><code>x &lt;- as.Date('1971-05-09')</code></td>
 <td align="left"><code>double</code></td>
 <td align="left"><code>Date</code></td>
@@ -419,19 +403,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Sőt, azt mondhatjuk, hogy a fenti 4 alaptípus az ún. vektor adatszerkezet 4 lehetséges típusa. Az összes eddig megismert érték és objektum az R-ben a vektor adatszerkezethez tartozik. Például a <code>12L</code></p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1">12L          <span class="co"># egyelemű integer vektor</span></a></code></pre></div>
-<pre><code>## [1] 12</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1"><span class="kw">c</span>(<span class="dv">12</span>, 32L)   <span class="co"># kételemű integer vektor</span></a></code></pre></div>
-<pre><code>## [1] 12 32</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1"><span class="fl">34.6</span>         <span class="co"># egyelemű </span></a></code></pre></div>
-<pre><code>## [1] 34.6</code></pre>
-<p>Ha egyetlen megszorítást figyelembe veszünk, azaz, ha csak azonos alaptípusú értékek sorozatát engedjük meg, akkor az R legalapvetőbb adatszerkezetét a vektort kapjuk. A vektor homogén egydimenziós adatszerkezet. A homogenitás az azonos</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="ot">TRUE</span>   </a></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<p>Egy numerikus változó a hozzárendelt memóriaterületen például a <code>12</code> értéket tárolhatja, egy másik karakteres objektum a <code>"január"</code> értéket és egy logikai objektum a <code>TRUE</code> értéket.</p>
-<p>Az R azonban támogatja az összetettebb adatszerkezeteket is, sőt a fenti skalár esetek az ún. vektor adatszerkezet legegyszerűbb, speciális változatának tekinthetők. Az összetett adatszerkezetre úgy gondolhatunk, hogy az objektum neve nem egyetlen számra, karaktersorozatra vagy logikai értékre vonatkozik, hanem ezekből többre: például két számra, vagy három karaktersorozatra, vagy tíz logikai értékre, esetleg ezekre mind együtt.</p>
-<p>Az R a következő számunkra adatszerkezeteket tartalmazza: vektor (vector), faktor (factor), mátrix (matrix), tömb (array), lista (list), adattábla (data frame).</p>
 </div>
             </section>
 

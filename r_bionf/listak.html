@@ -258,7 +258,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="listak" class="section level2">
 <h2><span class="header-section-number">5.6</span> Listák</h2>
 <p>Az eddig megismert vektor, faktor, mátrix és tömb adatszerkezet mindegyike homogén, csak azonos típusú értékeket tárolhatunk el bennük. A lista adatszerkezetben egymás után többfajta adatot is felsorolhatunk, sem azok típusára sem azok méretére nincs megszorítás. A list() függvénnyel hozhatunk létre legegyszerűbben listákat, vesszővel elválasztva kell megadnunk a lista elemeit:</p>
-<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" title="1">x&lt;-<span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="dt">c=</span>T); x</a></code></pre></div>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" title="1">x&lt;-<span class="kw">list</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>), <span class="dt">c=</span>T); x</a></code></pre></div>
 <pre><code>## [[1]]
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -269,12 +269,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] TRUE</code></pre>
 <p>A fenti példában x egy 3 elemű lista, az első eleme egy 10 elemű numerikus vektor, a második eleme egy 2 elemű karakteres vektor, a harmadik eleme pedig egy 1 elemű logikai vektor. A harmadik elemnek ’c’ nevet adtunk, ezt mindegyik listaelem esetén megtehettük volna. Ha a lista értékét megjelenítjük a képernyőn, akkor a listaelemek egymás alatt jelennek meg. Az első két esetben a kettős szögletes zárójelben (’[[]]’) lévő sorszám azonosítja a lista elemeit, a harmadik esetben pedig a listaelem általunk megadott neve a ’$’ után.</p>
 <p>A listaelemek nevét az x lista names attribútuma tartalmazza, segítségével a többi elemnek is adhatunk értéket:</p>
-<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" title="1"><span class="kw">names</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" title="1"><span class="kw">names</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;&quot;  &quot;&quot;  &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb611-1" title="1"><span class="kw">names</span>(x)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]&lt;-<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>)</a>
-<a class="sourceLine" id="cb611-2" title="2"><span class="kw">names</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb587"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb587-1" title="1"><span class="kw">names</span>(x)[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]&lt;-<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>)</a>
+<a class="sourceLine" id="cb587-2" title="2"><span class="kw">names</span>(x)</a></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb613-1" title="1">x</a></code></pre></div>
+<div class="sourceCode" id="cb589"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb589-1" title="1">x</a></code></pre></div>
 <pre><code>## $a
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -284,19 +284,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $c
 ## [1] TRUE</code></pre>
 <p>A lista elemeire a vektoroknál megszokott ’[’ operátor segítségével hivatkozhatunk, ahol numerikus, karakteres és logikai értékeket is megadhatunk:</p>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" title="1">x[<span class="dv">1</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb591"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb591-1" title="1">x[<span class="dv">1</span>]</a></code></pre></div>
 <pre><code>## $a
 ##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb617-1" title="1">x[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" title="1">x[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)]</a></code></pre></div>
 <pre><code>## $b
 ## [1] &quot;A&quot; &quot;B&quot;
 ## 
 ## $c
 ## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb619-1" title="1">x[<span class="st">&quot;a&quot;</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" title="1">x[<span class="st">&quot;a&quot;</span>]</a></code></pre></div>
 <pre><code>## $a
 ##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
-<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" title="1">x[<span class="kw">c</span>(T,F,T)]</a></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" title="1">x[<span class="kw">c</span>(T,F,T)]</a></code></pre></div>
 <pre><code>## $a
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ## 
@@ -310,7 +310,7 @@ x[[3]]</p>
 <p>x<span class="math inline">\(a x\)</span>b
 x$c</p>
 <p>Ha a lista elemét valamelyik módszer segítségével elértük, akkor további indexelés segítségével az elem összetevőit is lekérdezhetjük:</p>
-<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" title="1">x[[<span class="st">&quot;a&quot;</span>]][<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]; x<span class="op">$</span>a[<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>]&lt;-<span class="dv">0</span>; x<span class="op">$</span>c&lt;-F; x</a></code></pre></div>
+<div class="sourceCode" id="cb599"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb599-1" title="1">x[[<span class="st">&quot;a&quot;</span>]][<span class="dv">3</span><span class="op">:</span><span class="dv">4</span>]; x<span class="op">$</span>a[<span class="dv">4</span><span class="op">:</span><span class="dv">5</span>]&lt;-<span class="dv">0</span>; x<span class="op">$</span>c&lt;-F; x</a></code></pre></div>
 <pre><code>## [1] 3 4</code></pre>
 <pre><code>## $a
 ##  [1]  1  2  3  0  0  6  7  8  9 10
@@ -321,7 +321,7 @@ x$c</p>
 ## $c
 ## [1] FALSE</code></pre>
 <p>A lista mindem elemével a lapply() vagy az sapply() függvény segítségével hajthatunk végre műveletet:</p>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb626-1" title="1"><span class="kw">lapply</span>(x,length)</a></code></pre></div>
+<div class="sourceCode" id="cb602"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb602-1" title="1"><span class="kw">lapply</span>(x,length)</a></code></pre></div>
 <pre><code>## $a
 ## [1] 10
 ## 
@@ -330,7 +330,7 @@ x$c</p>
 ## 
 ## $c
 ## [1] 1</code></pre>
-<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb628-1" title="1"><span class="kw">sapply</span>(x,length)</a></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb604-1" title="1"><span class="kw">sapply</span>(x,length)</a></code></pre></div>
 <pre><code>##  a  b  c 
 ## 10  2  1</code></pre>
 <p>Az lapply() a bemenő lista elemszámával egyező méretű listával tér vissza, melynek értékei az második paraméterben szereplő függvény visszatérési értékei. Az sapply() hasonlóan jár el, de a visszatérési értéke egy vektor.</p>

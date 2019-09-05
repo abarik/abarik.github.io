@@ -257,10 +257,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="a-rio-csomag" class="section level2">
 <h2><span class="header-section-number">6.6</span> A <strong>rio</strong> csomag</h2>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb689-1" title="1"><span class="kw">library</span>(rio)</a>
-<a class="sourceLine" id="cb689-2" title="2">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
-<a class="sourceLine" id="cb689-3" title="3">d.df &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">header=</span>T, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb689-4" title="4"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb665-1" title="1"><span class="kw">library</span>(rio)</a>
+<a class="sourceLine" id="cb665-2" title="2">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
+<a class="sourceLine" id="cb665-3" title="3">d.df &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">header=</span>T, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb665-4" title="4"><span class="kw">str</span>(d.df)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    657 obs. of  6 variables:
 ##  $ hallgato: int  1 2 3 4 5 6 7 8 9 10 ...
 ##  $ Height  : num  67 64 61 61 70 63 61 64 66 65 ...
@@ -268,9 +268,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ lefekves: num  -2.5 1.5 -1.5 2 0 1 1.5 0.5 -0.5 2.5 ...
 ##  $ felkeles: num  5.5 8 7.5 8.5 9 8.5 7.5 7.5 7 8.5 ...
 ##  $ Drink   : chr  &quot;víz&quot; &quot;üdítő&quot; &quot;tej&quot; &quot;víz&quot; ...</code></pre>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb691-1" title="1"><span class="kw">class</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb667-1" title="1"><span class="kw">class</span>(d.df)</a></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb693-1" title="1"><span class="kw">glimpse</span>(d.df)</a></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb669-1" title="1"><span class="kw">glimpse</span>(d.df)</a></code></pre></div>
 <pre><code>## Observations: 657
 ## Variables: 6
 ## $ hallgato &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11...
@@ -279,9 +279,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ lefekves &lt;dbl&gt; -2.5, 1.5, -1.5, 2.0, 0.0, 1.0, 1...
 ## $ felkeles &lt;dbl&gt; 5.5, 8.0, 7.5, 8.5, 9.0, 8.5, 7.5...
 ## $ Drink    &lt;chr&gt; &quot;víz&quot;, &quot;üdítő&quot;, &quot;tej&quot;, &quot;víz&quot;, &quot;üd...</code></pre>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb695-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/nepesseg.sav&quot;</span></a>
-<a class="sourceLine" id="cb695-2" title="2">d.df &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file)</a>
-<a class="sourceLine" id="cb695-3" title="3">d.df</a></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/nepesseg.sav&quot;</span></a>
+<a class="sourceLine" id="cb671-2" title="2">d.df &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file)</a>
+<a class="sourceLine" id="cb671-3" title="3">d.df</a></code></pre></div>
 <pre><code>##    HONAP NEPESSEG ELVESZUL HALAL
 ## 1      1    10273    10238 13888
 ## 2      2    10270     9285 12825
@@ -295,9 +295,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    10    10252     9021 12542
 ## 11    11    10249     8740 11743
 ## 12    12    10246     9538 12917</code></pre>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb697-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/pothoff2.xlsx&quot;</span></a>
-<a class="sourceLine" id="cb697-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file, <span class="dt">setclass =</span> <span class="st">&quot;tibble&quot;</span>)</a>
-<a class="sourceLine" id="cb697-3" title="3">d.tbl</a></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/pothoff2.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb673-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file, <span class="dt">setclass =</span> <span class="st">&quot;tibble&quot;</span>)</a>
+<a class="sourceLine" id="cb673-3" title="3">d.tbl</a></code></pre></div>
 <pre><code>## # A tibble: 108 x 5
 ##    person sex     age     y agefac
 ##     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
@@ -312,20 +312,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9      3 F         8  20.5      8
 ## 10      3 F        10  24       10
 ## # ... with 98 more rows</code></pre>
-<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb699-1" title="1"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb675-1" title="1"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
 <pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    108 obs. of  5 variables:
 ##  $ person: num  1 1 1 1 2 2 2 2 3 3 ...
 ##  $ sex   : chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
 ##  $ age   : num  8 10 12 14 8 10 12 14 8 10 ...
 ##  $ y     : num  21 20 21.5 23 21 21.5 24 25.5 20.5 24 ...
 ##  $ agefac: num  8 10 12 14 8 10 12 14 8 10 ...</code></pre>
-<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb701-1" title="1"><span class="kw">export</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;dd.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
-<a class="sourceLine" id="cb701-2" title="2"></a>
-<a class="sourceLine" id="cb701-3" title="3"><span class="kw">save</span>(d.df, d.tbl, <span class="dt">file =</span> <span class="st">&quot;uj.RData&quot;</span>)</a>
-<a class="sourceLine" id="cb701-4" title="4"><span class="kw">load</span>(<span class="dt">file =</span> <span class="st">&quot;uj.RData&quot;</span>)</a>
-<a class="sourceLine" id="cb701-5" title="5"></a>
-<a class="sourceLine" id="cb701-6" title="6"><span class="kw">saveRDS</span>(<span class="dt">object =</span> d.tbl, <span class="dt">file =</span> <span class="st">&quot;d.tbl.RDS&quot;</span>)</a>
-<a class="sourceLine" id="cb701-7" title="7">dd &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file =</span> <span class="st">&quot;d.tbl.RDS&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb677-1" title="1"><span class="kw">export</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;dd.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb677-2" title="2"></a>
+<a class="sourceLine" id="cb677-3" title="3"><span class="kw">save</span>(d.df, d.tbl, <span class="dt">file =</span> <span class="st">&quot;uj.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb677-4" title="4"><span class="kw">load</span>(<span class="dt">file =</span> <span class="st">&quot;uj.RData&quot;</span>)</a>
+<a class="sourceLine" id="cb677-5" title="5"></a>
+<a class="sourceLine" id="cb677-6" title="6"><span class="kw">saveRDS</span>(<span class="dt">object =</span> d.tbl, <span class="dt">file =</span> <span class="st">&quot;d.tbl.RDS&quot;</span>)</a>
+<a class="sourceLine" id="cb677-7" title="7">dd &lt;-<span class="st"> </span><span class="kw">readRDS</span>(<span class="dt">file =</span> <span class="st">&quot;d.tbl.RDS&quot;</span>)</a></code></pre></div>
 <p>4.2. Adatok kiírása
 Az objektumok értékeinek kiírása könnyebb feladat, mint az adatállományok beolvasása. Egyszerűbb objektumokat a cat() függvénnyel, adattáblákat és mátrixokat a write.table() függvénnyel írhatjuk ki.
 4.2.1. A cat() függvény

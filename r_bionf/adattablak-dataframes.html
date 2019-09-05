@@ -259,8 +259,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.7</span> Adattáblák (dataframes)</h2>
 <p>Az adattábla (dataframe) statisztikai feldolgozás szempontjából az R legfontosabb adatszerkezete. Inhomogén, kétdimenziós szerkezet, amely a lista és a mátrix adatszerkezetek előnyeit hordozza. Sorok és oszlopok alkotják, alapvetően azonos hosszúságú (oszlop)vektorok listájának tekinthető.
 Adattáblát legegyszerűbben a data.frame() függvénnyel hozhatunk létre, a paraméterben az őt alkotó elemeket kell felsorolni. Ezek lehetnek vektorok, faktorok, mátrixok, listák vagy adattáblák is. Ha a paraméterek hossza nem azonos, akkor a függvény ismétli a rövidebb elemeket, de ez csak egész számszor lehetséges:</p>
-<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb630-1" title="1">x&lt;-<span class="kw">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>); y&lt;-<span class="dv">6</span><span class="op">:</span><span class="dv">9</span>; z&lt;-<span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
-<a class="sourceLine" id="cb630-2" title="2">d&lt;-<span class="kw">data.frame</span>(x,y,z); d</a></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb606-1" title="1">x&lt;-<span class="kw">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>); y&lt;-<span class="dv">6</span><span class="op">:</span><span class="dv">9</span>; z&lt;-<span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb606-2" title="2">d&lt;-<span class="kw">data.frame</span>(x,y,z); d</a></code></pre></div>
 <pre><code>##   x y z
 ## 1 A 6 1
 ## 2 B 7 2
@@ -271,16 +271,16 @@ Adattáblát legegyszerűbben a data.frame() függvénnyel hozhatunk létre, a p
 ## 7 A 8 7
 ## 8 B 9 8</code></pre>
 <p>A példában egy 8 sorból és 3 oszlopból álló adattáblát készítettünk. A data.frame() függvényben nem azonos hosszú vektorokat használtunk az adattábla létrehozására, az automatikus ismétléssel mégis eredményt értünk el. Nézzük, hogyan tekint az R az adattáblára:</p>
-<div class="sourceCode" id="cb632"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb632-1" title="1"><span class="kw">typeof</span>(d); <span class="kw">mode</span>(d); <span class="kw">length</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb608"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb608-1" title="1"><span class="kw">typeof</span>(d); <span class="kw">mode</span>(d); <span class="kw">length</span>(d)</a></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb636-1" title="1"><span class="kw">is.list</span>(d); <span class="kw">is.data.frame</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb612-1" title="1"><span class="kw">is.list</span>(d); <span class="kw">is.data.frame</span>(d)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <p>Az adattáblák típusa és módja is ’list’, a hossza pedig az alkotó (oszlop)vektorok száma. Az adattáblára tehát tekinthetünk úgy, mint egy listára, melynek elemei az adattábla oszlopai lesznek.</p>
 <p>Az adattábla sorai és oszlopai névvel is rendelkeznek, ezek attribútumokban foglalnak helyet:</p>
-<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" title="1"><span class="kw">attributes</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" title="1"><span class="kw">attributes</span>(d)</a></code></pre></div>
 <pre><code>## $names
 ## [1] &quot;x&quot; &quot;y&quot; &quot;z&quot;
 ## 
@@ -290,21 +290,21 @@ Adattáblát legegyszerűbben a data.frame() függvénnyel hozhatunk létre, a p
 ## $row.names
 ## [1] 1 2 3 4 5 6 7 8</code></pre>
 <p>Az str() függvény segítségével az adattábla szerkezetéről kapunk felvilágosítást:</p>
-<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" title="1"><span class="kw">str</span>(d)</a></code></pre></div>
+<div class="sourceCode" id="cb617"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb617-1" title="1"><span class="kw">str</span>(d)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    8 obs. of  3 variables:
 ##  $ x: Factor w/ 2 levels &quot;A&quot;,&quot;B&quot;: 1 2 1 2 1 2 1 2
 ##  $ y: int  6 7 8 9 6 7 8 9
 ##  $ z: int  1 2 3 4 5 6 7 8</code></pre>
 <p>Láthajuk, hogy a d adattáblánk 8 sort (megfigyelést) és 3 változót (oszlopot) tartalmaz, valamint leolvashatjuk az egyes oszlopok adattípusát is. Megfigyelhetjük, hogy a d$x oszlopot karakteres vektorból faktor típusú változóvá konvertálta a data.frame() függvény. Ezt az alapértelmezett és a statisztikában nagyon hasznos viselkedést az I() függvénnyel tudjuk megakadályozni:</p>
-<div class="sourceCode" id="cb643"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb643-1" title="1"><span class="kw">str</span>(<span class="kw">data.frame</span>(<span class="kw">I</span>(x),y,z))</a></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb619-1" title="1"><span class="kw">str</span>(<span class="kw">data.frame</span>(<span class="kw">I</span>(x),y,z))</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    8 obs. of  3 variables:
 ##  $ x: &#39;AsIs&#39; chr  &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; ...
 ##  $ y: int  6 7 8 9 6 7 8 9
 ##  $ z: int  1 2 3 4 5 6 7 8</code></pre>
 <p>Az names attribútum az adattábla oszlopainak, a row.names pedig a sorainak a nevét határozza meg. Ezeket az attribútumokat számos függvénnyel átírhatjuk: a rownames() a sorok nevét a colnames() vagy a names() az oszlopok nevét írja át, de használhatjuk az általános attr() vagy attributes() függvényeket is. A sorok nevének meghatározásánál ügyeljünk arra, hogy azoknak egyedieknek kell lenniük, két azonos sornév nem fordulhat elő.</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb645-1" title="1"><span class="kw">rownames</span>(d)&lt;-<span class="kw">paste</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="st">&quot;.szemely&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb645-2" title="2"><span class="kw">names</span>(d)&lt;-<span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;Z&quot;</span>)</a>
-<a class="sourceLine" id="cb645-3" title="3">d</a></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" title="1"><span class="kw">rownames</span>(d)&lt;-<span class="kw">paste</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>, <span class="st">&quot;.szemely&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb621-2" title="2"><span class="kw">names</span>(d)&lt;-<span class="kw">c</span>(<span class="st">&quot;X&quot;</span>,<span class="st">&quot;Y&quot;</span>,<span class="st">&quot;Z&quot;</span>)</a>
+<a class="sourceLine" id="cb621-3" title="3">d</a></code></pre></div>
 <pre><code>##           X Y Z
 ## 1.szemely A 6 1
 ## 2.szemely B 7 2
@@ -315,17 +315,17 @@ Adattáblát legegyszerűbben a data.frame() függvénnyel hozhatunk létre, a p
 ## 7.szemely A 8 7
 ## 8.szemely B 9 8</code></pre>
 <p>Az adattáblák indexelése a mátrixoknál és a listáknál látott módokon is történhet. Ha az adattáblára, mint egy mátrixra tekintünk, használhatjuk a következő hivatkozásokat:</p>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb647-1" title="1">d[<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" title="1">d[<span class="dv">2</span>,<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb649-1" title="1">d[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb625-1" title="1">d[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 2 3</code></pre>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb651-1" title="1">d[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),]</a></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb627-1" title="1">d[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>),]</a></code></pre></div>
 <pre><code>##           X Y Z
 ## 2.szemely B 7 2
 ## 3.szemely A 8 3</code></pre>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb653-1" title="1">d[,<span class="dv">3</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" title="1">d[,<span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 1 2 3 4 5 6 7 8</code></pre>
-<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb655-1" title="1">d[,<span class="dv">3</span>, drop=F]</a></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb631-1" title="1">d[,<span class="dv">3</span>, drop=F]</a></code></pre></div>
 <pre><code>##           Z
 ## 1.szemely 1
 ## 2.szemely 2
@@ -336,21 +336,21 @@ Adattáblát legegyszerűbben a data.frame() függvénnyel hozhatunk létre, a p
 ## 7.szemely 7
 ## 8.szemely 8</code></pre>
 <p>Ha az adattáblát listaként indexeljük, akkor érvényesek a következők:</p>
-<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb657-1" title="1">d<span class="op">$</span>X</a></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb633-1" title="1">d<span class="op">$</span>X</a></code></pre></div>
 <pre><code>## [1] A B A B A B A B
 ## Levels: A B</code></pre>
-<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb659-1" title="1">d<span class="op">$</span>Y</a></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb635-1" title="1">d<span class="op">$</span>Y</a></code></pre></div>
 <pre><code>## [1] 6 7 8 9 6 7 8 9</code></pre>
-<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb661-1" title="1">d<span class="op">$</span>Y[<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb637"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb637-1" title="1">d<span class="op">$</span>Y[<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## [1] 8 9 6</code></pre>
 <p>Az adattábla indexelésénél logikai vektorokat is használhatunk, melyek az adattábla tartalmára vonatkozó relációs kifejezések is lehetnek. Ezzel a módszerrel érhetjük el, hogy az adattábla sorait valamilyen szempont szerint megszűrjük:</p>
-<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb663-1" title="1">d[d<span class="op">$</span>Y <span class="op">&lt;</span><span class="st"> </span><span class="dv">8</span>,]</a></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb639-1" title="1">d[d<span class="op">$</span>Y <span class="op">&lt;</span><span class="st"> </span><span class="dv">8</span>,]</a></code></pre></div>
 <pre><code>##           X Y Z
 ## 1.szemely A 6 1
 ## 2.szemely B 7 2
 ## 5.szemely A 6 5
 ## 6.szemely B 7 6</code></pre>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb665-1" title="1">d[d<span class="op">$</span>Y <span class="op">&lt;</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>d<span class="op">$</span>Z <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>,]</a></code></pre></div>
+<div class="sourceCode" id="cb641"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb641-1" title="1">d[d<span class="op">$</span>Y <span class="op">&lt;</span><span class="st"> </span><span class="dv">8</span> <span class="op">&amp;</span><span class="st"> </span>d<span class="op">$</span>Z <span class="op">&gt;</span><span class="st"> </span><span class="dv">2</span>,]</a></code></pre></div>
 <pre><code>##           X Y Z
 ## 5.szemely A 6 5
 ## 6.szemely B 7 6</code></pre>

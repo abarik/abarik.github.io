@@ -260,27 +260,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Az R-ben saját függvényt a következő szintaktikával hozhatunk létre:</p>
 <p>függvénynév &lt;- function (argumentumlista) függvénytörzs</p>
 <p>Az argumentumlista formális argumentumok vesszővel elválasztott felsorolása, de akár el is hagyhatjuk. Egy formális argumentum állhat önmagában egy változónévből vagy egyenlőségjellel kapcsolhatunk hozzá kifejezést is, ekkor a kifejezés értéke lesz a formális argumentum alapértelmezett értéke.</p>
-<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb786-1" title="1">sajat.fuggveny &lt;-<span class="st"> </span><span class="cf">function</span>(x,y) x<span class="op">+</span>y</a>
-<a class="sourceLine" id="cb786-2" title="2"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb762-1" title="1">sajat.fuggveny &lt;-<span class="st"> </span><span class="cf">function</span>(x,y) x<span class="op">+</span>y</a>
+<a class="sourceLine" id="cb762-2" title="2"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>A fenti példában az x és y formális argumentum nem rendelkezik alapértelmezett értékkel, a függvényhívás során mindkét argumentumról gondoskodnunk kell.</p>
-<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb788-1" title="1">sajat.fuggveny &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="dv">0</span>) x<span class="op">+</span>y</a>
-<a class="sourceLine" id="cb788-2" title="2"><span class="kw">sajat.fuggveny</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb764"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb764-1" title="1">sajat.fuggveny &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">x=</span><span class="dv">0</span>,<span class="dt">y=</span><span class="dv">0</span>) x<span class="op">+</span>y</a>
+<a class="sourceLine" id="cb764-2" title="2"><span class="kw">sajat.fuggveny</span>()</a></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb790-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb766-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb792-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb768-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Most gondoskodtunk alapértelmezett értékről minkét argumentum számára, így 0, 1 vagy 2 aktuális paraméter megadásával is hívható a függvény.</p>
 <p>Az R-ben a <code>...</code> (három pont) speciális formális argumentumot is használhatjuk, amely tetszőleges számú aktuális argumentum megadását lehetővé teszi a függvényhívás során.</p>
-<div class="sourceCode" id="cb794"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb794-1" title="1">sajat.fuggveny &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) <span class="kw">sum</span>(x, ...)</a>
-<a class="sourceLine" id="cb794-2" title="2"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb770-1" title="1">sajat.fuggveny &lt;-<span class="st"> </span><span class="cf">function</span>(x, ...) <span class="kw">sum</span>(x, ...)</a>
+<a class="sourceLine" id="cb770-2" title="2"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] 1</code></pre>
-<div class="sourceCode" id="cb796"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb796-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb772-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb798"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb798-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb774-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb800"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb800-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb776-1" title="1"><span class="kw">sajat.fuggveny</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>A fenti függvény két formális argumentuma az <code>x=</code> és a <code>...</code> (három pont), amely egyedül a paraméter nélküli hívást nem teszi lehetővé, egyébként tetszőleges számú aktuális argumentummal hívhatjuk.</p>
 <p>A fenti példákban nagyon egyszerű függvénytörzseket láttunk, lényegében egyetlen utasításból álltak. A tipikus azonban az, hogy a függvények törzse egy blokkutasítás, így több utasítást foghatunk össze.</p>

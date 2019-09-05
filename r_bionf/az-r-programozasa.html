@@ -260,20 +260,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Ebben a fejezetben néhány haladó fogalmat beszélünk meg, ezekre a mindennapos adatelemzés során ritkán van szükség. Az leírtak azonban segítik készen kapott R kódok megértését, és esetleges módosítását.</p>
 <p>A három legfontosabb programozási elem a szekvencia, a feltételes utasításvégrahajtás és a ciklus.</p>
 <p>A szekvenciát már ismerjük, mégha nem is neveztük meg, hiszen utasítások egymás utáni végrehajtását jelenti a parancsállományoban, fentről lefelé, sorról-sorra. Például ha kíváncsiak vagyunk a legalacsonyabb és a legmagasabb Csillagok háborúja szereplőkre, akkor 3 sor egymás utána kiértékelése ereményre vezethet:</p>
-<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb748-1" title="1"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb748-2" title="2">starwars[<span class="kw">order</span>(starwars<span class="op">$</span>height, <span class="dt">decreasing =</span> F)[<span class="dv">1</span>], <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;height&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb724-1" title="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb724-2" title="2">starwars[<span class="kw">order</span>(starwars<span class="op">$</span>height, <span class="dt">decreasing =</span> F)[<span class="dv">1</span>], <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;height&quot;</span>)]</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##   name  height
 ##   &lt;chr&gt;  &lt;int&gt;
 ## 1 Yoda      66</code></pre>
-<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb750-1" title="1">starwars[<span class="kw">order</span>(starwars<span class="op">$</span>height, <span class="dt">decreasing =</span> T)[<span class="dv">1</span>], <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;height&quot;</span>)]</a></code></pre></div>
+<div class="sourceCode" id="cb726"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb726-1" title="1">starwars[<span class="kw">order</span>(starwars<span class="op">$</span>height, <span class="dt">decreasing =</span> T)[<span class="dv">1</span>], <span class="kw">c</span>(<span class="st">&quot;name&quot;</span>, <span class="st">&quot;height&quot;</span>)]</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 2
 ##   name        height
 ##   &lt;chr&gt;        &lt;int&gt;
 ## 1 Yarael Poof    264</code></pre>
 <p>Az R értelmező az utasítások egymás utáni kiértékelését végzi. Az utasításokat újsor karakter vagy pontosvessző választhatja el. A szintaktikailag helyes utasítások kiértékelése mindig egy értéket eredményez, ez lesz az utasítás értéke. Még akkor is rendelkezik értékkel az utasításunk, ha az nem jelenik meg a parancssorban, például az értékadó utasítás értéke a jobb oldali kifejezés értéke. Ezért írhatjuk a következő parancsot:</p>
-<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb752-1" title="1">y &lt;-<span class="st"> </span>x &lt;-<span class="st"> </span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb752-2" title="2">x; y</a></code></pre></div>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb728-1" title="1">y &lt;-<span class="st"> </span>x &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb728-2" title="2">x; y</a></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <pre><code>## [1] 10</code></pre>
 <p>Az R a többi programozási nyelvhez hasonlóan a bonyolultabb problémák megoldására speciális szerkezeteket is biztosít.</p>
