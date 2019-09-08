@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>2.4 Az RStudio | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="2.4 Az RStudio | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="2.4 Az RStudio | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="az-elso-lepesek.html">
+<link rel="next" href="segitseg-az-r-hasznalatahoz.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,112 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
+<div id="az-rstudio" class="section level2">
+<h2><span class="header-section-number">2.4</span> Az RStudio</h2>
+<p>Az előző fejezetben megismerkedtünk az Alap R-ben elérhető konzol alkalmazással, a parancsállományok fogalmával és parancsállományok futtatási lehetőségeivel. A sikeresen telepített RStudio-ban ezekre és még nagyon sok más tevékenység elvégzésére van módunk.</p>
+<p>Fontos tisztázni, hogy az RStudio használatához feltétlenül szükség van a telepített Alap R-re, nélküle nem tudunk R parancsokat futtatni. Jó gyakorlat, hogy első esetben az RStudio telepítése előtt telepítjük fel az Alap R-et, de a fordított sorrend sem okoz problémát. Sőt, ha az Alap R egy új verzióját telepítjük fel, akkor a korábban telepített RStudio már az új verziójú R futtató környezet fogja használni. Az RStudio tudása tehát a végrehajtható R parancsok tekintetében megegyezik az Alap R tudásával, hiszen minden utasítás, aminek a végrehajtását az RStudio-ban kezdeményezzük, végső soron az Alap R-rel telepített futtató környezethez kerül, és a végrehajtásáért ő felel. Az RStudio elsősorban a parancsok írását könnyíti meg, segítségével a parancsállományok létrehozásához kapunk rendkívüli segítséget.</p>
+<p>Megjegyezzük, hogy az RStudio egy üzleti vállalkozás neve is egyben, amely többféle terméket fejleszt. Ezek egyike az RStudio-nak nevezett integrált fejlesztőkörnyezet, kimondottan az R programozási nyelv számára. Foglaljuk össze, hogy melyek az RStudio erősségei:</p>
 <ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
+<li>Parancsok írásának megkönnyítése: kódkiegészítés, szintaxisnak megfelelő kódszínezés, tippek megjelenítése.</li>
+<li>Integrált környezetben egy felületen látjuk a munka során szükséges komponenseket: kód, adatbázis, ábrák, súgó, objektumok és állományok.</li>
+<li>Projektek használata: az adatfeldolgozási folyamat összetevőit (adatállományok, szkriptállományok, képállományok) egy könyvtárban tartjuk, és a kódból relatívan hivatkozunk rájuk.</li>
+<li>Publikálás támogatása: RMarkdown segítségével PDF, HTML és Word dokumentum, valamint PDF, HTML és PowerPoint bemutató kényelmes létrehozása.</li>
+<li>További lehetőségek: Shiny Webes alkalmazás fejlesztésének támogatása; új csomag létrehozásának támogatása; a Git verziókezelő támogatása.</li>
 </ul>
+<p>Az RStudio fenti lehetőségeinek bemutatása külön könyvet igényelne, de a mindennapi munkához szükséges ismereteket itt bemutatjuk. Már most előre bocsátjuk, minden esetben hozzunk létre projektet az adatfeldolgozási problémánkhoz, és lehetőleg RMarkdown állományt használjunk.</p>
+<div id="panelek" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Panelek</h3>
+<p>Az RStudio indítása után egy 4 panelból álló alkalmazást látunk, a paneleken különböző lapok helyezkednek el. A panelek szélessége és magassága állítható, egyrészt az elválasztó sávokat mozgathatjuk az egér segítségével, másrészt a panelek méretező gombjain (az egyes panelek jobb felső sarkában) is kattinthatunk. A méretezés során időlegesen eltűnhetnek panelek, de a sávok mozgatásával vagy a <code>View / Panes / Show All Panes</code> menüponttal láthatóvá tehetjük az összes panelt.</p>
+<p>A legtöbb időt a <em>Source</em> nevű bal felső panelben töltjük, mert alapértelmezetten itt jelennek meg a parancsállományok és az adatbázisok lapjai. Az RStudio első indításánál ez a panel üres, de a további indításoknál a korábban szerkesztett, de be nem zárt parancsállományok és adatbázisok lapjai automatikusan megjelennek. Helyezzünk el egy parancsállomány lapot a <code>File / New file / New R Script</code> segítségével, és győződjünk meg, hogy egy egyszerű szövegszerkesztőben vagyunk!</p>
+<p>A bal alsó panel a <em>Console</em> nevet viseli, vagyis ez az RStudio konzolja, melynek használata megegyezik az Alap R konzoljával. Parancsokat gépelünk, és ENTER-rel végrehajtjuk őket. A parancsaink eredménye is itt jelenik meg.</p>
+<p>A két jobboldali panel többfunkciós. A jobb felső panelben jellenek meg a munka során létrehozott objektumok nevei (<em>Environment</em> lap), valamint a parancsok története (<em>History</em> lap). Az <em>Environment</em> lapon megjelenő adatbázis nevén kattintva a <em>Source</em> panelben egy külön lapon megjelenik az adatbázis tartalma.</p>
+<p>A jobb alsó panel tartalmazza a súgót (<em>Help</em> lap), a munka során rajzolt ábráinkat (<em>Plot</em> lap), a csomagjainkat (<em>Packages</em> lap) és a munkakönyvtárunk állományait, könyvtárait (<em>Files</em> lap).</p>
+</div>
+<div id="munka-az-rstudio-ban" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Munka az RStudio-ban</h3>
+<p>Mielőtt elkezdjük a munkát az RStudio-ban végezzünk el néhány beállítást. Az RStudio működését az <code>Tools / Global Options...</code> menüpont alatt módosíthatjuk. A menüpont kiválasztása után a bal oldali listából a <code>Code</code>, majd a fenti opciók közül a <code>Saving</code> opciót válasszuk. Itt a <code>Default text encoding</code> alatt érjük el, hogy az <code>UTF-8</code> legyen kiválasztva. Fontos, hogy minden szöveges állományunk UTF-8 kódolású legyen. (A panelek tartalmán is változtathatunk a <code>Tools / Global Options / Pane Layout</code> menüpontban.)</p>
+<p>Kezdjük a munkát! Nyissunk egy új parancsállományt (<code>File / New file / New R Script</code>) és gépeljünk be néhány sort:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb19-1" title="1"><span class="fu"># Második parancsállomány </span></a>
+<a class="sourceLine" id="cb19-2" title="2">1+23</a>
+<a class="sourceLine" id="cb19-3" title="3">getwd()          # munkakönyvtár kiírása</a>
+<a class="sourceLine" id="cb19-4" title="4">x &lt;- mean(1:100)</a>
+<a class="sourceLine" id="cb19-5" title="5">plot(1:10)</a>
+<a class="sourceLine" id="cb19-6" title="6">?mean</a>
+<a class="sourceLine" id="cb19-7" title="7">cat(&quot;- Vége -\n&quot;)</a></code></pre></div>
+<p>A szövegkurzorral álljunk az első sorra, és hajtsuk végre <code>Ctrl+Enter</code> (Windows és Linux alatt, <code>Command+Enter</code> macOS alatt) billentyűparanccsal. Az eredmény nagyon hasonló a korábban látott RGui-s példához, vagyis átkerül a konzolba a sor, az RStudio végrehajtja, és szövegkurzor lejjebb lép egy sorral. Egy újabb <code>Ctrl+Enter</code> így a következő sort hatja végre, és így tovább. Egyetlen kivétel, hogy az RStudio az első valóban R parancsot tartalmazó sorra ugrik a <code>Ctrl+Enter</code> megnyomásakor, tehát a megjegyzést tartalmazó első sort átugorja, és rögtön a második sorral kezdi a végrehajtást.</p>
+<p>A parancsok végrehajtása során láthatjuk mennyire kényelmes, integrált környezetbe találtuk magunkat. Az <code>x &lt;- mean(1:100)</code> hatására az <em>Environment</em> lapon megjelent az <code>x</code> objektum neve és értéke. A <em>Plot</em> lapon láthatunk egy ábrát, amit a <code>plot(1:10)</code> rajzolt meg, és a <code>?mean</code> a <em>Help</em> lapon mutatja meg a <code>mean()</code> átlagszámoló függvény beépített súgóját.</p>
+<p>Mentsük el parancsállományunkat a <code>File / Save</code> vagy a <code>Ctrl+S</code> segítségével.</p>
+</div>
+<div id="projektek-hasznalata" class="section level3">
+<h3><span class="header-section-number">2.4.3</span> Projektek használata</h3>
+<p>Az RStudio lehetőséget ad, hogy minden egyes adatfeldolgozási feladatunkhoz egy projektet rendeljünk. Egy projekt minimálisan egy projekt könyvtárat és az ebben lévő lévő <code>.Rproj</code> kiterjesztésű projektállományt jelenti. Projekt létrehozása a <code>File / New Project...</code> menüponttal lehetséges. Első lépésként válasszuk a <code>New Directory</code> opciót, majd a <code>New Project</code> nyomógombon kattintsunk. A <code>Directory name</code> szöveges mezőbe a projektünk nevét határozhatjuk meg, ami egyben a projekt könyvtár neve is lesz. Adjuk meg az <code>elso_projekt</code> nevet. A <code>Create project as subdirectory of</code> mezőben azt a szülő könyvtárat határozhatjuk meg, ahová a projekt könyvtárunkat el szertnénk helyezni. A projekt létrehozását a <code>Create Project</code> nyomógombbal kezdeményezhetjük. Két nagyon fontos dolog történt. Egyrészt a számítógépünkön létrejött az <code>elso_project</code> projektkönyvtár, és benne az <code>elso_projekt.Rproj</code> projektállomány, márészt az RStudio ún. projekt üzemmódba került, azaz az <code>elso_projekt</code> lett az aktív projekt. Az RStudio-ban egyszerre egy projekt lehet aktív, de lehet, hogy egyetlen projekt sincs megnyitva. Az RStudio felületén a jobb felső sarokban tájékozódhatunk, most az <code>elso_project</code> feliratot látjuk, de amennyiben nincs aktív projektünk, akkor a <code>Project: (none)</code> feliratot olvashatjuk.</p>
+<p>Minden adatfeldolgozási feladathoz – még a legkisebbhez is – hozzunk létre projektet. Minden állományt, amely a feladathoz tartozik a projektkönyvtáron belül helyezzünk el. Milyen állományok jöhetnek szóba: parancsállományok, adatállományok, képállományok, dokumentációk stb. Érdemes ezeket rendezetten, ha szükséges alkönyvtárakba szétosztva tárolni. Jó gyakorlat lehet, hogy a parancsállományokat közvetlenül a projektkönyvtárban (most <code>elso_projekt</code>), az adatállományokat egy <code>data</code> alkönyvtárban a projektkönyvtáron belül (most <code>elso_projekt/data</code>), a képállományok és dokumentációk helye pedig lehet az <code>elso_project/image</code>, illetve <code>elso_projekt/docs</code>.</p>
+<p>Ha egy másik projektre akarunk váltani az RStudio-ban, akkor zárjuk be az aktív projektet (<code>File / Close project</code>). Később újra megnyithatjuk a <code>File / Open Project...</code> segítségével. A megnyitás során természetesen az <code>.Rproj</code> kiterjesztésű projektállományt kell használnunk.</p>
+<p>Foglaljuk össze, milyen előnyökkel jár a projekt használata:</p>
+<ul>
+<li>Fizikailag is együtt tartjuk azokat az állományokat, amelyek logikailag egy adatfeldolgozási folyamathoz tartoznak.</li>
+<li>Projekt üzemmódban az RStudio az aktuális könyvtárat a projektkönyvtárra állítja, így relatív hivatkozást használhatunk a kódunkban, amely a projekt hordozhatóságát biztosítja különböző számítógépek között.</li>
+<li>Projektünk fejlesztését a Git verziókezelő segítségével követhetjük nyomon.</li>
+</ul>
+</div>
+<div id="az-rmarkdown-hasznalata" class="section level3">
+<h3><span class="header-section-number">2.4.4</span> Az RMarkdown használata</h3>
+<p>Ahogyan korábban megbeszéltük, a parancsállományok <code>.R</code> kiterjesztésű szöveges állományok, amelyek R parancsokat vagy <code>#</code> kettőskereszttel kezdődő megjegyzés sorokat tartalmaz. Az RStudio azonban egy másik lehetőséget is ad az R kódok és a természetes nyelvű szövegek integráltabb tárolására, ez az RMarkdown állományformátum.</p>
+<p>Hozzunk létre egy RMarkdown állományt a <code>File / New File / R Mardown...</code> menüpont segítségével. A dialógusdobozban felkínált opciókat fogadjuk el. A <code>Source</code> panelben egy alapértelmezett tartalommal kitöltött RMarkdown állományt látunk. Az RMarkdown állományok <code>.Rmd</code> kiterjesztésű, egyszerű szöveges állományok. A szerkezetére nézve, a következő szabályokat kell betartanunk:</p>
+<ul>
+<li>Minden RMarkdown állomány egy fejrésszel kezdődik, amit a <code>---</code> sorok határolnak.</li>
+<li>Az állományban a fejrész után bárhol elhelyezhetünk természetes nyelvű szöveget</li>
+<li>A természetes nyelvű szövegek között, bárhol, R parancsok is elhelyezhetők, de azokat speciális határolók közé, ún. R csonkokba kell írnunk.</li>
+</ul>
+<p>Az RMarkdown fejléce az állomány metaadatait írja le YAML formátumban.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb20-1" title="1"><span class="ot">---</span></a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Untitled&quot;</span></a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="fu">author:</span><span class="at"> </span><span class="st">&quot;Abari Kálmán&quot;</span></a>
+<a class="sourceLine" id="cb20-4" title="4"><span class="fu">date:</span><span class="at"> </span><span class="st">&#39;2019 09 02 &#39;</span></a>
+<a class="sourceLine" id="cb20-5" title="5"><span class="fu">output:</span><span class="at"> html_document</span></a>
+<a class="sourceLine" id="cb20-6" title="6"><span class="ot">---</span></a></code></pre></div>
+<p>A fejléc a dokumentum címét, szerzőjét és létrehozási időpontját és a kimeneti formátumot tartalmazza, az első három adatot szerkesszük át a saját dokumentumunkban. További információt a fejléc lehetséges beállításairól itt találunk: <a href="https://bookdown.org/yihui/rmarkdown/html-document.html">HTML dokumentumokhoz</a>, <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html">PDF dokumentumokhoz</a>.</p>
+<p>A természetes nyelvű szövegben – mint említettük – a Markdown szabályai szerint tudunk formázási parancsokat elhelyezni. A formázási lehetőségeről itt tájékozódhatunk: <a href="https://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf">R Markdown Cheatsheet</a></p>
+<p>Egy R csonk speciális kezdő és záró sorral rendelkezik. Egy tipikus R csonkot az R parancsokkal a következő kódrészlet mutat be:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb21-1" title="1"><span class="bn">```{r chunk-label, echo = FALSE, fig.cap = &#39;A figure caption.&#39;}</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="bn">1 + 1</span></a>
+<a class="sourceLine" id="cb21-3" title="3"><span class="bn">rnorm(10)  # 10 random numbers</span></a>
+<a class="sourceLine" id="cb21-4" title="4"><span class="bn">plot(dist ~ speed, cars)  # a scatterplot</span></a>
+<a class="sourceLine" id="cb21-5" title="5"><span class="bn">```</span></a></code></pre></div>
+<p>A nyitó és zárórész közé egy vagy több R parancsot írhatunk, de akár megjegyzéseket is használhatunk. Az R csonkok részletes leírását az RStudio hivatalos oldalán találjuk: <a href="https://rmarkdown.rstudio.com/" class="uri">https://rmarkdown.rstudio.com/</a>. Egy rövid <a href="https://rmarkdown.rstudio.com/authoring_quick_tour.html">tutorial</a> összefoglalja a legfontosabb tudnivalókat.</p>
+<p>Első pillanatra úgy látszik, hogy az RMarkdown dokumentum egy fordított parancsállomány, hiszen az RMarkdown állományban a természetes nyelvű szöveg írásában teljes szabadságunk van, és ha R kódot akarunk írni, akkor külön, csonkok megadásával gondoskodunk róla (emlékezzünk parancsállományban az R kód elhelyezésében van szabadságunk, a természetes nyelvű szöveget kellett védenünk a <code>#</code> jellel). Valójában miben áll az RMarkdown ereje:</p>
+<ul>
+<li>A természetes nyelvű szövegekben használhatunk formázást a Markdown formanyelv szabályai szerint.</li>
+<li>Az RMarkdown állományokat le tudjuk fordítani (<em>Knit</em>-elni), amelynek az eredménye például PDF, HTML, Word vagy PowerPoint állomány lehet, amelyben a természetes nyelvű szövegben a Markdown formázásai érvényesülnek, valamint az R parancsok és a parancsok szöveges és grafikus eredménye is megjelenik.</li>
+</ul>
+<p>Próbáljuk ki a <code>Knit</code> gombbal a fordítást! Módosítsuk az állomány különböző részeit és fordítsuk újra a dokumentumot.</p>
+</div>
+<div id="billenytuparancsok" class="section level3">
+<h3><span class="header-section-number">2.4.5</span> Billenytűparancsok</h3>
+<p>Az RStudio legfontosabb billentyűparancsa <code>Ctrl+Enter</code>, amely a parancsállomány parancsait a konzolba küldi végrehajtásra. Van még néhány további parancs, amelyet érdemes ismerni:</p>
+<ul>
+<li><code>Ctrl+S</code>: Parancsállomány mentése</li>
+<li><code>Ctrl+F</code>: Szöveg keresése és cseréje</li>
+<li><code>Tab</code>: kód kiegészítése</li>
+<li><code>Ctrl+Shift+C</code>: Sorok kommentelése és a kommentelés megszüntetése</li>
+<li><code>Ctrl+Alt+Fel vagy Le</code> (és <code>Shift+Jobbra vagy Balra</code>): a kurzor magasságának állítása (és az oszlopszélesség beállítása) több sor szerkesztésére</li>
+<li><code>Alt+Fel vagy Le</code>: Sor mozgatása fel vagy le</li>
+<li><code>Alt+Shift+K</code>: Billentyűparancsok módosítása</li>
+<li><code>Alt+-</code>: Értékadó operátor (<code>&lt;-</code>) beszúrása</li>
+<li><code>Ctrl+Shift+M</code>: Pipe operátor (<code>%&gt;%</code>) beszúrása</li>
+<li><code>Ctrl+Alt+R</code>: a teljes parancsállomány futtatása</li>
+<li><code>Ctrl++ vagy -</code>: betűméret nagyítása vagy kicsinyítése</li>
+</ul>
+<p>Ha valamelyik kombináció nem működik a számítógépünkön, akkor a <code>Tools / Modify Keyboard Shortcuts...</code> menüpont alatt új billentyűparancsot az adhatunk az egyes funkciókhoz.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="az-elso-lepesek.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="segitseg-az-r-hasznalatahoz.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +399,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +407,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

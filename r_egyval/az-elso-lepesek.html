@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>2.3 Az első lépések | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="2.3 Az első lépések | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="2.3 Az első lépések | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="telepitesek.html">
+<link rel="next" href="az-rstudio.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
+<div id="az-elso-lepesek" class="section level2">
+<h2><span class="header-section-number">2.3</span> Az első lépések</h2>
+<p>Hogyan tudjuk működésre bírni az R-t? Tegyük fel, hogy van egy adatfeldolgozási problémánk (szeretnénk megtudni például a Csillagok háborúja c. film karaktereinek átlagos testmagasságát). Az R nyelv egy interpretált szkript nyelv, azaz szöveges parancsokat kell begépelnünk az R környezet megfelelő helyére. Az Alap R telepítése és indítása után pontosan egy ilyen környezetbe kerülünk. Nézzük meg hogyan?</p>
+<p>Az Alap R sikeres telepítése után az R futtatása, az adott platformon a megfelelő bináris állomány elindítását jelenti.</p>
 <ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
+<li>Windows operációs rendszerekben az R indítása többnyire az Asztalon lévő R ikon segítségével lehetséges. Így indíthatjuk el az <code>RGui.exe</code> grafikus felhasználói felülettel rendelkező alkalmazást, amelynek legfontosabb része a külön ablakban megjelenő konzol (<a href="az-elso-lepesek.html#fig:konzol-win">2.1</a> ábra).</li>
+<li>MacOs környezetben indítsuk el az <code>R.app</code> alkalmazást, amely egyetlen konzolt tartalmaz.</li>
+<li>Linux környezetben az <code>R</code> parancssori futtatásával szintén egy konzolt kapunk.</li>
 </ul>
+<div id="a-konzol-hasznalata" class="section level3">
+<h3><span class="header-section-number">2.3.1</span> A konzol használata</h3>
+<p>A konzol tehát az R környezet központi része mindegyik platformon. A konzol működése nagyon egyszerű: egysoros parancsokat gépelünk be a <code>&gt;</code> prompt után, majd <code>Enter</code>-t nyomunk, az R értelmezi és végrehajtja a begépelt parancsot, majd az eredményt itt konzolban meg is jeleníti. Ezt követően egy újabb sor begépelésére van lehetőségünk, <code>Enter</code> után annak az értelmezése következhet, majd az eredmény megjelenítése jön, és így tovább. A <a href="az-elso-lepesek.html#fig:konzol-win">2.1</a> ábra két parancs begépelése utáni konzol állapotot mutatja meg, a Windows környezetben megjelenő RGui alkalmazásban.</p>
+<div class="figure" style="text-align: center"><span id="fig:konzol-win"></span>
+<a href="" target="_blank"><img src="images/konzol_win.png" alt="RGui alkalmazás a konzollal Windows környezetben" width="70%" /></a>
+<p class="caption">
+ÁBRA 2.1: RGui alkalmazás a konzollal Windows környezetben
+</p>
+</div>
+<p>Próbáljuk ki mi is a konzolt. Bátran gépeljünk be parancsokat! Az R-el végzett munkáink publikálásánál fontos lehet, hogy hogyan hivatkozzunk erre a programra. Az R indítása után a konzolban megjelenő fejrészből ez is kiolvasható, de bármikor mi is kiírathatjuk ezt az információt a konzolba.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">citation</span>()</a></code></pre></div>
+<p>Fontos lehet, hogy tudjuk a használt R pontos verziószámát.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">R.Version</span>()</a></code></pre></div>
+<p>A munka során van egy alapértelmezett munkakönyvtárunk, amelynek a helyét a <code>getwd()</code> függvénnyel kérdezhetjük le (munkakönyvtár beállítása a <code>setwd()</code>-vel történik):</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">getwd</span>()</a></code></pre></div>
+<p>A konzol szisztematikus megismerését folytassuk egy egyszerű paranccsal:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="dv">1</span><span class="op">+</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<p>A konzolban most is megjelent az eredmény (3), ahogy az összes eddigi parancsunk esetében ezt láthattuk, ha kipróbáltuk őket a saját konzolunkban. Azonban nem minden parancs ad választ az R-ben.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">x &lt;-<span class="st"> </span><span class="dv">0</span>   <span class="co"># Nincs válasz a konzolban</span></a></code></pre></div>
+<p>Sőt, az is előfordulhat, hogy az R nem talált valamit „rendben” a parancsban. Ekkor természetesen nem hajtja/hajthatja végre a begépelt sort, helyette hibát (error) jelez.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">Ez nem lesz jó.</a></code></pre></div>
+<p>A válasz az <code>Error: unexpected symbol in "Ez nem"</code> hibaüzenet. Alapvető szabály, hogy ha a válaszban megjelenik az <code>Error:</code> szócska, akkor a parancsunkat valamilyen ok miatt nem tudta végrehajtani az R értelmező, és az <code>Error:</code> utáni részből tájékozódhatunk a hiba okáról. Minden más esetben sikeres volt a végrehajtás.</p>
+<p>Hosszabb, bonyolult parancsok gépelésénél gyakran előfordul, hogy valamiért nem sikerül „teljessé” tenni a begépelt parancsot, valami még hiányzik belőle (például egy záró kerek zárójel). Ezt az R értelmező észreveszi és az <code>Enter</code> megnyomása után egy <code>+</code> folytatás prompt megjelenítésével jelzi ezt számunkra. A <code>+</code> prompt után van lehetőségünk a hiányzó részek pótlására, majd ha készen vagyunk az <code>Enter</code> billentyűvel az összes eddig még végre nem hajtott sort elküldhetjük az értelmezőnek.</p>
+<p>Gépeljük be a következő parancsot, három egymás utáni sorba.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">paste</span>(<span class="st">&quot;Ez már&quot;</span>,</a>
+<a class="sourceLine" id="cb13-2" title="2">       <span class="st">&quot;jó&quot;</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="st">      )</span></a></code></pre></div>
+<pre><code>## [1] &quot;Ez már jó&quot;</code></pre>
+<p>A <code>paste("Ez már",</code> kerüljön az első sorba, majd nyomjunk <code>Enter</code>-t. Az R nem hajtja végre a sort, de erre a nyilvánvalóan hibás, befejezetlen parancsra hibaüzenetet sem jelenít meg. Helyette felajánlja a parancs folytatását, befejezését egy új sorba, amely már a <code>+</code> prompttal kezdődik. (Ez a fenti példában nem jelenik meg, csak a saját konzolunkban láthatjuk.) A második sorba gépeljük be az <code>"egy"</code> parancsot, nyomjuk meg az <code>Enter</code>-t. Sajnos még ez sem tette teljessé a parancsunkat, így további folytatásra van lehetőségünk a <code>+</code> után a harmadik sorban. Ide gépeljük be a hiányzó <code>)</code> részt, és üssünk <code>Enter</code>-t. A parancsunk teljessé vált, megkapjuk az eredményt a konzolban, pont úgy, mintha a három sort egyetlen sorba gépeltük volna.</p>
+<p>Legyünk nagyon óvatosak a konzol folytatás prompt funkciójával. Ha például az R nem találja a parancs hiányzó részét, akkor a konzol ezen kényelmi funkciója oda vezethet, hogy örökké <code>+</code> promptot kapjuk az <code>Enter</code> megnyomása után. Ezt a helyzetet hivatott megoldani az ESC billentyű, mellyel megszakíthatjuk az értelmező parancsfeldolgozási kísérletét erre a parancsra nézve. Az ESC megnyomása után visszakapjuk a <code>&gt;</code> prompttal kezdődő (üres) sort, vagyis tiszta lappal, új, lehetőség szerint teljes parancs gépelésébe kezdhetünk. <strong>A parancssorba mindig teljes parancsot gépeljünk, amint megjelenik a <code>+</code> folytatás prompt, azonnal szakítsuk meg ESC megnyomásával az értelmezési folyamatot.</strong></p>
+<p>Az R konzolos használatát két funkció valóban kényelmesebbé teszi. Egyrészt a korábban végrehajtott parancsainkat (history, parancsok története) visszahívhatjuk, lapozhatunk bennük előre, hátra. Erre a FEL/LE NYÍL billentyűkkel van lehetőségünk. Természetesen az így visszahívott parancsot tetszőleges módon átszerkeszthetjük: navigálhatunk a sorban előre hátra, beszúrhatunk/törölhetünk karaktereket vagy használhatjuk a vágóasztal billentyűparancsait. A visszahívott és módosított parancsot az <code>Enter</code> segítségével újra végrehajthatjuk, és ehhez még a sor végére sem kell a szövegkurzort pozícionálni, az a sorban tetszőleges helyen állhat, az R mégis a teljes sort fogja értelmezni.</p>
+<p>A másik kényelmi lehetőség a TAB billentyű használata, amellyel az elkezdett, még be nem fejezett sorokat egészíthetjük ki. Ha egy sort többféleképpen is kiegészíthet az R, akkor egy listát kapunk a lehetőségekről, amelyet továbbgépeléssel szűkíthetünk, ha pedig csak egyetlen szóba jöhető befejezése van a begépelt karaktereknek, akkor a TAB megnyomása után ezzel a résszel kiegészül az elkezdett sorunk. Így nemcsak egyszerűen gépelést, illetve időt takaríthatunk meg, hanem például tájékozódhatunk a korábban létrehozott objektumok nevéről vagy az elérhető függvények névéről és paramétereiről is.</p>
+<p>Az objektum, a függvények és az egyéb ebben a fejezetben homályosan hagyott fogalmak definícióit a könyv későbbi részeiben részletesen tárgyaljuk.</p>
+</div>
+<div id="parancsallomanyok" class="section level3">
+<h3><span class="header-section-number">2.3.2</span> Parancsállományok</h3>
+<p>Láthattuk, hogy a konzolba egyszerre csak egy parancsot gépelhetünk be, úgy is gondolhatunk rá, mint egy egysoros szövegszerkesztőre. Begépelünk egy sort és végrehajtjuk az <code>Enter</code>-rel. A problémáink többsége viszont nem oldható meg egyetlen paranccsal (csak több tízzel vagy százzal), ezért ez interaktív (vagy konzolos) használat nem alkalmas hosszabb elemzésre.</p>
+<p>Parancsainkat begépelhetjük egy parancsállományba is, amely egy egyszerű, formázás nélküli szöveges állomány <code>.R</code> kiterjesztéssel. Ezt a szöveges állományt tetszőleges szövegszerkesztővel létrehozhatjuk, minden operációs rendszeren találunk jegyzettömbszerű, formázás nélküli szöveges állományok létrehozására alkalmas szövegszerkesztőt. Egyszerűen begépeljük külön sorokba a konzolba szánt parancsainkat és elmentjük <code>.R</code> kiterjesztéssel. Kész is a parancsállomány vagy más néven szkriptállomány.</p>
+<p>Parancsállományok létrehozását az Alap R Windows platformos változata közvetlenül is támogatja. Az RGui-ban találunk menüpontokat (<code>File/New script</code>, <code>File/Open script...</code> és <code>File/Save</code>), amelyekkel létrehozhatunk parancsállományokat, már létező szkriptállományt megnyithatunk, és szerkesztés után elmenthetünk. A parancsállományok használata lényegesen leegyszerűsíti az adatelemzés folyamatát, hiszen a konzol egysoros szövegszerkesztője helyett egy gyakorlatilag végtelen sok sor vagy parancs begépelésére alkalmas szövegszerkesztő áll rendelkezésünkre. Mint minden szövegszerkesztőben, a különböző billentyűparancsok és a vágóasztal megkönnyíti a több tíz vagy akár több száz sornyi parancs begépelését és tetszőleges szerkesztését. Az <code>Enter</code> jelentése parancsállományos környezetben a szövegszerkesztőkben megszokott újsor beszúrása, ami lényegesen különbözik a konzolos használat parancsvégrehajtási funkciójától. Ezért ha parancsainkat továbbra is szeretnénk interaktívan végrehajtani, akkor a megfelelő környezetben meg kell találnunk a speciális menüpont vagy billentyűparancsot. Az RGui-ban ez az <code>Edit/Run line or selection</code> vagy az <code>Edit/Run all</code> menüpontokkal, vagy a <code>Ctrl+R</code> billentyűkombinációval lehetséges, amelynek kiadása az első menüpont funkciójának felel meg.</p>
+<p>Próbáljuk ki a parancsállományok használatát a Windows platformos RGui segítségével. Nyissunk egy új parancsállományt a <code>File/New script</code> menüponttal, és írjuk bele a következő sorokat:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb15-1" title="1"><span class="fu"># Első parancsállomány </span></a>
+<a class="sourceLine" id="cb15-2" title="2">1+23</a>
+<a class="sourceLine" id="cb15-3" title="3">getwd()          # munkakönyvtár kiírása</a>
+<a class="sourceLine" id="cb15-4" title="4">mean(1:100)</a>
+<a class="sourceLine" id="cb15-5" title="5">cat(&quot;- Vége -\n&quot;)</a></code></pre></div>
+<p>A fenti 5 sor begépelése után mentsük el a parancsállományunkat a <code>File/Save</code> menüpont, vagy a <code>Ctrl+S</code> segítségével <code>elso.R</code> néven az alapértelmezés szerint felajánlott könyvtárba. Ezt az állományt később meg tudjuk nyitni a <code>File/Open script...</code> menüponttal. Most azonban hajtsuk végre soronként. A álljunk a szövegkurzorral az első sorba (bármelyik pozíció jó a soron belül), majd egyesével adjunk ki öt <code>Ctrl+R</code> billentyűparancsot. Mindegyik esetben 3 dolog történik: (1) az aktuális sor átkerül a konzolba, (2) a konzol végrehajtja a parancsot és (3) a szövegkurzor egy sorral lejjebb lép, így egy újabb <code>Ctrl+R</code> már a következő sort hajtja végre. Látható, hogy parancsaink a szkriptállományból mégis a konzolba tudjuk küldeni végrehajtásra. Valami hasonlót kell látnunk a konzolban:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb16-1" title="1">&gt;<span class="dt"> # Első parancsállomány </span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="dt">&gt; 1+23</span></a>
+<a class="sourceLine" id="cb16-3" title="3"><span class="dt">[1] 24</span></a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="dt">&gt; getwd()          # munkakönyvtár kiírása</span></a>
+<a class="sourceLine" id="cb16-5" title="5"><span class="dt">[1] &quot;C:/Users/Kali2/Documents&quot;</span></a>
+<a class="sourceLine" id="cb16-6" title="6"><span class="dt">&gt; mean(1:100)</span></a>
+<a class="sourceLine" id="cb16-7" title="7"><span class="dt">[1] 50.5</span></a>
+<a class="sourceLine" id="cb16-8" title="8"><span class="dt">&gt; cat(&quot;- Vége -\n&quot;)</span></a>
+<a class="sourceLine" id="cb16-9" title="9"><span class="dt">- Vége -</span></a>
+<a class="sourceLine" id="cb16-10" title="10"><span class="dt">&gt; </span></a></code></pre></div>
+<p>A soronkénti végrehajtás mellett nagyon gyakori a kijelölt szövegrészek végrehajtása, amit szintén a <code>Ctrl+R</code>-rel tudunk kezdeményezni. A kijelölt rész lehet több sor, a teljes parancsállomány, vagy valamelyik sor egy része. Ez utóbbi próbáljuk ki úgy, hogy a parancsállomány 2. sorában csak az <code>1+2</code> részt jelöljük ki, és hajtsuk végre a <code>Ctrl+R</code> segítségével. Az eredmény a konzolban a 3 lesz.</p>
+<p>A parancsállományok használatát a következő részben ismertetendő RStudio kapcsán részletesebben bemutatjuk, így a Linux és macOs felhasználók is hamarosan kipróbálhatják a parancsállományos használat előnyeit.</p>
+</div>
+<div id="parancsallomanyok-futtatasa" class="section level3">
+<h3><span class="header-section-number">2.3.3</span> Parancsállományok futtatása</h3>
+<p>A parancsaink összegyűjtése és hosszú távú tárolása sok előnnyel jár a korábban megismert konzolos használathoz képest. Azonban a parancsállományaink sorait nem kizárólag interaktívan hajthatjuk végre, hanem kötegelt felhasználásra is mód van. Ez azt jelenti, hogy vagy az R konzolon belül vagy akár az Alap R eddig nem említett programja segítségével a parancsállomány összes sorát egyszerre végrehajthatjuk.</p>
+<p>A <code>source()</code> paranccsal az <code>elso.R</code> összes sorát végrehajthatjuk a konzolban.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">source</span>(<span class="st">&quot;elso.R&quot;</span>, <span class="dt">echo =</span> T)</a></code></pre></div>
+<p>A <code>source()</code> függvény kicsit másként közelít a parancsainkhoz, mint amit megszoktunk az interaktív konzolos és parancsállományos használat során. A <code>source()</code> a teljes állományban ellenőrzi a parancsok szintaktikai helyességét, és csak akkor kezdi el az első majd az azt követő parancsok végrehajtásához, ha mindent rendben talált.</p>
+<p>Parancsállomány kötegelt futtatására az operációs rendszer parancssorából is van lehetőségünk, ehhez az Alap R telepítése után van lehetőségünk, de nem kell elindítanunk az R konzolt tartalmazó alkalmazást.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb18-1" title="1">Rscript --vanilla elso.R &gt; output.txt</a></code></pre></div>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="telepitesek.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="az-rstudio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +379,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +387,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

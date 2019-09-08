@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>2.5 Segítség az R használatához | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="2.5 Segítség az R használatához | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="2.5 Segítség az R használatához | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="az-rstudio.html">
+<link rel="next" href="feladatok.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="segitseg-az-r-hasznalatahoz" class="section level2">
+<h2><span class="header-section-number">2.5</span> Segítség az R használatához</h2>
+<p>Az R használatához számos segítséget találunk az Interneten és a telepített Alap R-ben és RStudio-ban egyaránt. Az online segítségek közül elsősorban a <a href="http://cran.r-project.org" class="uri">http://cran.r-project.org</a> címen olvasható R dokumentációkat emeljük ki, ahol több tucat, elsősorban angol nyelvű leírást találunk az R megismeréséhez. Az R népszerűségének köszönhetően, nagyon sok további dokumentációt, tutoriált és példát találhatunk, ha az internetes keresőkhöz fordulunk.</p>
+<p>Az R környezetben további lehetőségek állnak rendelkezésre. Az R megismerését kezdhetjük a</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">help.start</span>()</a></code></pre></div>
+<p>paranccsal, ahol számos, az R nyelvet részletesen tárgyaló dokumentum közül választhatunk.</p>
+<p>Ha csak egyetlen függvénnyel kapcsolatban szeretnénk segítséget kérni, akkor használhatjuk a beépített súgórendszer parancsait. Adjuk ki a</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">help</span>(t.test)</a></code></pre></div>
+<p>vagy a rövidebb</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"> ?t.test</a></code></pre></div>
+<p>parancsot, ha a <code>t.test()</code> függvényről szeretnénk részletes leírását kapni. Abban az esetben ha nem ismerjük teljesen a függvény nevét, használhatjuk a</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">help.search</span>(<span class="st">&quot;test&quot;</span>)</a></code></pre></div>
+<p>parancsot, ekkor az összes olyan függvényt kilistázhatjuk, amelynek a nevében vagy a leírásában a “test” karaktersorozat előfordul.</p>
+<p>Hasznos lehet továbbá a <code>find()</code> parancs, amely elárulja, hogy az illető függvény melyik már betöltött csomagban foglal helyet.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">find</span>(<span class="st">&quot;aov&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;package:stats&quot;</code></pre>
+<p>A fenti példából kiolvasható, hogy az <code>aov()</code> függvény a <strong>stats</strong> csomagban található.</p>
+<p>Ugyancsak a betöltött csomagokban végez keresést az <code>apropos()</code> függvény, amellyel lehetőség van a parancssorból elérhető függvények vagy objektumok nevében keresni.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">apropos</span>(<span class="st">&quot;aov&quot;</span>)</a></code></pre></div>
+<p>Tovább segítheti az egyes függvények használatának elsajátítását az <code>example()</code> parancs, amely az egyes függvények használatára mutat példát.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">example</span>(t.test)</a></code></pre></div>
+<p>Utolsó lehetőségként ejtsünk szót a <code>demo()</code> függvényről, amellyel olyan beépített szkripteket futtathatunk, amelyek az R tudását, erejét hivatottak demonstrálni. Próbáljuk ki a</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" title="1"><span class="kw">demo</span>(graphics)</a>
+<a class="sourceLine" id="cb30-2" title="2"><span class="kw">demo</span>(persp)</a>
+<a class="sourceLine" id="cb30-3" title="3"><span class="kw">demo</span>(plotmath)</a>
+<a class="sourceLine" id="cb30-4" title="4"><span class="kw">demo</span>(Hershey)</a></code></pre></div>
+<p>Ajánljuk tanulmányozásra a R hivatalos oldalát is az elérhető segítségekről: <a href="https://www.r-project.org/help.html" class="uri">https://www.r-project.org/help.html</a>.</p>
+<p>Rendkívül népszerűek ma az ún. cheat-sheet-ek, amelyek néhány PDF oldalon sok ábrával, és a lényeg kiemelésével mutatják ba egy-egy témakör legfontosabb tudnivalóit: <a href="https://www.rstudio.com/resources/cheatsheets/" class="uri">https://www.rstudio.com/resources/cheatsheets/</a>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="az-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="feladatok.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +329,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +337,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

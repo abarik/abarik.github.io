@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>3.1 Számolás az R-ben | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="3.1 Számolás az R-ben | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="3.1 Számolás az R-ben | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="adatobjektumok.html">
+<link rel="next" href="objektumok.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
+<div id="szamolas-az-r-ben" class="section level2">
+<h2><span class="header-section-number">3.1</span> Számolás az R-ben</h2>
+<p>Kezdjük az R nyelv megismerését egy egyszerű sor begépelésével.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1"><span class="dv">2</span><span class="op">+</span><span class="dv">2</span> </a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Végrehajtás után a konzolban láthatjuk az összeadás eredményét a 4-et. Az eredmény előtt egy szögletes zárójelben lévő sorszámot is láthatunk (<code>[1]</code>), amely bonyolultabb outputokban segít eligazodni. Később visszatérünk a <code>[1]</code> értelmezésére.</p>
+<p>Látjuk, ebben az esetben az R úgy viselkedik, mint egy számológép. A parancssorba gépelt algebrai kifejezés értékét kiszámolja és a képernyőn megjeleníti. Természetesen az összeadáson túl más műveletet is használhatunk.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="dv">4</span><span class="op">+</span><span class="dv">6</span><span class="op">*</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<p>A fenti példából látható, hogy az R követi a műveletek elvégzésének matematikában megszokott sorrendjét. Azaz a szorzás művelet (<code>*</code>) hamarabb sorra kerül, ennek eredménye 12. Ezt követi az összeadás (<code>+</code>) most már a 4 és a 12 között. Ennek az összeadás műveletnek az eredménye (16), ami egyben a kifejezés értéke is, tehát ez jelenik meg a konzolban.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1">(<span class="dv">4</span><span class="op">+</span><span class="dv">6</span>)<span class="op">*</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>Természetesen a matematikában megszokott módon változtathatunk a műveletek végrehajtásának alapértelmezett sorrendjén, használhatunk kerek zárójeleket. Ezeket az R a megszokott módon értelmezi: a zárójelben szereplő műveletek végrehajtását előreveszi. A fenti példában tehát az összeadás művelet lesz az első, amelynek az eredménye 10. Ezt követi a szorzás, így kapjuk a kifejezés értékeként a 20-at.</p>
+<p>Ezeket a matematikában megszokott algebrai kifejezéseket, az R-ben egyszerűen kifejezésnek vagy – utalva arra, hogy a kifejezés értéke szám – <em>aritmetikai kifejezésnek</em> nevezünk. Az eddigiek alapján az aritmetikai kifejezések tehát a következő nyelvi elemeket tartalmazhatják:</p>
 <ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
+<li>számok, amelyeket az R <em>numerikus konstans</em>oknak nevez,</li>
+<li>műveleti jelek, az <em>aritmetikai operátor</em>ok,</li>
+<li>és kerekzárójelek.</li>
 </ul>
+<p>A fentiek alapján összetettebb aritmetikai kifejezéseket is megfogalmazhatunk az R parancssorában. Az R minden esetben kiszámolja a kifejezések értékét – kiértékeli a kifejezést – és a kapott értéket megjeleníti a konzolban.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="dv">4</span><span class="op">^</span><span class="dv">2-3</span><span class="op">*</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1">(<span class="dv">56-14</span>)<span class="op">/</span><span class="dv">6-4</span><span class="op">*</span><span class="dv">7</span><span class="op">*</span><span class="dv">10</span><span class="op">/</span>(<span class="dv">5</span><span class="op">**</span><span class="dv">2-5</span>)</a></code></pre></div>
+<pre><code>## [1] -7</code></pre>
+<p>Az R-ben használható aritmetikai operátorokat a precedencia csökkenő sorrendjében a következő táblázat tartalmazza.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-31">TÁBLÁZAT 3.1: </span>Matematikai operátorok precedenciája csökkenő sorrendben</caption>
+<thead>
+<tr class="header">
+<th align="left">Operátor formája</th>
+<th align="left">Művelet</th>
+<th align="left">Példa</th>
+<th align="left">Példa eredménye</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>^</code> (vagy <code>**</code>)</td>
+<td align="left">hatványozás</td>
+<td align="left"><code>2^3</code> <code>2**3</code></td>
+<td align="left"><code>8 8</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>+</code> <code>-</code> (unáris))</td>
+<td align="left">előjelek</td>
+<td align="left"><code>+3.3</code> <code>-.5</code></td>
+<td align="left"><code>3.3 -.5</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>%%</code> <code>%/%</code>)</td>
+<td align="left">maradékos osztás és egész osztás</td>
+<td align="left"><code>13%%4</code> <code>15%/%4</code></td>
+<td align="left"><code>1 4</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>*</code> <code>/</code>)</td>
+<td align="left">szorzás és osztás</td>
+<td align="left"><code>2*3</code> <code>4/2</code></td>
+<td align="left"><code>6 2</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>+</code> <code>-</code> (binér))</td>
+<td align="left">összeadás és kivonás</td>
+<td align="left"><code>2+3</code> <code>2-3</code></td>
+<td align="left"><code>5 -1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Az aritmetikai kifejezések használata során ne felejtkezzünk meg az operátorok precedenciájáról sem.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="dv">-2</span><span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] -4</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">(<span class="op">-</span><span class="dv">2</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<p>Itt a hatványozás és az előjel operátor közötti végrehajtási sorrend okozza az eltérő eredményeket.</p>
+<p>Eddig láthattuk, hogy kifejezéseinket operátorok, számok és zárójelek segítségével építettük fel. Ezek a kifejezések két részletükben is általánosíthatók:</p>
+<ul>
+<li>a kifejezés adat része, amelyet eddig a numerikus konstansok képviseltek,</li>
+<li>a kifejezés műveleti részében, amelyet eddig az operátorok jelenítettek meg.</li>
+</ul>
+<p>Az adatrész általánosítása az objektum a műveleteké pedig a függvény. Ezeket tekintjük át a következőkben.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="adatobjektumok.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="objektumok.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +381,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +389,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

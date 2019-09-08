@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>5.4 Faktor | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="5.4 Faktor | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="5.4 Faktor | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="vektor.html">
+<link rel="next" href="matrix-es-tomb.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="faktor" class="section level2">
+<h2><span class="header-section-number">5.4</span> Faktor</h2>
+<p>A faktor a vektorhoz nagyon hasonló, homogén, egydimenziós adatszerkezet, amelyet elsősorban kategorikus változók értékeinek tárolására használunk. Numerikus vagy karakteres vektorból a <code>factor()</code> függvény segítségével hozhatunk létre faktort. A faktor létrehozásánál mindig gondoskodjunk a <code>levels=</code> paraméter megadásáról, amely a faktor lehetséges értékeit tartalmazza. A faktor ennek megfelelően tartalmaz egy <code>levels</code> attribútumot, amely a faktor különböző értékeit (szintjeit) sorolja fel. A faktorok <code>class</code> attribútumának értéke pedig <code>factor</code>.</p>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" title="1">fakt<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">11</span>, <span class="dv">12</span>, <span class="dv">13</span>), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;0&quot;</span>, <span class="st">&quot;11&quot;</span>, <span class="st">&quot;12&quot;</span>, <span class="st">&quot;13&quot;</span>)); fakt<span class="fl">.1</span></a></code></pre></div>
+<pre><code>## [1] 11 12 13
+## Levels: 0 11 12 13</code></pre>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" title="1">fakt<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;AA&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;AB&quot;</span>), <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;AB&quot;</span>, <span class="st">&quot;BA&quot;</span>, <span class="st">&quot;BB&quot;</span>)); fakt<span class="fl">.2</span></a></code></pre></div>
+<pre><code>## [1] AA AA AB AB
+## Levels: AA AB BA BB</code></pre>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb478-1" title="1"><span class="kw">attributes</span>(fakt<span class="fl">.1</span>)</a></code></pre></div>
+<pre><code>## $levels
+## [1] &quot;0&quot;  &quot;11&quot; &quot;12&quot; &quot;13&quot;
+## 
+## $class
+## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb480-1" title="1"><span class="kw">attributes</span>(fakt<span class="fl">.2</span>)</a></code></pre></div>
+<pre><code>## $levels
+## [1] &quot;AA&quot; &quot;AB&quot; &quot;BA&quot; &quot;BB&quot;
+## 
+## $class
+## [1] &quot;factor&quot;</code></pre>
+<p>A fenti példában látható, hogy a szintek meghatározásakor a faktorban nem szereplő értékeket is megadhatunk.</p>
+<p>A <code>levels()</code> függvénnyel lekérdezhetők és átírhatók a faktorszintek:</p>
+<div class="sourceCode" id="cb482"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb482-1" title="1"><span class="kw">levels</span>(fakt<span class="fl">.2</span>)</a></code></pre></div>
+<pre><code>## [1] &quot;AA&quot; &quot;AB&quot; &quot;BA&quot; &quot;BB&quot;</code></pre>
+<div class="sourceCode" id="cb484"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb484-1" title="1"><span class="kw">levels</span>(fakt<span class="fl">.2</span>) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;M.AA&quot;</span>, <span class="st">&quot;M.AB&quot;</span>, <span class="st">&quot;M.BA&quot;</span>, <span class="st">&quot;M.BB&quot;</span>)</a>
+<a class="sourceLine" id="cb484-2" title="2">fakt<span class="fl">.2</span></a></code></pre></div>
+<pre><code>## [1] M.AA M.AA M.AB M.AB
+## Levels: M.AA M.AB M.BA M.BB</code></pre>
+<p>A szintek számáról és azok címkéjéről a <code>factor()</code> függvényben is gondoskodhatunk:</p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb486-1" title="1"><span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">levels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] 1 2 3
+## Levels: 1 2 3 4 5</code></pre>
+<div class="sourceCode" id="cb488"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb488-1" title="1"><span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">levels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="st">&quot;L&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] L1 L2 L3
+## Levels: L1 L2 L3 L4 L5</code></pre>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" title="1"><span class="kw">factor</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">levels=</span><span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;D&quot;</span>,<span class="st">&quot;E&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] A B C
+## Levels: A B C D E</code></pre>
+<div id="ertekek-kizarasa" class="section level4">
+<h4><span class="header-section-number">5.4.0.1</span> Értékek kizárása</h4>
+<p>A faktor létrehozásánál gondoskodhatunk bizonyos értékek kizárásáról, olyan értékekről, amelyeket nem szeretnénk a faktorban felsorolni:</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" title="1">  <span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">6</span>))</a></code></pre></div>
+<pre><code>##  [1] 1    2    3    4    5    &lt;NA&gt; 3    4    5    6   
+## Levels: 1 2 3 4 5 6</code></pre>
+<p>Alapértelmezés szerint az <code>NA</code> értéket zárjuk ki a faktor szintjeiből, de ezt megváltoztathatjuk az <code>exclude=</code> paraméter használatával:</p>
+<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb494-1" title="1"><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">exclude=</span><span class="ot">NULL</span>)</a></code></pre></div>
+<pre><code>##  [1] 1    2    3    4    5    &lt;NA&gt; 3    4    5    6   
+## Levels: 1 2 3 4 5 6 &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" title="1"><span class="kw">factor</span>(<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="ot">NA</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">6</span>), <span class="dt">exclude=</span><span class="kw">c</span>(<span class="dv">4</span>, <span class="ot">NA</span>))</a></code></pre></div>
+<pre><code>##  [1] 1    2    3    &lt;NA&gt; 5    &lt;NA&gt; 3    &lt;NA&gt; 5    6   
+## Levels: 1 2 3 5 6</code></pre>
+<p>Ahogy látjuk a fenti példában, akár az <code>NA</code> értéket is bevonhatjuk a faktor szintjeibe, akár más értékeket is kizárhatunk az <code>NA</code>-n kívül.</p>
+</div>
+<div id="ismetlodest-tartalmazo-vektorok" class="section level4">
+<h4><span class="header-section-number">5.4.0.2</span> Ismétlődést tartalmazó vektorok</h4>
+<p>Ismétlést tartalmazó faktorokat a <code>gl()</code> függvénnyel is létrehozhatunk (“generate levels”), ahol a szintek számát és az ismétlések számát kell megadnunk.</p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb498-1" title="1"><span class="kw">gl</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">k =</span> <span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] 1 1 2 2 3 3
+## Levels: 1 2 3</code></pre>
+<p>További paraméterként a faktor hosszát és címkéit is meghatározhatjuk:</p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" title="1"><span class="kw">gl</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">k =</span> <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">8</span>)</a></code></pre></div>
+<pre><code>## [1] 1 1 2 2 3 3 1 1
+## Levels: 1 2 3</code></pre>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" title="1"><span class="kw">gl</span>(<span class="dt">n =</span> <span class="dv">3</span>, <span class="dt">k =</span> <span class="dv">2</span>, <span class="dt">length =</span> <span class="dv">8</span>,<span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;gyenge&quot;</span>, <span class="st">&quot;közepes&quot;</span>, <span class="st">&quot;erős&quot;</span>))</a></code></pre></div>
+<pre><code>## [1] gyenge  gyenge  közepes közepes erős    erős   
+## [7] gyenge  gyenge 
+## Levels: gyenge közepes erős</code></pre>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="vektor.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="matrix-es-tomb.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +370,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +378,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>6.4 Más típusú adatállományok | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="6.4 Más típusú adatállományok | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="6.4 Más típusú adatállományok | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="fix-szeles-mezok.html">
+<link rel="next" href="r-objektumok-irasa-es-olvasasa.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="mas-tipusu-adatallomanyok" class="section level2">
+<h2><span class="header-section-number">6.4</span> Más típusú adatállományok</h2>
+<p>Az R számos más formátumú adatállomány beolvasását támogatja a tagolt szöveges állományokon kívül. Például az Alap R <strong>foreign</strong> csomagja DBF, Stata, Minitab, SPSS, SAS és Epi adatállományokat tud beolvasni. A Tidyverse R <strong>haven</strong> csomagja SPSS, Stata, és SAS fájlokat, a <strong>readxl</strong> csomagja pedig Excel <code>.xls</code> és <code>.xlsx</code> állományokat is. Json állományokat olvashatunk be a <strong>jsonlite</strong>, XML állományokat az <strong>xml2</strong> csomaggal.</p>
+<p>A <strong>rio</strong> csomag különleges pozícióban van, ugyanis minden eddig felsorolt adatállomány beolvasását támogatja, egyetlen parancs az <code>import()</code> segítségével. A beolvasandó állomány kiterjesztéséből tudni fogja, hogy pontosan milyen módon (melyik csomag megfelelő függvénye segítségével) olvassa be az adatállományt. Az <code>import()</code> támogatja data frame és tibble létrehozását is a <code>setclass=</code> argumentuma segítségével.</p>
+<p>Példaképp pontosvesszővel tagolt, SPSS és Excel XLSX állományokat olvasunk be:</p>
+<div class="sourceCode" id="cb786"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb786-1" title="1"><span class="kw">library</span>(rio)</a>
+<a class="sourceLine" id="cb786-2" title="2">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
+<a class="sourceLine" id="cb786-3" title="3">d.df &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">header=</span>T, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)</a>
+<a class="sourceLine" id="cb786-4" title="4"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    657 obs. of  6 variables:
+##  $ hallgato: int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Height  : num  67 64 61 61 70 63 61 64 66 65 ...
+##  $ neme    : chr  &quot;female&quot; &quot;female&quot; &quot;female&quot; &quot;female&quot; ...
+##  $ lefekves: num  -2.5 1.5 -1.5 2 0 1 1.5 0.5 -0.5 2.5 ...
+##  $ felkeles: num  5.5 8 7.5 8.5 9 8.5 7.5 7.5 7 8.5 ...
+##  $ Drink   : chr  &quot;víz&quot; &quot;üdítő&quot; &quot;tej&quot; &quot;víz&quot; ...</code></pre>
+<div class="sourceCode" id="cb788"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb788-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/nepesseg.sav&quot;</span></a>
+<a class="sourceLine" id="cb788-2" title="2">d.df &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file)</a>
+<a class="sourceLine" id="cb788-3" title="3"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    12 obs. of  4 variables:
+##  $ HONAP   : num  1 2 3 4 5 6 7 8 9 10 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Hónap 1994-ben&quot;
+##   ..- attr(*, &quot;format.spss&quot;)= chr &quot;F5.0&quot;
+##   ..- attr(*, &quot;display_width&quot;)= int 12
+##   ..- attr(*, &quot;labels&quot;)= Named num  1 2 3 4 5 6 7 8 9 10 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr  &quot;január&quot; &quot;február&quot; &quot;március&quot; &quot;április&quot; ...
+##  $ NEPESSEG: num  10273 10270 10267 10265 10262 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Népesség száma hó végén&quot;
+##   ..- attr(*, &quot;format.spss&quot;)= chr &quot;F5.0&quot;
+##  $ ELVESZUL: num  10238 9285 10105 9617 9548 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Élveszületések száma&quot;
+##   ..- attr(*, &quot;format.spss&quot;)= chr &quot;F5.0&quot;
+##  $ HALAL   : num  13888 12825 12516 11753 12328 ...
+##   ..- attr(*, &quot;label&quot;)= chr &quot;Halálozások száma&quot;
+##   ..- attr(*, &quot;format.spss&quot;)= chr &quot;F5.0&quot;</code></pre>
+<div class="sourceCode" id="cb790"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb790-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/pothoff2.xlsx&quot;</span></a>
+<a class="sourceLine" id="cb790-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="dt">file =</span> data.file, <span class="dt">setclass =</span> <span class="st">&quot;tibble&quot;</span>)</a>
+<a class="sourceLine" id="cb790-3" title="3"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    108 obs. of  5 variables:
+##  $ person: num  1 1 1 1 2 2 2 2 3 3 ...
+##  $ sex   : chr  &quot;F&quot; &quot;F&quot; &quot;F&quot; &quot;F&quot; ...
+##  $ age   : num  8 10 12 14 8 10 12 14 8 10 ...
+##  $ y     : num  21 20 21.5 23 21 21.5 24 25.5 20.5 24 ...
+##  $ agefac: num  8 10 12 14 8 10 12 14 8 10 ...</code></pre>
+<p>A <strong>rio</strong> csomag univerzális állománykiíró függvénye az <code>export()</code>. Szintén a kiírandó állomány kiterjesztése dönti el, hogy pontosan melyik konkrét függvényt fogja működtetni az <code>export()</code>, ennek megfelelően a háttérben lévő függvény argumentumaival esetlegesen mi is bővíthetjük az <code>export()</code> argumentumlistáját. A következő példákban pontosvesszővel tagolt, SPSS, SAS és Excel XLSX adatállományokat hozunk létre:</p>
+<div class="sourceCode" id="cb792"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb792-1" title="1"><span class="kw">export</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;rio_out.csv&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>)</a>
+<a class="sourceLine" id="cb792-2" title="2"><span class="kw">export</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;rio_out.sav&quot;</span>)</a>
+<a class="sourceLine" id="cb792-3" title="3"><span class="kw">export</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;rio_out.sas7bdat&quot;</span>)</a>
+<a class="sourceLine" id="cb792-4" title="4"><span class="kw">export</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;rio_out.xlsx&quot;</span>)</a></code></pre></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="fix-szeles-mezok.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-objektumok-irasa-es-olvasasa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +350,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +358,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

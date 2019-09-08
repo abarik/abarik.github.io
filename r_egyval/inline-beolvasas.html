@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>6.1 Inline beolvasás | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="6.1 Inline beolvasás | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="6.1 Inline beolvasás | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="adatok-beolvasasa-es-kiirasa.html">
+<link rel="next" href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,133 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="inline-beolvasas" class="section level2">
+<h2><span class="header-section-number">6.1</span> Inline beolvasás</h2>
+<p>Az adatok inline beolvasása azt jelenti, hogy nem külső állományból, hanem az R parancsállományba gépelt adatokból indulunk ki. Felhasználjuk a <code>c()</code>, <code>factor()</code> és <code>data.frame()</code> függvényeket az Alap R-ből, valamint a<code>tibble()</code> és <code>tribble()</code> függvényeket a Tidyverse R-ből. De használhatjuk az állományok beolvasását végző, de később sorra kerülő <code>read.table()</code> (AR) és <code>read_delim()</code> (TR) függvénycsaládokat is.</p>
+<p>A legegyszerűbb adatfeldolgozási feladatok egyetlen változót érintenek, ezek pedig numerikus vektorban vagy faktorban tárolhatók az R-ben.</p>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb752-1" title="1">magassag &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>) <span class="co"># 4 óvodás testmagassága cm-ben</span></a>
+<a class="sourceLine" id="cb752-2" title="2"><span class="kw">mean</span>(magassag)</a></code></pre></div>
+<pre><code>## [1] 137.25</code></pre>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb754-1" title="1">nem &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;)) # a 4 óvodás neme</span></a>
+<a class="sourceLine" id="cb754-2" title="2"><span class="st">table(nem)</span></a></code></pre></div>
+<pre><code>## nem
+##  fiú lány 
+##    2    2</code></pre>
+<p>Több változó tárolása esetén data frame vagy tibble típusú objektumot hozunk létre, amelyhez most felhasználjuk a korábban létrehozott (oszlop)vektorokat. Ehhez már a <code>data.frame()</code> és a <code>tibble()</code> függvényeket használjuk, nagyon hasonló módon:</p>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb756-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb756-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">tibble</span>(magassag, nem)     <span class="co"># tibble létrehozása</span></a>
+<a class="sourceLine" id="cb756-3" title="3">d.df  &lt;-<span class="st"> </span><span class="kw">data.frame</span>(magassag, nem) <span class="co"># data frame létrehozása</span></a></code></pre></div>
+<p>A létrehozott adattáblák is nagyon hasonlítanak egymásra:</p>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb757-1" title="1">d.tbl   <span class="co"># tibble</span></a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   magassag nem  
+##      &lt;dbl&gt; &lt;fct&gt;
+## 1      132 fiú  
+## 2      143 lány 
+## 3      129 lány 
+## 4      145 fiú</code></pre>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb759-1" title="1">d.df    <span class="co"># data frame</span></a></code></pre></div>
+<pre><code>##   magassag  nem
+## 1      132  fiú
+## 2      143 lány
+## 3      129 lány
+## 4      145  fiú</code></pre>
+<p>Természetesen nem kell feltétlenül az adattáblát alkotó oszlopokat külön numerikus vagy faktor oszlopokban előzőleg elkészíteni, ezeket a <code>data.frame()</code> vagy <code>tibble()</code> argumentumába közvetlenül is beírhatjuk:</p>
+<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb761-1" title="1"><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb761-2" title="2">  <span class="dt">magassag =</span> <span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>),</a>
+<a class="sourceLine" id="cb761-3" title="3">  <span class="dt">nem =</span> <span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;),</a>
+<a class="sourceLine" id="cb761-4" title="4">  <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb761-5" title="5">)</a></code></pre></div>
+<pre><code>##   magassag  nem
+## 1      132  fiú
+## 2      143 lány
+## 3      129 lány
+## 4      145  fiú</code></pre>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb763-1" title="1"><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb763-2" title="2">  <span class="dt">magassag =</span> <span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>),</a>
+<a class="sourceLine" id="cb763-3" title="3">  <span class="dt">nem =</span> <span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;)</a>
+<a class="sourceLine" id="cb763-4" title="4">)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   magassag nem  
+##      &lt;dbl&gt; &lt;chr&gt;
+## 1      132 fiú  
+## 2      143 lány 
+## 3      129 lány 
+## 4      145 fiú</code></pre>
+<p>Tibble esetében a <code>nem</code> karakteres vektor maradt, de data frame esetén az automatikus konverziót a <code>stringsAsFactors=FALSE</code> paraméterrel tudjuk csak megakadályozni. Érdemes minden esetben a karakteres vektort meghagyni, ugyanis a létrehozandó faktor szintjeit egy későbbi munkafázisban mindenképp pontosítani kell.</p>
+<p>Tibble létrehozásának másik módja a <code>tribble()</code> függvény, amelynek argumentumába táblázatos formában adhatjuk meg az adatokat. A változóneveket a <code>~</code> karakter vezeti be:</p>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb765-1" title="1"><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb765-2" title="2">  <span class="op">~</span>tortenelem,  <span class="op">~</span>matek, <span class="op">~</span>nem,</a>
+<a class="sourceLine" id="cb765-3" title="3">  <span class="dv">3</span>, <span class="dv">2</span>, <span class="st">&quot;fiú&quot;,</span></a>
+<a class="sourceLine" id="cb765-4" title="4"><span class="st">  2, 4, &quot;</span>fiú&quot;,</a>
+<a class="sourceLine" id="cb765-5" title="5">  <span class="dv">3</span>, <span class="dv">5</span>, <span class="st">&quot;lány&quot;</span></a>
+<a class="sourceLine" id="cb765-6" title="6">)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   tortenelem matek nem  
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+## 1          3     2 fiú  
+## 2          2     4 fiú  
+## 3          3     5 lány</code></pre>
+<p>A következő részben ismertetjük a <code>read.table()</code> és <code>read_delim()</code> függvénycsaládokat, amelyek tagolt szöveges állományból olvasnak be adatokat. Azonban használhatjuk őket inline beolvasásra is. A függvények paramétereit a következő részben ismertetjük.</p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb767-1" title="1">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="kw">textConnection</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb767-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
+<a class="sourceLine" id="cb767-3" title="3"><span class="st">5 5 8</span></a>
+<a class="sourceLine" id="cb767-4" title="4"><span class="st">10 7 10</span></a>
+<a class="sourceLine" id="cb767-5" title="5"><span class="st">7 9 8</span></a>
+<a class="sourceLine" id="cb767-6" title="6"><span class="st">3 8 9</span></a>
+<a class="sourceLine" id="cb767-7" title="7"><span class="st">5 2 11</span></a>
+<a class="sourceLine" id="cb767-8" title="8"><span class="st">7 5 15</span></a>
+<a class="sourceLine" id="cb767-9" title="9"><span class="st">11 6 7</span></a>
+<a class="sourceLine" id="cb767-10" title="10"><span class="st">2 6 11</span></a>
+<a class="sourceLine" id="cb767-11" title="11"><span class="st">3 4 8</span></a>
+<a class="sourceLine" id="cb767-12" title="12"><span class="st">5 4 8</span></a>
+<a class="sourceLine" id="cb767-13" title="13"><span class="st">6 8 17</span></a>
+<a class="sourceLine" id="cb767-14" title="14"><span class="st">6 10 11</span></a>
+<a class="sourceLine" id="cb767-15" title="15"><span class="st">&quot;</span>), <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb767-16" title="16"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    12 obs. of  3 variables:
+##  $ placebo         : int  5 10 7 3 5 7 11 2 3 5 ...
+##  $ alacsony.alkohol: int  5 7 9 8 2 5 6 6 4 4 ...
+##  $ magas.alkohol   : int  8 10 8 9 11 15 7 11 8 8 ...</code></pre>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb769-1" title="1">d.tbl &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb769-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
+<a class="sourceLine" id="cb769-3" title="3"><span class="st">5 5 8</span></a>
+<a class="sourceLine" id="cb769-4" title="4"><span class="st">10 7 10</span></a>
+<a class="sourceLine" id="cb769-5" title="5"><span class="st">7 9 8</span></a>
+<a class="sourceLine" id="cb769-6" title="6"><span class="st">3 8 9</span></a>
+<a class="sourceLine" id="cb769-7" title="7"><span class="st">5 2 11</span></a>
+<a class="sourceLine" id="cb769-8" title="8"><span class="st">7 5 15</span></a>
+<a class="sourceLine" id="cb769-9" title="9"><span class="st">11 6 7</span></a>
+<a class="sourceLine" id="cb769-10" title="10"><span class="st">2 6 11</span></a>
+<a class="sourceLine" id="cb769-11" title="11"><span class="st">3 4 8</span></a>
+<a class="sourceLine" id="cb769-12" title="12"><span class="st">5 4 8</span></a>
+<a class="sourceLine" id="cb769-13" title="13"><span class="st">6 8 17</span></a>
+<a class="sourceLine" id="cb769-14" title="14"><span class="st">6 10 11</span></a>
+<a class="sourceLine" id="cb769-15" title="15"><span class="st">&quot;</span>, <span class="dt">col_names=</span>T, <span class="dt">delim=</span><span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb769-16" title="16">d.tbl</a></code></pre></div>
+<pre><code>## # A tibble: 12 x 3
+##    placebo alacsony.alkohol magas.alkohol
+##      &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+##  1       5                5             8
+##  2      10                7            10
+##  3       7                9             8
+##  4       3                8             9
+##  5       5                2            11
+##  6       7                5            15
+##  7      11                6             7
+##  8       2                6            11
+##  9       3                4             8
+## 10       5                4             8
+## 11       6                8            17
+## 12       6               10            11</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="adatok-beolvasasa-es-kiirasa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +420,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +428,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

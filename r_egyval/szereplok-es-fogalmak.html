@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>2.1 Szereplők és fogalmak | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="2.1 Szereplők és fogalmak | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="2.1 Szereplők és fogalmak | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="alapok.html">
+<link rel="next" href="telepitesek.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
+<div id="szereplok-es-fogalmak" class="section level2">
+<h2><span class="header-section-number">2.1</span> Szereplők és fogalmak</h2>
+<p>Az R nyelvet 1992-ben kezdte fejleszteni <a href="https://www.stat.auckland.ac.nz/~ihaka/">Ross Ihaka</a> és <a href="https://www.linkedin.com/in/robert-gentleman-06845098/">Robert Gentleman</a>, 1997-től pedig egy nagyobb csapat, az <a href="https://www.r-project.org/contributors.html">R Development Core Team</a> vezeti a fejlesztést (rövidebben <em>R Core Team</em>). Ettől az évtől az R hivatalosan a GNU projekt része. Az <em>R Core Team</em> tagjai 2002-ben létrehozták a <a href="https://www.r-project.org/foundation/">The R Foundation for Statistical Computing</a> (rövidebben <em>The R Foundation</em>) közhasznú, nonprofit szervezetet, amelynek célja (1) az R folyamatos fejlesztésének biztosítása, és ehhez kapcsolódóan a nyílt forráskódú számítógépes statisztikai innovációk támogatása, (2) az R fejlesztői közösség (<em>R Core Team</em>) hivatalos hangjaként a felhasználók, intézmények és üzleti vállalkozások számára a kommunikáció biztosítása, és (3) az R program és dokumentációk szerzői jogainak kezelése. A szervezet rendszeresen konferenciákat, találkozókat szervez, referált folyóiratot, kézikönyveket és technikai leírásokat ad ki, valamint fenntart egy számítógépes infrastruktúrát (CRAN: levelező listákat, FTP és Webszervereket üzemeltet). Az R Foundation hivatalos oldala – egyben az R hivatalos oldala – a <a href="https://www.r-project.org/">https://www.r-project.org/</a>. Az R Foundation (és más önkéntesek) által üzemeltetett számítógépes hálózat neve a CRAN (Comprehensive R Archive Network), amely szabad hozzáférést nyújt az R legfrissebb aktuális verziójához, az R kiterjesztéseihez (a csomagokhoz) és a részletes dokumentációkhoz. A CRAN fő számítógépe Ausztriában található <a href="https://CRAN.R-project.org/">https://CRAN.R-project.org/</a>, azonban nagyon sok naponta frissülő tükör szerver érhető el világszerte (<a href="https://cran.r-project.org/mirrors.html">https://cran.r-project.org/mirrors.html</a>).</p>
+<p>Az eddigiek alapján az lehet a benyomásunk, hogy az R fejlesztője az R Core Team, és a terjesztését a CRAN-on keresztül az R Foundation végzi. Ez részben igaz, de a pontosításhoz tisztáznunk kell, hogy mit is értünk R alatt.</p>
+<p>Az R, mint programozási nyelv fejlesztője valóban az R Core Team. Az R nyelv egy rendkívül népszerű szkriptnyelv, több millióan használják világszerte. Elsősorban adatelemzésre, adatmodellezésre és grafikus megjelenítésre, vagyis arra, amit ma adattudományok (data science) alatt értünk. Azonban az R nyelv önmagában nem szoftver, hanem egy rendkívül rugalmas szkriptnyelv, amely például előírja, hogy milyen szintaktikai szabályok mentén fogalmazhatjuk meg az utasításinkat. Ahhoz, hogy az R nyelvet használni tudjuk, vagyis, hogy a számítógép valóban végre is hajtsa a szintaktikailag helyes utasításinkat, szükség van egy szoftveres környezetre, egy futtató környezetre, amely tehát a kódunkat értelmezi és végrehajtja.</p>
+<p>Az R, mint környezet három fő összetevőt összetevőt tartalmaz: (1) egy konzol, ahová a parancsainkat begépelhetjük; (2) a parancsok végrehajtásáért felelős R interpretert; (3) a csomagokat. A konzol és az interpreter biztosítja az R nyelven írt parancsok tényleges végrehajtását. Így tudunk adatokat beolvasni, átlagot számolni, varianciaelemzést futtatni, vagy publikációkész ábrákat létrehozni. A csomagok adatokat és függvényeket tartalmaznak, például a <strong>MASS</strong> csomag 88 adatobjektumot és 78 függvényt tartalmaz. A függvények valamilyen tevékenységet hajtanak végre, és valójában ezeket a csomag-függvényeket használjuk fel a konzolban, ha <strong>bármilyen tevékenységet</strong> szeretnénk végrehajtani (például adatokat beolvasni, átlagot számolni stb.). Kb. 17000 csomag érhető el az R-hez. Csomagok 3 csoportját különböztetjük meg: standard csomagok (14 db), ajánlott csomagok (15 db) és egyéb csomagok (kb. 17000 db). A standard csomagok fejlesztője az R Core Team. A standard csomagok: <strong>base</strong>, <strong>compiler</strong>, <strong>datasets</strong>, <strong>grDevices</strong>, <strong>graphics</strong>, <strong>grid</strong>, <strong>methods</strong>, <strong>parallel</strong>, <strong>splines</strong>, <strong>stats</strong>, <strong>stats4</strong>, <strong>tcltk</strong>, <strong>tools</strong>, <strong>utils</strong>. Az ajánlott csomagok: <strong>KernSmooth</strong>, <strong>MASS</strong>, <strong>Matrix</strong>, <strong>boot</strong>, <strong>class</strong>, <strong>cluster</strong>, <strong>codetools</strong>, <strong>foreign</strong>, <strong>lattice</strong>, <strong>mgcv</strong>, <strong>nlme</strong>, <strong>nnet</strong>, <strong>rpart</strong>, <strong>spatial</strong>, <strong>survival</strong>. Az ajánlot csomagok közül a <strong>foreign</strong> és az <strong>nlme</strong> fejlesztője az R Core Team, a többit más felhasználók fejlesztették, például a már említett <strong>MASS</strong> csomag fejlesztője Brian Ripley. Csomagot bárki szabadon fejleszthet és terjeszthet, ahogyan ezt nagyon sokan meg is tették. Az egyéb csomagok csoportját akár mi is gyarapíthatjuk.</p>
+<p>A R környezet már igazi szoftver, terjesztésének koordinálását valóban az R Foundation végzi a CRAN infrastruktúráján keresztül. Ez biztosítja, hogy számítógépünkre telepíthessük az R környezet. Ezt a CRAN-ról elérhető R futtatási környezetet <em>Alap R</em>-nek nevezzük. Fő komponensei a már említett konzol a parancsok begépelésére, R értelmező a begépelt parancsok végrehajtására és a csomagok közül a standard és ajánlott csomagok. Az Alap R telepítése után már tudunk R parancsokat végrehajtani, és nagyon sok adatelemzési probléma megoldására nyílik módunk, sőt azt mondhatjuk, hogy tetszőleges problémát megoldhatunk kisebb-nagyobb erőfeszítéssel, mert az R egy teljes értékű nyelv. Azonban sokszor érdemesebb az egyéb csomagok közül választani, hiszen könnyen elképzelhető, hogy a számtalan csomag között találunk olyat, amely segítségünkre lehet a speciális feladatunk megoldása során. Valószínű, hogy találunk olyan csomagot és benne olyan függvényt, amely adatelemzési, vizuális megjelenítési vagy publikálási feladatunkat jelentősen megkönnyíti. Az egyéb csomagok több tárhelyről érhetők el, ezek közül legjelentősebb az R Foundation által karbantartott CRAN (kb. 15000 csomaggal), a Bioconductor (1741 csomaggal) és a GitHub.</p>
+<p>Az egyéb csomagok között van egy gyűjtemény, amelyet Tidyverse-nek neveznek. Ez a következő csomagokat jelenti: <strong>ggplot2</strong>, <strong>purrr</strong>, <strong>tibble</strong>, <strong>dplyr</strong>, <strong>tidyr</strong>, <strong>stringr</strong>, <strong>readr</strong> és <strong>forcats</strong>. Ezek a csomagok nem egyszerűen új funkciókkal ruházzák fel az Alap R tudását, mint általában az egyéb csomagok. Ezek a csomagok konzisztens módon együttműködnek, és egy új megközelítést hoznak az adatelemzési folyamatok végrehajtásában, a kódok írásában. Rövidebb idő alatt hozhatunk létre könnyebben karbantartható kódokat, és a műveleteink végrehajtása is rendszerint gyorsabb. Amikor ebben a megközelítésben hozzuk létre és hajtjuk végre utasításinakat, akkor azt mondjuk hogy a Tidyverse R-t használjuk. Rövidítést használunk az Alap R (AR), és a Tidyverse R (TR) jelölésére. Sokszor e nélkül is kiderül, hiszen a használt csomag jelzi, hogy AR vagy TR van éppen használatban. A TR azonban nem helyettesíti az AR-t, és csak bizonyos feladatokra használható. A könyvben az AR és TR használatát párhuzamosan vezetjük be.</p>
+<p>Eddig láttuk, hogy az R használatához szükséges az Alap R telepítése, majd a speciális problémánknak megfelelően kiegészíthetjük az R tudását úgy, hogy telepítünk egyet vagy többet az egyéb csomagok kategóriájából. Választhatjuk akár a Tidyverse csomagjait is telepítésre, ugyanis így lehetőségünk nyílik a Tidyverse R használatára. Utasításaink megfogalmazásának ma ez a legmodernebb módja az R-ben. Azonban magukat az utasításokat továbbra is kötelező az konzolba gépelni? Nem. Az R-hez nagyon sok ingyenes fejlesztői környezet érhető el, amelyek alapvetően a parancsok begépelését egyszerűsítik le, és természetesen ajánlanak más kényelmi funkciókat is. A legnépszerűbb ilyen integrált felhasználói környezet az RStudio.</p>
+<p>Az R elsődleges célja, hasonlóan más statisztikai programcsomagokhoz, a statisztikai adatelemzés, amelyet most 4 részre bontunk:</p>
 <ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
+<li>adatok beolvasása,</li>
+<li>adatok előkészítése elemzésre,</li>
+<li>adatelemzés,</li>
+<li>eredmények publikálása.</li>
 </ul>
+<p>Az R a fenti 4 tevékenység elvégzését teljes körűen támogatja. A könyv célja ezek bemutatása. Ehhez azonban először a számítógépünkre telepíteni kell az Alap R és az RStudio egy-egy változatát.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="alapok.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="telepitesek.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +318,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +326,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

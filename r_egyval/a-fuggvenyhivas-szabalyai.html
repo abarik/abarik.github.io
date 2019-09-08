@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>4.1 A függvényhívás szabályai | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="4.1 A függvényhívás szabályai | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="4.1 A függvényhívás szabályai | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="fuggvenyek.html">
+<link rel="next" href="a-munkaterulet-fuggvenyei.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,196 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="a-fuggvenyhivas-szabalyai" class="section level2">
+<h2><span class="header-section-number">4.1</span> A függvényhívás szabályai</h2>
+<p>A R számos beépített függvény hívását teszi lehetővé. A függvényhívás általános alakja:</p>
+<pre class="block1"><code>függvénynév(argNév1=arg1, argNév2=arg2, ..., argNévN=argN)</code></pre>
+<p>A függvény neve ugyanazoknak a szabályoknak engedelmeskedik, amelyeket az objektumok nevénél megtárgyaltunk (lévén a függvény is egy objektum). A függvény neve után kerek zárójelben következnek a függvény argumentumai, amelyek a függvény utasításainak a bemenő paraméterei. A függvény a bemenő paraméterek alapján az utasításainak megfelelően egy visszatérési értéket fog szolgáltatni.</p>
+<p>Egy függvény hívásainál előforduló argumentumok száma és azok sorrendje igen változatos képet mutathat. Elöljáróban elmondhatjuk, hogy a függvények argumentumai alapértelmezett értékkel is rendelkezhetnek, így ezek az argumentumok elhagyhatók. Továbbá, a függvények argumentumai névvel is rendelkeznek, amelyeket ha a függvény hívásánál felhasználjuk, az argumentumok sorrendje hívásnál átrendezhető.</p>
+<p>Először tekintsük át az R alapvető matematikai függvényeit.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-51">TÁBLÁZAT 4.1: </span>Az R alapvető matematikai függvényei</caption>
+<thead>
+<tr class="header">
+<th align="left">Függvény</th>
+<th align="left">Leírás</th>
+<th align="left">Példa</th>
+<th align="left">Példa értéke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>abs(x)</code></td>
+<td align="left">abszolútérték függvény</td>
+<td align="left"><code>abs(-1)</code></td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>sign(x)</code></td>
+<td align="left">előjel függvény</td>
+<td align="left"><code>sign(pi)</code></td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sqrt(x)</code></td>
+<td align="left">négyzetgyök függvény</td>
+<td align="left"><code>sqrt(9+16)</code></td>
+<td align="left"><code>5</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>exp(x)</code></td>
+<td align="left">exponenciális függvény</td>
+<td align="left"><code>exp(1)</code></td>
+<td align="left"><code>2.718282</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>log(x)</code></td>
+<td align="left">természetes alapú logaritmus</td>
+<td align="left"><code>log(exp(3))</code></td>
+<td align="left"><code>3</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>log(x,base)</code></td>
+<td align="left">tetszőleges alapú logaritmus</td>
+<td align="left"><code>log(100, 10)</code></td>
+<td align="left"><code>2</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>log10(x)</code> <code>log2(x)</code></td>
+<td align="left">10-es és 2-es alapú logaritmus</td>
+<td align="left"><code>log10(1000); log2(256)</code></td>
+<td align="left"><code>3</code> <code>8</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>cos(x)</code></td>
+<td align="left">koszinusz függvény (x radiánban mért)</td>
+<td align="left"><code>cos(pi)</code></td>
+<td align="left"><code>-1</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sin(x)</code></td>
+<td align="left">szinusz függvény (x radiánban mért)</td>
+<td align="left"><code>sin(pi/2)</code></td>
+<td align="left"><code>1</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>tan(x)</code></td>
+<td align="left">tangens függvény (x radiánban mért)</td>
+<td align="left"><code>tan(0)</code></td>
+<td align="left"><code>0</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>acos(x)</code> <code>asin(x)</code> <code>atan(x)</code></td>
+<td align="left">inverz trigonometrikus függvények (x radiánban mért)</td>
+<td align="left"><code>2*asin(1); acos(-1); atan(pi)</code></td>
+<td align="left"><code>3.141593</code> <code>3.141593</code> <code>1.262627</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>cosh(x)</code> <code>sinh(x)</code> <code>tanh(x)</code></td>
+<td align="left">hiperbolikus trigonometrikus függvények</td>
+<td align="left"><code>cosh(0); sinh(0); tanh(0)</code></td>
+<td align="left"><code>1</code> <code>0</code> <code>0</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>acosh(x)</code> <code>asinh(x)</code> <code>atanh(x)</code></td>
+<td align="left">inverz hiperbolikus trigonometrikus függvények</td>
+<td align="left"><code>acosh(0); asinh(0); atanh(0)</code></td>
+<td align="left"><code>NaN</code> <code>0</code> <code>0</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>round(x, digits=0)</code></td>
+<td align="left">kerekítés adott tizedesre</td>
+<td align="left"><code>round(1.5); round(-1.5)</code></td>
+<td align="left"><code>2</code> <code>-2</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>floor(x)</code></td>
+<td align="left">x-nél kisebb, legnagyobb egész</td>
+<td align="left"><code>floor(1.5); floor(-1.5)</code></td>
+<td align="left"><code>1</code> <code>-2</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>ceiling(x)</code></td>
+<td align="left">x-nél nagyobb, legkisebb egész</td>
+<td align="left"><code>ceiling(1.5); ceiling(-1.5)</code></td>
+<td align="left"><code>2</code> <code>-1</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>trunc(x)</code></td>
+<td align="left">az x-hez legközelebbi egész x és 0 között</td>
+<td align="left"><code>trunc(1.5); trunc(-1.5)</code></td>
+<td align="left"><code>1</code> <code>-1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Nézzük meg részletesebben a <code>log()</code> függvényt. Ha kikérjük a súgóját <code>?log</code> parancs begépelésével, akkor megtudhatjuk, hogy ez a legáltalánosabb logaritmus függvény, tetszőleges alap esetén hívható. Számunkra most a legfontosabb a súgónak az sora, amely a logaritmus függvény használatát mutatja: <code>log(x, base=exp(1))</code>.</p>
+<p>Ebből kiolvasható, hogy a <code>log()</code> függvénynek 2 paramétere van. Az elsőt <code>x</code>-nek, a másodikat <code>base</code>-nek nevezik. A második paraméter alapértelmezett értékkel is rendelkezik, tehát ez a paraméter a hívásnál elhagyható, míg az <code>x=</code> argumentum megadása kötelező. A <code>base=</code> paraméter értéke könnyen kideríthető az</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" title="1"><span class="kw">exp</span>(<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## [1] 2.718282</code></pre>
+<p>parancsból. Ezt az irracionális számot a matematikában <em>e</em>-vel jelöljük, és a természetes alapú logaritmus alapjának nevezzük.</p>
+<p>Vagyis, ha nem határozzuk meg a második paramétert, akkor a <code>log()</code> függvény, természetes alap estén számítja az <code>x=</code> logaritmusát.</p>
+<p>Ezek alapján 2 természetes alapú logaritmusát a</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1"><span class="kw">log</span>(<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] 0.6931472</code></pre>
+<p>függvényhívás adja meg. Azt is megtehetjük, hogy felhasználjuk hívásnál az argumentum nevét (<code>x</code>), és egy egyenlőségjel (<code>=</code>) felhasználásával ezt a 2 elé szúrjuk be. A</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1"><span class="kw">log</span>(<span class="dt">x=</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] 0.6931472</code></pre>
+<p>sor természetesen ugyanazt az eredményt szolgáltatja, csak most explicit módon közöltük, hogy az aktuális paraméterben szereplő 2-es értéket az <code>x=</code> nevű formális paraméternek feleltetjük meg. Ez most felesleges gépelést jelentett és általában is elmondhatjuk, hogy matematikai függvények esetében az oly gyakori <code>x=</code> argumentumnevet szokás szerint nem használjuk az aktuális paraméterek elnevezésére.</p>
+<p>Hívjuk most két argumentummal a <code>log()</code> függvényt. A 100 10-es alapú logaritmusát a</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">log</span>(<span class="dv">100</span>, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>parancsból olvashatjuk ki. A függvényhívásnál az <code>x=</code> formális argumentum a 100, a <code>base=</code> pedig a 10 értéket kapja. Természetesen ezt a hívásnál mi is rögzíthetjük a világosabb értelmezés kedvéért saját magunk számára a</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1"><span class="kw">log</span>(<span class="dv">100</span>, <span class="dt">base=</span><span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>vagy akár</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">log</span>(<span class="dt">x=</span><span class="dv">100</span>, <span class="dt">base=</span><span class="dv">10</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>formában is.</p>
+<p>Arra is lehetőség van, hogy megcseréljük az aktuális paraméterek sorrendját. A legbiztonságosabb ekkor az összes paraméter nevesítése,</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1"><span class="kw">log</span>(<span class="dt">base=</span><span class="dv">10</span>, <span class="dt">x=</span><span class="dv">100</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>de két argumentum esetén így is egyértelmű a hozzárendelés:</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" title="1"><span class="kw">log</span>(<span class="dt">base=</span><span class="dv">10</span>, <span class="dv">100</span>); <span class="kw">log</span>(<span class="dv">10</span>, <span class="dt">x=</span><span class="dv">100</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 2</code></pre>
+<p>Ha az argumentumok nevesítése nélkül cseréljük fel az aktuális paramétereket, akkor természetesen nemvárt eredményt kapunk, mert az a 10 szám 100-as alapú logaritmusa lesz.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">log</span>(<span class="dv">10</span>, <span class="dv">100</span>)</a></code></pre></div>
+<pre><code>## [1] 0.5</code></pre>
+<p>Kényelmi lehetőség az aktuális paraméterek elnevezésénél, hogy rövidítéseket is használhatunk, addig csonkolhatjuk az argumentum nevét, amíg az argumentumok egyértelműen azonosíthatók maradnak. Így a példában akár a <code>b=</code>-vel is helyettesíthetjük a <code>base=</code> argumentumnevet:</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">log</span>(<span class="dt">b=</span><span class="dv">10</span>, <span class="dv">100</span>)</a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Mint korábban említettük, az <code>x=</code> argumentum nem rendelkezik alapértelmezett értékkel, így paraméter nélkül nem hívható a <code>log()</code> függvény.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">log</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1"><span class="co">## Error: argument &quot;x&quot; is missing, with no default</span></a></code></pre></div>
+<p>A fenti hibaüzenethez hasonlót láthatunk, ha egy függvényt hibás paraméterszámmal hívunk.</p>
+<p>Eddig a függvények aktuális paramétereiként csak numerikus konstansokat használtunk, pedig tetszőleges kifejezéseket is megadhatunk. A függvényhívása előtt ezek kiértékelődnek és a hívás során ezek az értékek rendelődnek a formális paraméterekhez.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">alap &lt;-<span class="st"> </span><span class="dv">10</span>; <span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">1</span>)); <span class="kw">log</span>(<span class="kw">exp</span>(<span class="dv">4</span>), <span class="dt">base=</span>alap); <span class="kw">log</span>(<span class="dv">2</span><span class="op">*</span><span class="kw">exp</span>(<span class="dv">2</span>), <span class="dt">b=</span>alap<span class="op">/</span><span class="dv">2</span>)</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 1.737178</code></pre>
+<pre><code>## [1] 1.673346</code></pre>
+<p>A fenti példa a következő numerikus konstansokkal történő hívásoknak felel meg:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">log</span>(<span class="fl">2.718282</span>); <span class="kw">log</span>(<span class="fl">54.59815</span>, <span class="dt">base=</span><span class="dv">10</span>); <span class="kw">log</span>(<span class="fl">14.77811</span>, <span class="dt">base=</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 1.737178</code></pre>
+<pre><code>## [1] 1.673346</code></pre>
+<p>Mostanra rendelkezünk elég ismerettel, hogy a kifejezés fogalmát pontosíthassuk: egy konstans, egy objektum vagy egy függvényhívás önmagában kifejezés, de ezek operátorokkal és kerekzárójelekkel helyesen összefűzött sorozata is kifejezés.</p>
+<p>Az R nyelv parancsai, vagy más néven utasításai lényegében kifejezések. Az R nyelvben egy parancs végrehajtása lényegében egy kifejezés kiértékelését jelenti, és a legtöbb esetben a kifejezés értékének megjelenítését a konzolban.</p>
+<p>A munka során az R értelmező az utasítások egymás utáni kiértékelését végzi. Az utasításokat újsor karakter vagy pontosvessző választhatja el. A szintaktikailag helyes utasítások kiértékelése mindig egy értéket eredményez, ez lesz az utasítás értéke. Még akkor is rendelkezik értékkel az utasításunk, ha az nem jelenik meg a parancssorban, például az értékadó utasítás értéke a jobb oldali kifejezés értéke. Ezért írhatjuk a következő parancsot:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">y &lt;-<span class="st"> </span>x &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb107-2" title="2">x; y</a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<pre><code>## [1] 10</code></pre>
+<p>Amennyiben egy értékadás, mint kifejezés értékét szeretnénk megjeleníteni a konzolban, akkor tegyük kerekzárójelbe a teljes sort:</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1">(x &lt;-<span class="st"> </span><span class="dv">20</span>)</a></code></pre></div>
+<pre><code>## [1] 20</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="fuggvenyek.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="a-munkaterulet-fuggvenyei.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +483,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +491,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

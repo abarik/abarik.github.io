@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>5.8 Tibble | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="5.8 Tibble | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="5.8 Tibble | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="adattabla-dataframe.html">
+<link rel="next" href="feladatok-3.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,110 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="tibble" class="section level2">
+<h2><span class="header-section-number">5.8</span> Tibble</h2>
+<p>A Tidyverse R használata során az adatainkat tibble típusú objektumban tároljuk. Használatához töltsük be a <strong>tidyverse</strong> csomagot.</p>
+<div class="sourceCode" id="cb728"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb728-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb728-2" title="2">x &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&#39;A&#39;</span>,<span class="st">&#39;B&#39;</span>), <span class="dt">times=</span><span class="dv">4</span>); y &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">9</span>, <span class="dt">times=</span><span class="dv">2</span>); z &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">8</span></a>
+<a class="sourceLine" id="cb728-3" title="3">d.tbl &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">nev=</span>x, <span class="dt">pont.1=</span>y, <span class="dt">pont.2=</span>z)</a>
+<a class="sourceLine" id="cb728-4" title="4">d.tbl</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 3
+##   nev   pont.1 pont.2
+##   &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;
+## 1 A          6      1
+## 2 B          7      2
+## 3 A          8      3
+## 4 B          9      4
+## 5 A          6      5
+## 6 B          7      6
+## 7 A          8      7
+## 8 B          9      8</code></pre>
+<p>A tibble objektumok alaptípusa lista, de az osztálytípusok között megjelennek a tibble-re specifikus osztályok is. A A <code>tbl_df</code> osztály jelenléte hozza magával azokat az új tulajdonságokat és lehetőségeket, amit a Tidyverse R központi adatszerkezetévé teszi ezt az objektumtípust.</p>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb730-1" title="1"><span class="kw">attributes</span>(d.tbl)</a></code></pre></div>
+<pre><code>## $names
+## [1] &quot;nev&quot;    &quot;pont.1&quot; &quot;pont.2&quot;
+## 
+## $row.names
+## [1] 1 2 3 4 5 6 7 8
+## 
+## $class
+## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb732-1" title="1"><span class="kw">typeof</span>(d.tbl); <span class="kw">class</span>(d.tbl)</a></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<p>A tibble és a data frame típusú objektumok között az átjárhatóságot az <code>as_tibble()</code> és az <code>as.data.frame()</code> függvény biztosítja.</p>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb735-1" title="1"><span class="kw">as_tibble</span>(d.df)</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 3
+##   X         Y     Z
+##   &lt;fct&gt; &lt;int&gt; &lt;int&gt;
+## 1 A         6     1
+## 2 B         7     2
+## 3 A         8     3
+## 4 B         9     4
+## 5 A         6     5
+## 6 B         7     6
+## 7 A         8     7
+## 8 B         9     8</code></pre>
+<div class="sourceCode" id="cb737"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb737-1" title="1"><span class="kw">as.data.frame</span>(d.tbl)</a></code></pre></div>
+<pre><code>##   nev pont.1 pont.2
+## 1   A      6      1
+## 2   B      7      2
+## 3   A      8      3
+## 4   B      9      4
+## 5   A      6      5
+## 6   B      7      6
+## 7   A      8      7
+## 8   B      9      8</code></pre>
+<p>A tibble típus tesztelése az <code>is_tibble()</code> segítségével történik, de a tibble típusú objektumokra az <code>is.data.frame()</code> is igaz értékkel tér vissza:</p>
+<div class="sourceCode" id="cb739"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb739-1" title="1"><span class="kw">is_tibble</span>(d.tbl); <span class="kw">is.data.frame</span>(d.tbl)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Melyek a data frame és a tibble közötti különbségek? Már három eltérést akár észre is vehettünk. Az első a tibble létrehozásához kötődik. Egy tibble típusú objektum, csak azonos hosszúságú oszlopvektorokból hozható létre, így biztonságosabban konstruálható, mint az ismétlést is támogató data frame típusú objektumok. Tibble esetében csak az egy hosszú vektorok ismétlése megengedett. Tehát ez a konstrukció működik:</p>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb742-1" title="1"><span class="kw">tibble</span>(<span class="dt">a=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>), <span class="dt">p=</span><span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##   a         p
+##   &lt;chr&gt; &lt;dbl&gt;
+## 1 a         1
+## 2 b         1
+## 3 c         1</code></pre>
+<p>A második különbség, hogy a tibble a létrehozás során nem végez automatikus típuskonverziót. Tehát a karakteres vektorokat nem alakítja át faktorokká.</p>
+<div class="sourceCode" id="cb744"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb744-1" title="1"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    8 obs. of  3 variables:
+##  $ nev   : chr  &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; ...
+##  $ pont.1: int  6 7 8 9 6 7 8 9
+##  $ pont.2: int  1 2 3 4 5 6 7 8</code></pre>
+<p>A harmadik különbség az adatok megjelenítésében van. Tibble esetében csak az első 10 sor jelenik meg, és annyi oszlop, amennyi az aktuális képernyőre kifér. A több oszlop neve alul jelenik meg. Az oszlopnevek alatt az oszlop típusa is megjelenik.</p>
+<p>A negyedik eltérés a tibble indexeléséhez kötődik. Az <code>[</code> operátor használata során minden esetben tibble típusú objektumot kapunk, nem kaphatunk vektort, azaz nem történhet dimenzióvesztés.</p>
+<div class="sourceCode" id="cb746"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb746-1" title="1">d.tbl[, <span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## # A tibble: 8 x 1
+##   pont.1
+##    &lt;int&gt;
+## 1      6
+## 2      7
+## 3      8
+## 4      9
+## 5      6
+## 6      7
+## 7      8
+## 8      9</code></pre>
+<div class="sourceCode" id="cb748"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb748-1" title="1">d.tbl[<span class="dv">1</span>, ]</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 3
+##   nev   pont.1 pont.2
+##   &lt;chr&gt;  &lt;int&gt;  &lt;int&gt;
+## 1 A          6      1</code></pre>
+<div class="sourceCode" id="cb750"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb750-1" title="1">d.tbl[<span class="dv">1</span>, <span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   pont.1
+##    &lt;int&gt;
+## 1      6</code></pre>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="adattabla-dataframe.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="feladatok-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +397,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +405,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

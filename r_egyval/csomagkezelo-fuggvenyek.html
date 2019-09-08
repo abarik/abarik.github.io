@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>4.4 Csomagkezelő függvények | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="4.4 Csomagkezelő függvények | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="4.4 Csomagkezelő függvények | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="a-munkakonyvtar-fuggvenyei.html">
+<link rel="next" href="feladatok-2.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
-<ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
-</ul>
+<div id="csomagkezelo-fuggvenyek" class="section level2">
+<h2><span class="header-section-number">4.4</span> Csomagkezelő függvények</h2>
+<p>Korábban megbeszéltük, hogy a csomagok adatobjektumokat és függvényeket tartalmaznak. Az ún. egyéb csomagok (számuk kb. 17000) elsődleges célja az Alap R tudásának kiegészítése.</p>
+<p>Az R indítása után néhány csomag automatikusan betöltésre kerül a standard csomagok közül. Ezeket a csomagokat és egyéb ún. környezeteket listázhatunk ki a <code>search()</code> függvénnyel.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">search</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1"><span class="co">## [1] &quot;.GlobalEnv&quot;        &quot;package:stats&quot;     &quot;package:graphics&quot; </span></a>
+<a class="sourceLine" id="cb121-2" title="2"><span class="co">## [4] &quot;package:grDevices&quot; &quot;package:utils&quot;     &quot;package:datasets&quot; </span></a>
+<a class="sourceLine" id="cb121-3" title="3"><span class="co">## [7] &quot;package:methods&quot;   &quot;Autoloads&quot;         &quot;package:base&quot;</span></a></code></pre></div>
+<p>A fenti eredményben a <code>package</code> karaktersorozattal kezdődő elemek mutatják, hogy melyek az éppen betöltött csomagok. A listában nem szereplő, de korábban telepített csomagok betöltéséhez használjuk a <code>library()</code> vagy <code>require()</code> függvényeket.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">library</span>(MASS)</a>
+<a class="sourceLine" id="cb122-2" title="2"><span class="kw">require</span>(foreign)</a>
+<a class="sourceLine" id="cb122-3" title="3"><span class="kw">search</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:foreign&quot;  
+##  [3] &quot;package:gdtools&quot;   &quot;package:gridExtra&quot;
+##  [5] &quot;package:extrafont&quot; &quot;package:rio&quot;      
+##  [7] &quot;package:forcats&quot;   &quot;package:stringr&quot;  
+##  [9] &quot;package:dplyr&quot;     &quot;package:purrr&quot;    
+## [11] &quot;package:readr&quot;     &quot;package:tidyr&quot;    
+## [13] &quot;package:ggplot2&quot;   &quot;package:tidyverse&quot;
+## [15] &quot;package:tibble&quot;    &quot;package:MASS&quot;     
+## [17] &quot;tools:rstudio&quot;     &quot;package:stats&quot;    
+## [19] &quot;package:graphics&quot;  &quot;package:grDevices&quot;
+## [21] &quot;package:utils&quot;     &quot;package:datasets&quot; 
+## [23] &quot;package:methods&quot;   &quot;Autoloads&quot;        
+## [25] &quot;package:base&quot;</code></pre>
+<p>A fenti példában a <strong>MASS</strong> és a <strong>foreign</strong> csomag betöltését és annak hatását követhetjük nyomon a <code>search()</code> függvény ouputjára. Egy csomag betöltése azt jelenti, hogy a csomagban lévő függvényeket és objektumok a memóriába kerültek, azokat a parancsainkban ezután szabadon felhasználhatjuk.</p>
+<p>Egy adott csomagban (esetünkben a <strong>foreign</strong> csomagban) lévő függvények és objektumok a</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">library</span>(<span class="dt">help=</span>foreign)</a></code></pre></div>
+<p>vagy a</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">help</span>(<span class="dt">package=</span>foreign)</a></code></pre></div>
+<p>paranccsal kérdezhetők le. Betöltött csomagok esetében használhatjuk az</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">ls</span>(<span class="dt">name=</span><span class="st">&quot;package:foreign&quot;</span>, <span class="dt">all.names =</span> T)</a></code></pre></div>
+<pre><code>##  [1] &quot;data.restore&quot;  &quot;lookup.xport&quot;  &quot;read.arff&quot;    
+##  [4] &quot;read.dbf&quot;      &quot;read.dta&quot;      &quot;read.epiinfo&quot; 
+##  [7] &quot;read.mtp&quot;      &quot;read.octave&quot;   &quot;read.S&quot;       
+## [10] &quot;read.spss&quot;     &quot;read.ssd&quot;      &quot;read.systat&quot;  
+## [13] &quot;read.xport&quot;    &quot;write.arff&quot;    &quot;write.dbf&quot;    
+## [16] &quot;write.dta&quot;     &quot;write.foreign&quot;</code></pre>
+<p>parancsot is, amely a csomag adatobjektumainak és függvényeinek a nevét listázza.</p>
+<p>Betöltött csomagot a <code>detach()</code> függvénnyel távolíthatunk el a memóriából:</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1"><span class="kw">detach</span>(package<span class="op">:</span>foreign)</a>
+<a class="sourceLine" id="cb128-2" title="2"><span class="kw">search</span>()</a></code></pre></div>
+<pre><code>##  [1] &quot;.GlobalEnv&quot;        &quot;package:gdtools&quot;  
+##  [3] &quot;package:gridExtra&quot; &quot;package:extrafont&quot;
+##  [5] &quot;package:rio&quot;       &quot;package:forcats&quot;  
+##  [7] &quot;package:stringr&quot;   &quot;package:dplyr&quot;    
+##  [9] &quot;package:purrr&quot;     &quot;package:readr&quot;    
+## [11] &quot;package:tidyr&quot;     &quot;package:ggplot2&quot;  
+## [13] &quot;package:tidyverse&quot; &quot;package:tibble&quot;   
+## [15] &quot;package:MASS&quot;      &quot;tools:rstudio&quot;    
+## [17] &quot;package:stats&quot;     &quot;package:graphics&quot; 
+## [19] &quot;package:grDevices&quot; &quot;package:utils&quot;    
+## [21] &quot;package:datasets&quot;  &quot;package:methods&quot;  
+## [23] &quot;Autoloads&quot;         &quot;package:base&quot;</code></pre>
+<p>Ha a használni kívánt csomag még nincs telepítve a számítógépünkre, akkor a @ref(Csomagok_telepitese) fejeztben ismertetett módok egyikét válasszuk, attól függően, hogy a csomag melyik tárhelyről érhető el.</p>
+<p>A CRAN-ról elérhető csomagok közül telepítsük fel a <strong>DescTools</strong> és <strong>psych</strong> csomagokat:</p>
+<pre class="reval"><code>install.packages(&quot;DescTools&quot;)
+install.packages(&quot;psych&quot;)</code></pre>
+<p>A számítógépünkön telepített csomagokról az <code>installed.packages()</code> függvény ad tájékoztatást. Amennyiben a</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1">csomagok &lt;-<span class="st"> </span><span class="kw">installed.packages</span>()</a>
+<a class="sourceLine" id="cb131-2" title="2"><span class="kw">View</span>(csomagok)                    <span class="co"># RStudio-ban vagy RGui-ban</span></a></code></pre></div>
+<p>parancsot kiadjuk az RStudio-ban, akkor csomagjainkat kényelmesen áttekinthetjük.</p>
+<p>Csomagok frissítésére használjuk az</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1"><span class="kw">update.packages</span>()</a></code></pre></div>
+<p>parancsot.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="a-munkakonyvtar-fuggvenyei.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="feladatok-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +366,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +374,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

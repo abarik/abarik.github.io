@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>5.2 Adatszerkezetek áttekintése | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="5.2 Adatszerkezetek áttekintése | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="5.2 Adatszerkezetek áttekintése | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="konstansok.html">
+<link rel="next" href="vektor.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,41 +257,172 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
+<div id="adatszerkezetek-attekintese" class="section level2">
+<h2><span class="header-section-number">5.2</span> Adatszerkezetek áttekintése</h2>
+<p>Az előző fejezetben láttuk, hogy az R-ben leírható értékek alapvetően 4 típusba sorolhatók. Ezek az integer, a double, a karakteres és a logikai alaptípusok voltak. Ezen értékek felhasználásával nagyon egyszerűen tudunk objektumokat létrehozni. Ezek az objektumok, mindjárt látjuk, az R legalapvetőbb adatszerkezetének, a vektornak az egyelemű változatai.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" title="1">obj.integer    &lt;-<span class="st"> </span>12L</a>
+<a class="sourceLine" id="cb202-2" title="2">obj.double     &lt;-<span class="st"> </span><span class="fl">12.03</span></a>
+<a class="sourceLine" id="cb202-3" title="3">obj.karakteres &lt;-<span class="st"> &#39;Péter&#39;</span></a>
+<a class="sourceLine" id="cb202-4" title="4">obj.logikai    &lt;-<span class="st"> </span><span class="ot">TRUE</span></a></code></pre></div>
+<p>A fenti objektumok alaptípusa rendre integer, double, karakteres és logikai. Ezt könnyen ellenőrizhetjük a <code>typeof()</code> vagy <code>class()</code> függvényekkel. A <code>typeof()</code> az objektum alaptípusát adja meg, a <code>class()</code> pedig inkább az R objektum-orientált lehetőségeihez kapcsolódó függvény, de a fenti objektumok esetében nagyon hasonló eredményt szolgáltat. Egyedül a double objektumokok esetén tér el a visszatérési értéke, <code>class()</code> ugyanis ekkor a <code>numeric</code> outputot adja.</p>
+<p>Az adatelemzési problémáink megoldásához azonban egyszerre több adatérték feldolgozása szükséges. Mivel az R nyelvet statisztikai adatfeldolgozásra tervezték, így nem csodálkozhatunk, hogy több értéket is eltárolhatunk egymás utáni memóriahelyeken a fenti 4 alaptípusból. Ezt többféleképp megtehetjük, így kapjuk meg az R különböző adatszerkezeteit, amelyeket tipikusan mért vagy származtatott adatok tárolására használunk:</p>
 <ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
+<li>vektor<br />
+Azonos alaptípusú értékeket egymás után teszünk, egyvonalba, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>mátrix<br />
+Azonos alaptípusú értékekből egy kétdimenziós szerkezetet hozunk létre, amelynek vannak sorai és oszlopai, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>tömb<br />
+Azonos alaptípusú értékekből 3 vagy több dimenzió mentén készítünk adatszerkezetet, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>faktor<br />
+Integer értékeket egymás után teszünk, egyvonalba, de megadjuk, hogy melyik szám milyen címkét jelöl, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>dátum<br />
+Egyetlen double szám, amelynek jelentése az 1970-01-01 óta eltelt napok száma</li>
+<li>dátum-idő<br />
+Egyetlen double szám, amelynek jelentése az 1970-01-01 óta eltelt másodpercek száma</li>
+<li>időtartam<br />
+Egyetlen double szám, amelynek különböző mértékegységekben mutatja két időpont közötti különbséget</li>
+<li>lista<br />
+Tetszőleges típusú objektumokat egymás után teszünk, tipikusan mért vagy származtatott adatok tárolása céljából</li>
+<li>dataframe<br />
+Tetszőleges típusú, de azonos elemszámú típusú objektumokat egymás után teszünk</li>
+<li>tibble<br />
+A Tidyverse R dataframe típusa.</li>
+</ul>
+<p>A <a href="adatszerkezetek.html#adatszerkezetek">5</a> táblázatban bemutatjuk az R legfontosabb adatszerkezeteit, és példát mutatunk ilyen típusú objektumok létrehozására is. Közöljük, hogy a <code>typeof()</code> és a <code>class()</code> milyen outputot szolgáltat, az így létrehozott objektumok esetében.</p>
+<table>
+<caption><span id="tab:adatszerkezetek">TÁBLÁZAT 5.5: </span>Adatszerkezetek az R-ben</caption>
+<thead>
+<tr class="header">
+<th align="left">Adatszerkezet</th>
+<th align="left">Létrehozó parancs</th>
+<th align="left">typeof(x)</th>
+<th align="left">class(x)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">integer vektor</td>
+<td align="left"><code>x &lt;- c(12L, 14L)</code></td>
+<td align="left"><code>integer</code></td>
+<td align="left"><code>integer</code></td>
+</tr>
+<tr class="even">
+<td align="left">double vektor</td>
+<td align="left"><code>x &lt;- c(12, 14)</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>numeric</code></td>
+</tr>
+<tr class="odd">
+<td align="left">karakteres vektor</td>
+<td align="left"><code>x &lt;- c('a', 'az', 'egy')</code></td>
+<td align="left"><code>character</code></td>
+<td align="left"><code>character</code></td>
+</tr>
+<tr class="even">
+<td align="left">logikai vektor</td>
+<td align="left"><code>x &lt;- c(T, TRUE, FALSE, F)</code></td>
+<td align="left"><code>logical</code></td>
+<td align="left"><code>logical</code></td>
+</tr>
+<tr class="odd">
+<td align="left">integer mátrix</td>
+<td align="left"><code>x &lt;- matrix(1L, nrow=2, ncol = 3)</code></td>
+<td align="left"><code>integer</code></td>
+<td align="left"><code>matrix</code></td>
+</tr>
+<tr class="even">
+<td align="left">double mátrix</td>
+<td align="left"><code>x &lt;- matrix(1.3, nrow=2, ncol = 3)</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>matrix</code></td>
+</tr>
+<tr class="odd">
+<td align="left">karakteres mátrix</td>
+<td align="left"><code>x &lt;- matrix('az', nrow=2, ncol = 3)</code></td>
+<td align="left"><code>character</code></td>
+<td align="left"><code>matrix</code></td>
+</tr>
+<tr class="even">
+<td align="left">logikai mátrix</td>
+<td align="left"><code>x &lt;- matrix(F, nrow=2, ncol = 3)</code></td>
+<td align="left"><code>logical</code></td>
+<td align="left"><code>matrix</code></td>
+</tr>
+<tr class="odd">
+<td align="left">integer tömb</td>
+<td align="left"><code>x &lt;- array(2L, dim=c(2,3,5))</code></td>
+<td align="left"><code>integer</code></td>
+<td align="left"><code>array</code></td>
+</tr>
+<tr class="even">
+<td align="left">double tömb</td>
+<td align="left"><code>x &lt;- array(2, dim=c(2,3,5))</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>array</code></td>
+</tr>
+<tr class="odd">
+<td align="left">karakteres tömb</td>
+<td align="left"><code>x &lt;- array('a', dim=c(2,3,5))</code></td>
+<td align="left"><code>character</code></td>
+<td align="left"><code>array</code></td>
+</tr>
+<tr class="even">
+<td align="left">logikai tömb</td>
+<td align="left"><code>x &lt;- array(T, dim=c(2,3,5))</code></td>
+<td align="left"><code>logical</code></td>
+<td align="left"><code>array</code></td>
+</tr>
+<tr class="odd">
+<td align="left">faktor</td>
+<td align="left"><code>x &lt;- factor(c('D', 'D', 'ND'), level=c('ND', 'D', 'ED'))</code></td>
+<td align="left"><code>integer</code></td>
+<td align="left"><code>factor</code></td>
+</tr>
+<tr class="even">
+<td align="left">dátum</td>
+<td align="left"><code>x &lt;- as.Date('1971-05-09')</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>Date</code></td>
+</tr>
+<tr class="odd">
+<td align="left">dátum-idő</td>
+<td align="left"><code>x &lt;- as.POSIXct('2018-08-01 22:00', tz = 'UTC')</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>POSIXct POSIXt</code></td>
+</tr>
+<tr class="even">
+<td align="left">időtartam</td>
+<td align="left"><code>x &lt;- as.difftime(7, units = 'days')</code></td>
+<td align="left"><code>double</code></td>
+<td align="left"><code>difftime</code></td>
+</tr>
+<tr class="odd">
+<td align="left">lista</td>
+<td align="left"><code>x &lt;- list(A='Pék', B=1:2)</code></td>
+<td align="left"><code>list</code></td>
+<td align="left"><code>list</code></td>
+</tr>
+<tr class="even">
+<td align="left">dataframe</td>
+<td align="left"><code>x &lt;- data.frame(nev=c('a', 'b'), pont=c(11, 9))</code></td>
+<td align="left"><code>list</code></td>
+<td align="left"><code>data.frame</code></td>
+</tr>
+<tr class="odd">
+<td align="left">tibble</td>
+<td align="left"><code>x &lt;- tibble(x=1:3, y=letters[1:3])</code></td>
+<td align="left"><code>list</code></td>
+<td align="left"><code>tbl_df tbl data.frame</code></td>
+</tr>
+</tbody>
+</table>
+<p>A következőben részletesen áttekintjük az R adatszerkezeteit. Mindegyik esetben megvizsgáljuk:</p>
 <ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
+<li>hogyan hozhatjuk létre az adott adatszerkezetű objektumot</li>
+<li>hogyan tesztelhetjük, hogy az adott típusú objektumról van szó</li>
+<li>hogyan konvertálhatunk más adatszerkezetekből ilyen típusú objektumot</li>
+<li>milyen műveletekben vehet részt</li>
+<li>hogya érhetjük el az objektum részeit.</li>
 </ul>
 </div>
             </section>
@@ -299,8 +430,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="konstansok.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="vektor.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +468,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +476,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

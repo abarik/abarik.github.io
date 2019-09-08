@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal</title>
-  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <title>3.2 Objektumok | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:title" content="3.2 Objektumok | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
-  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Az R alaptudás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta name="twitter:title" content="3.2 Objektumok | Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben" />
   
-  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás pszichológiai példákkal." />
   <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Abari Kálmán" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="alapelvek-az-r-hasznalatahoz.html">
-<link rel="next" href="a-modern-r.html">
+<link rel="prev" href="szamolas-az-r-ben.html">
+<link rel="next" href="feladatok-1.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
@@ -125,7 +125,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+<li><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Adatmanipuláció és egyváltozós statisztikai vizsgálatok R-ben</a>
           </h1>
         </div>
 
@@ -257,50 +257,86 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="Ralaptudas" class="section level2">
-<h2><span class="header-section-number">1.3</span> Az R alaptudás</h2>
-<p>Melyek az R-ben való munkavégzéshez nélkülözhetetlen alapismeretek? Meggyőződésem, ha a lentebb felsorolt témakörökkel tisztában vagyunk, akkor már biztos R tudással rendelkezünk, és bármilyen további R témakör könnyen elsajátítható. Később visszatérhetünk ehhez a listához, és ellenőrizhetjük, hány elemet tudunk kipipálni.</p>
-<p><strong>Az R alaptudás elemei:</strong></p>
+<div id="objektumok" class="section level2">
+<h2><span class="header-section-number">3.2</span> Objektumok</h2>
+<p>Ha egy kifejezés értéket nem egyszerűen a képernyőn szeretnénk megjeleníteni, hanem azt később is fel akarjuk használni, akkor objektumokat kell létrehoznunk. A memóriában tárolt adatok elérésére az R-ben objektumneveken keresztül lehetséges. (Más programozási nyelvekben ezt változónak nevezik, kerüljük ezt az elnevezést a statisztikában használt és így foglalt változó fogalom miatt.)</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="dv">1157</span><span class="op">/</span><span class="dv">13</span><span class="op">+</span><span class="dv">2</span><span class="op">^</span><span class="dv">3</span> </a></code></pre></div>
+<pre><code>## [1] 97</code></pre>
+<p>Tudjuk, ha a fenti aritmetikai kifejezést a parancssorba írjuk, az R miután kiértékelte a kifejezést, a kifejezés értékét a megjeleníti a konzolban. Ez az érték azonban a megjelenítés után rögtön el is vész, többször nem használhatjuk fel.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1157</span><span class="op">/</span><span class="dv">13</span><span class="op">+</span><span class="dv">2</span><span class="op">^</span><span class="dv">3</span> </a></code></pre></div>
+<p>Ha azonban létrehozunk egy <code>x</code> nevű objektumot a fenti módon, akkor ezt az értéket további kifejezésekben is szerepeltethetjük. Minden olyan helyen, ahol eddig számok jelentek meg a kifejezésekben, oda ez az <code>x</code> objektumnév is beírható.</p>
+<p>Írhatjuk tehát a következőket:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1">x<span class="op">+</span><span class="dv">2</span></a></code></pre></div>
+<pre><code>## [1] 99</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="dv">2</span><span class="op">*</span>x<span class="op">^</span><span class="dv">3</span><span class="op">+</span><span class="dv">5</span></a></code></pre></div>
+<pre><code>## [1] 1825351</code></pre>
+<p>Minden objektumnak van neve és tartozik hozzá a memóriában egy terület, ahol a kérdéses érték tárolásra kerül. Esetünkben az objektum neve <code>x</code> a hozzá tartozó memóriaterületen pedig a 97 értéket tárolja az R.</p>
+<p>Az objektumok kezeléséhez 3 művelet kapcsolódik közvetlenül:</p>
 <ul>
-<li>Az RStudio alapszintű ismerete. Szükség van egy eszközre, amely biztosítja számunkra az R interpretert és a teljes R környezetet.</li>
-<li>Az R nyelvet ismernünk kell alapszinten:
-<ul>
-<li>konstansok írása</li>
-<li>objektumok kezelése</li>
-<li>egyszerű adattípusok</li>
-<li>alapvető operátorok</li>
-<li>kifejezés fogalma</li>
-<li>a függvényhívás lehetőségei</li>
-<li>összetett adattípusok (vektor, faktor, mátrix, adattábla, tibble, lista)</li>
-<li>a vektoraritmetika szabályai</li>
-</ul></li>
-<li>Fontos az alapvető függvények ismerete:
-<ul>
-<li>csomagkezelő függvények</li>
-<li>a munkaterület függvényei</li>
-<li>matematikai függvények</li>
-<li>input/output függvények</li>
-<li>indexelés, szűrés, rendezés</li>
-<li>információ kérés az objektumokról</li>
-<li>egyszerű típuskonverzió</li>
-<li>transzformáció</li>
-<li>a hagyományos grafika és a <strong>ggplot2</strong> alapszintű ismerete</li>
-<li>ismétlő és összesítő függvények</li>
-</ul></li>
-<li>Egyéb ismeretek
-<ul>
-<li>a tagolt szöveges állomány fogalma</li>
-<li>reprodukálható kutatás az RMarkdown segítségével</li>
-</ul></li>
+<li>objektum létrehozása,</li>
+<li>objektum értékének lekérdezése</li>
+<li>objektum értékének megváltoztatása.</li>
 </ul>
+<div id="objektumok-letrehozasa" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Objektumok létrehozása</h3>
+<p>Objektumot értékadással hozhatunk létre. Az értékadás tartalmaz egy értékadás operátort, melynek alakja <code>&lt;-</code>, vagyis egy kisebb jel és egy mínusz előjel egymás után írva szóköz nélkül. (További értékadó operátorok a <code>-&gt;</code>, <code>&lt;&lt;-</code>, <code>-&gt;&gt;</code> és a <code>=</code>. Ezekről később lesz szó.)</p>
+<p>Az értékadás általános alakja:</p>
+<pre class="block1"><code>objektumnév &lt;- kifejezés </code></pre>
+<p>Ahol lehet a továbbiakban ezt a “balra nyíl” alakú értékadó operátort használjuk az értékadás során, és nem a szintén legális egyenlőségjelet (<code>=</code>). Az egyenlőségjelet megtartjuk a függvényargumentumok elnevezésére. Az egyszerűség kedvéért a “balra nyíl” előtt lévő objektumnevet az értékadás “bal oldalának”, az utána lévő kifejezést az értékadás “jobb oldalának” nevezzük.</p>
+<p>Ha olyan objektumnevet szerepeltetünk az értékadásban, amely még nem létezik, akkor az R létrehoz egy ilyen nevű új objektumot, és a hozzá tartozó memóriaterületen pedig az értékadás jobb oldalán lévő kifejezés kiértékelése után kapott értéket tárolja el.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">a &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">+</span><span class="dv">2</span></a></code></pre></div>
+<p>A fenti sor végrehajtása után a konzolban nem jelenik meg eredmény, de nagyon is fontos dolog történik, létrejön az <code>a</code> nevű objektum, amelynek értéke 3 lesz mindaddig, amig meg nem változtatjuk azt. A munkánk során létrehozott objektumok a memória egy speciális területére a munkaterületre (workspace) kerülnek.</p>
+<p>Ha az értékadásban használt objektumnév már létezik, akkor a jobb oldali kifejezés kiértékelése után a kapott értékkel felülírja a bal oldali objektumhoz tartozó memóriaterületet. Ezzel a módszerrel tehát korábban létrehozott objektum értékét módosíthatjuk.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1">a &lt;-<span class="st"> </span><span class="dv">10</span><span class="op">/</span><span class="dv">3</span> </a></code></pre></div>
+<p>A fenti sor hatására a már létező <code>a</code> objektum értékét változtattuk meg.</p>
+</div>
+<div id="objektumok-ertekenek-lekerdezese" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Objektumok értékének lekérdezése</h3>
+<p>Az objektum memóriában tárolt értékét le is kérdezhetjük. A legegyszerűbb mód erre, ha az objektum nevét a parancssorba írjuk</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1">a</a></code></pre></div>
+<pre><code>## [1] 3.333333</code></pre>
+<p>Objektumot azonban kifejezésekben is felhasználhatjuk, akár értékadás jobb oldalán lévő kifejezésben is.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1">a<span class="op">*</span><span class="dv">3</span></a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" title="1">a &lt;-<span class="st"> </span><span class="dv">4</span><span class="op">+</span>a<span class="op">*</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb59-2" title="2">a</a></code></pre></div>
+<pre><code>## [1] 14</code></pre>
+<p>A fenti sorokból kiolvasható, hogy immár az <code>a</code> objektum értéke 14.</p>
+</div>
+<div id="objektumok-elnevezese" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Objektumok elnevezése</h3>
+<p>Az objektumok elnevezésére eddig egyetlen betűt használtunk, de ez elég ritka eset a munka során. Helyes gyakorlat, ha az objektum neve utal az objektum tartalmára, céljára. Ha például testmagasságot tárolunk el egy objektumban, akkor írhatjuk a következőt:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1">magassag &lt;-<span class="st"> </span><span class="dv">179</span></a></code></pre></div>
+<p>A fenti sor létrehozza a munkaterületen a <code>magassag</code> nevű objektumot 179 értékkel.</p>
+<p>Az objektumok elnevezésére betűket, számjegyeket, a pont (<code>.</code>) és az aláhúzás (<code>_</code>) szimbólumokat használhatjuk. Az objektum neve csak betűvel vagy ponttal kezdődhet, számjeggyel vagy aláhúzással nem. Továbbá a név nem lehet az R-ben már lefoglalt kulcsszó, mint például <code>if</code>, <code>function</code> vagy <code>TRUE</code> (a kulcsszavak listáját a <code>?Reserved</code> parancsal ismerhetjük meg). Hagyományosan a pont karaktert használjuk az objektumnevekben a tagolására. Az R a magyar ékezetes karakterek használatát is megengedi az objektumnevekben, de csakúgy mint az állományok és könyvtárak elnevezésében, érdemes ezek használatát mellőzni.</p>
+<p>Az objektumoknak érdemes „beszédes” nevet választani, még ha ennek az ára némi extra gépelés is. (Tudjuk, a <code>Tab</code> billentyű amúgy is segíti a gépelést.)</p>
+<p>Az R kis- és nagybetű érzékeny, vagyis az <code>x</code> és a <code>X</code> különböző objektumoknak számítanak. Például a következő</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" title="1">pulzus.atlag &lt;-<span class="st"> </span><span class="dv">72</span></a></code></pre></div>
+<p>parancs után a</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">Pulzus.atlag</a></code></pre></div>
+<p>sor hibát jelez (<code>Error: object 'Pulzus.atlag' not found</code>), azaz a <code>Pulzus.atlag</code> objektumot nem találja az R. Minden olyan esetben, ha nem létező objektumra hivatkozunk, a fenti hibaüzenet jelenik meg a konzolban.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" title="1">Pulzus.atlag &lt;-<span class="st"> </span><span class="dv">69</span>         <span class="co"># Új objektumot hozunk létre</span></a>
+<a class="sourceLine" id="cb64-2" title="2">pulzus.atlag; Pulzus.atlag</a></code></pre></div>
+<pre><code>## [1] 72</code></pre>
+<pre><code>## [1] 69</code></pre>
+<p>A fenti példában már gondoskodtunk a nagy ’P’-vel kezdődő objektumról is, így lehetőségünk van hibaüzenet nélkül mindkét objektum érékének kiíratására. A gyakorlatban kerüljük el az olyan helyzeteket, amikor két objektumnév csak kis- nagybetűk használatában tér el.</p>
+<p>Ez a példa két további apró újdonságot is tartalmaz.</p>
+<p>Megjegyzést az R-ben a kettőskereszt (<code>#</code>) karakter használatával vezetünk be, az R értelmező a kettős kereszttől a sor végéig tartó részt figyelmen kívül hagyja. Itt helyezhetjük el a paranccsal kapcsolatos magyarázatainkat magunk vagy a kódot később olvasók számára.</p>
+<p>Továbbá, ha a parancssorban több utasítást szeretnénk elhelyezni, akkor ezeket pontosvesszővel (<code>;</code>) kell elválasztanunk. Ezeket az utasításokat az R értelmező egymás után, balról jobbra haladva hajtja végre, mintha külön sorba írtuk volna őket.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1"><span class="dv">1</span><span class="op">+</span><span class="dv">2</span>; <span class="dv">3</span><span class="op">+</span><span class="dv">4</span>; <span class="dv">5</span><span class="op">+</span><span class="dv">6</span></a></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 7</code></pre>
+<pre><code>## [1] 11</code></pre>
+<p>A fenti sor 3 kifejezést tartalmaz pontosvesszővel elválasztva, mindegyik eredménye külön-külön jelenik meg a konzolban, mintha 3 különböző sorba írtuk volna őket.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="alapelvek-az-r-hasznalatahoz.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="a-modern-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="szamolas-az-r-ben.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="feladatok-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -337,7 +373,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["r_bioinf.epub"],
+"download": ["r_egyval.epub"],
 "toc": {
 "collapse": "section"
 }
@@ -345,6 +381,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
