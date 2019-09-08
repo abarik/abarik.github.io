@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.1 Konstansok | R alapok I. - RNS szekvenálási példákkal</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.1 Konstansok | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.1 Konstansok | R alapok I. - RNS szekvenálási példákkal" />
+  
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Abari Kálmán" />
+
+
+<meta name="date" content="2019-09-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="adatszerkezetek.html">
+<link rel="next" href="adatszerkezetek-attekintese.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
+<li class="chapter" data-level="1.1" data-path="az-r.html"><a href="az-r.html"><i class="fa fa-check"></i><b>1.1</b> Az R</a></li>
+<li class="chapter" data-level="1.2" data-path="alapelvek-az-r-hasznalatahoz.html"><a href="alapelvek-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>1.2</b> Alapelvek az R használatához</a></li>
+<li class="chapter" data-level="1.3" data-path="Ralaptudas.html"><a href="Ralaptudas.html"><i class="fa fa-check"></i><b>1.3</b> Az R alaptudás</a></li>
+<li class="chapter" data-level="1.4" data-path="a-modern-r.html"><a href="a-modern-r.html"><i class="fa fa-check"></i><b>1.4</b> A modern R</a></li>
+<li class="chapter" data-level="1.5" data-path="jelolesi-konvenciok.html"><a href="jelolesi-konvenciok.html"><i class="fa fa-check"></i><b>1.5</b> Jelölési konvenciók</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="alapok.html"><a href="alapok.html"><i class="fa fa-check"></i><b>2</b> Alapok</a><ul>
+<li class="chapter" data-level="2.1" data-path="szereplok-es-fogalmak.html"><a href="szereplok-es-fogalmak.html"><i class="fa fa-check"></i><b>2.1</b> Szereplők és fogalmak</a></li>
+<li class="chapter" data-level="2.2" data-path="telepitesek.html"><a href="telepitesek.html"><i class="fa fa-check"></i><b>2.2</b> Telepítések</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="telepitesek.html"><a href="telepitesek.html#az-alap-r-telepitese"><i class="fa fa-check"></i><b>2.2.1</b> Az Alap R telepítése</a></li>
+<li class="chapter" data-level="2.2.2" data-path="telepitesek.html"><a href="telepitesek.html#az-rstudio-telepitese"><i class="fa fa-check"></i><b>2.2.2</b> Az RStudio telepítése</a></li>
+<li class="chapter" data-level="2.2.3" data-path="telepitesek.html"><a href="telepitesek.html#Csomagok_telepitese"><i class="fa fa-check"></i><b>2.2.3</b> Csomagok telepítése</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html"><i class="fa fa-check"></i><b>2.3</b> Az első lépések</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#a-konzol-hasznalata"><i class="fa fa-check"></i><b>2.3.1</b> A konzol használata</a></li>
+<li class="chapter" data-level="2.3.2" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok"><i class="fa fa-check"></i><b>2.3.2</b> Parancsállományok</a></li>
+<li class="chapter" data-level="2.3.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok-futtatasa"><i class="fa fa-check"></i><b>2.3.3</b> Parancsállományok futtatása</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="az-rstudio.html"><a href="az-rstudio.html"><i class="fa fa-check"></i><b>2.4</b> Az RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="az-rstudio.html"><a href="az-rstudio.html#panelek"><i class="fa fa-check"></i><b>2.4.1</b> Panelek</a></li>
+<li class="chapter" data-level="2.4.2" data-path="az-rstudio.html"><a href="az-rstudio.html#munka-az-rstudio-ban"><i class="fa fa-check"></i><b>2.4.2</b> Munka az RStudio-ban</a></li>
+<li class="chapter" data-level="2.4.3" data-path="az-rstudio.html"><a href="az-rstudio.html#projektek-hasznalata"><i class="fa fa-check"></i><b>2.4.3</b> Projektek használata</a></li>
+<li class="chapter" data-level="2.4.4" data-path="az-rstudio.html"><a href="az-rstudio.html#az-rmarkdown-hasznalata"><i class="fa fa-check"></i><b>2.4.4</b> Az RMarkdown használata</a></li>
+<li class="chapter" data-level="2.4.5" data-path="az-rstudio.html"><a href="az-rstudio.html#billenytuparancsok"><i class="fa fa-check"></i><b>2.4.5</b> Billenytűparancsok</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="segitseg-az-r-hasznalatahoz.html"><a href="segitseg-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>2.5</b> Segítség az R használatához</a></li>
+<li class="chapter" data-level="2.6" data-path="feladatok.html"><a href="feladatok.html"><i class="fa fa-check"></i><b>2.6</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>I Az R nyelv</b></span></li>
+<li class="chapter" data-level="3" data-path="adatobjektumok.html"><a href="adatobjektumok.html"><i class="fa fa-check"></i><b>3</b> Adatobjektumok</a><ul>
+<li class="chapter" data-level="3.1" data-path="szamolas-az-r-ben.html"><a href="szamolas-az-r-ben.html"><i class="fa fa-check"></i><b>3.1</b> Számolás az R-ben</a></li>
+<li class="chapter" data-level="3.2" data-path="objektumok.html"><a href="objektumok.html"><i class="fa fa-check"></i><b>3.2</b> Objektumok</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="objektumok.html"><a href="objektumok.html#objektumok-letrehozasa"><i class="fa fa-check"></i><b>3.2.1</b> Objektumok létrehozása</a></li>
+<li class="chapter" data-level="3.2.2" data-path="objektumok.html"><a href="objektumok.html#objektumok-ertekenek-lekerdezese"><i class="fa fa-check"></i><b>3.2.2</b> Objektumok értékének lekérdezése</a></li>
+<li class="chapter" data-level="3.2.3" data-path="objektumok.html"><a href="objektumok.html#objektumok-elnevezese"><i class="fa fa-check"></i><b>3.2.3</b> Objektumok elnevezése</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="feladatok-1.html"><a href="feladatok-1.html"><i class="fa fa-check"></i><b>3.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="fuggvenyek.html"><a href="fuggvenyek.html"><i class="fa fa-check"></i><b>4</b> Függvények</a><ul>
+<li class="chapter" data-level="4.1" data-path="a-fuggvenyhivas-szabalyai.html"><a href="a-fuggvenyhivas-szabalyai.html"><i class="fa fa-check"></i><b>4.1</b> A függvényhívás szabályai</a></li>
+<li class="chapter" data-level="4.2" data-path="a-munkaterulet-fuggvenyei.html"><a href="a-munkaterulet-fuggvenyei.html"><i class="fa fa-check"></i><b>4.2</b> A munkaterület függvényei</a></li>
+<li class="chapter" data-level="4.3" data-path="a-munkakonyvtar-fuggvenyei.html"><a href="a-munkakonyvtar-fuggvenyei.html"><i class="fa fa-check"></i><b>4.3</b> A munkakönyvtár függvényei</a></li>
+<li class="chapter" data-level="4.4" data-path="csomagkezelo-fuggvenyek.html"><a href="csomagkezelo-fuggvenyek.html"><i class="fa fa-check"></i><b>4.4</b> Csomagkezelő függvények</a></li>
+<li class="chapter" data-level="4.5" data-path="feladatok-2.html"><a href="feladatok-2.html"><i class="fa fa-check"></i><b>4.5</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="adatszerkezetek.html"><a href="adatszerkezetek.html"><i class="fa fa-check"></i><b>5</b> Adatszerkezetek</a><ul>
+<li class="chapter" data-level="5.1" data-path="konstansok.html"><a href="konstansok.html"><i class="fa fa-check"></i><b>5.1</b> Konstansok</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="konstansok.html"><a href="konstansok.html#numerikus-konstansok"><i class="fa fa-check"></i><b>5.1.1</b> Numerikus konstansok</a></li>
+<li class="chapter" data-level="5.1.2" data-path="konstansok.html"><a href="konstansok.html#karakteres-konstansok"><i class="fa fa-check"></i><b>5.1.2</b> Karakteres konstansok</a></li>
+<li class="chapter" data-level="5.1.3" data-path="konstansok.html"><a href="konstansok.html#logikai-konstansok"><i class="fa fa-check"></i><b>5.1.3</b> Logikai konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="adatszerkezetek-attekintese.html"><a href="adatszerkezetek-attekintese.html"><i class="fa fa-check"></i><b>5.2</b> Adatszerkezetek áttekintése</a></li>
+<li class="chapter" data-level="5.3" data-path="vektor.html"><a href="vektor.html"><i class="fa fa-check"></i><b>5.3</b> Vektor</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="vektor.html"><a href="vektor.html#vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.1</b> Vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vektor.html"><a href="vektor.html#szabalyos-vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.2</b> Szabályos vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vektor.html"><a href="vektor.html#a-vektoraritmetika-szabalyai"><i class="fa fa-check"></i><b>5.3.3</b> A vektoraritmetika szabályai</a></li>
+<li class="chapter" data-level="5.3.4" data-path="vektor.html"><a href="vektor.html#fuggvenyek-vektorokkal"><i class="fa fa-check"></i><b>5.3.4</b> Függvények vektorokkal</a></li>
+<li class="chapter" data-level="5.3.5" data-path="vektor.html"><a href="vektor.html#a-vektortipus-vizsgalata-es-konverzioja"><i class="fa fa-check"></i><b>5.3.5</b> A vektortípus vizsgálata és konverziója</a></li>
+<li class="chapter" data-level="5.3.6" data-path="vektor.html"><a href="vektor.html#az-na-hianyzo-ertek"><i class="fa fa-check"></i><b>5.3.6</b> Az <code>NA</code> hiányzó érték</a></li>
+<li class="chapter" data-level="5.3.7" data-path="vektor.html"><a href="vektor.html#az-inf-es-a-nan"><i class="fa fa-check"></i><b>5.3.7</b> Az <code>Inf</code> és a <code>NaN</code></a></li>
+<li class="chapter" data-level="5.3.8" data-path="vektor.html"><a href="vektor.html#objektumok-attributumai"><i class="fa fa-check"></i><b>5.3.8</b> Objektumok attribútumai</a></li>
+<li class="chapter" data-level="5.3.9" data-path="vektor.html"><a href="vektor.html#vektor-indexelese"><i class="fa fa-check"></i><b>5.3.9</b> Vektor indexelése</a></li>
+<li class="chapter" data-level="5.3.10" data-path="vektor.html"><a href="vektor.html#vektorok-rendezese"><i class="fa fa-check"></i><b>5.3.10</b> Vektorok rendezése</a></li>
+<li class="chapter" data-level="5.3.11" data-path="vektor.html"><a href="vektor.html#elore-definialt-objektumok-nevesitett-konstansok"><i class="fa fa-check"></i><b>5.3.11</b> Előre definiált objektumok, nevesített konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="faktor.html"><a href="faktor.html"><i class="fa fa-check"></i><b>5.4</b> Faktor</a></li>
+<li class="chapter" data-level="5.5" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html"><i class="fa fa-check"></i><b>5.5</b> Mátrix és tömb</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#matrix-es-tomb-letrehozasa"><i class="fa fa-check"></i><b>5.5.1</b> Mátrix és tömb létrehozása</a></li>
+<li class="chapter" data-level="5.5.2" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#matrix-es-tomb-indexelese"><i class="fa fa-check"></i><b>5.5.2</b> Mátrix és tömb indexelése</a></li>
+<li class="chapter" data-level="5.5.3" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#szamitasok-a-matrix-soraiban-es-oszlopaiban"><i class="fa fa-check"></i><b>5.5.3</b> Számítások a mátrix soraiban és oszlopaiban</a></li>
+<li class="chapter" data-level="5.5.4" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#sorok-es-oszlopok-kezelese"><i class="fa fa-check"></i><b>5.5.4</b> Sorok és oszlopok kezelése</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lista.html"><a href="lista.html"><i class="fa fa-check"></i><b>5.6</b> Lista</a></li>
+<li class="chapter" data-level="5.7" data-path="adattabla-dataframe.html"><a href="adattabla-dataframe.html"><i class="fa fa-check"></i><b>5.7</b> Adattábla (dataframe)</a></li>
+<li class="chapter" data-level="5.8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>5.8</b> Tibble</a></li>
+<li class="chapter" data-level="5.9" data-path="feladatok-3.html"><a href="feladatok-3.html"><i class="fa fa-check"></i><b>5.9</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>II Adatelemzés</b></span></li>
+<li class="chapter" data-level="6" data-path="adatok-beolvasasa-es-kiirasa.html"><a href="adatok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6</b> Adatok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.1" data-path="inline-beolvasas.html"><a href="inline-beolvasas.html"><i class="fa fa-check"></i><b>6.1</b> Inline beolvasás</a></li>
+<li class="chapter" data-level="6.2" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6.2</b> Tagolt szöveges állományok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-tagolt-szoveges-allomany"><i class="fa fa-check"></i><b>6.2.1</b> A tagolt szöveges állomány</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-read.table-csalad-ar"><i class="fa fa-check"></i><b>6.2.2</b> A <code>read.table()</code> család (AR)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-read_delim-fuggvenycsalad-tr"><i class="fa fa-check"></i><b>6.2.3</b> A <code>read_delim()</code> függvénycsalád (TR)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#tagolt-szoveges-allomany-kiirasa"><i class="fa fa-check"></i><b>6.2.4</b> Tagolt szöveges állomány kiírása</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fix-szeles-mezok.html"><a href="fix-szeles-mezok.html"><i class="fa fa-check"></i><b>6.3</b> Fix széles mezők</a></li>
+<li class="chapter" data-level="6.4" data-path="mas-tipusu-adatallomanyok.html"><a href="mas-tipusu-adatallomanyok.html"><i class="fa fa-check"></i><b>6.4</b> Más típusú adatállományok</a></li>
+<li class="chapter" data-level="6.5" data-path="r-objektumok-irasa-es-olvasasa.html"><a href="r-objektumok-irasa-es-olvasasa.html"><i class="fa fa-check"></i><b>6.5</b> R objektumok írása és olvasása</a></li>
+<li class="chapter" data-level="6.6" data-path="feladatok-4.html"><a href="feladatok-4.html"><i class="fa fa-check"></i><b>6.6</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="grafika-az-r-ben.html"><a href="grafika-az-r-ben.html"><i class="fa fa-check"></i><b>7</b> Grafika az R-ben</a><ul>
+<li class="chapter" data-level="7.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html"><i class="fa fa-check"></i><b>7.1</b> Hagyományos grafika</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#grafikus-eszkozok"><i class="fa fa-check"></i><b>7.1.1</b> Grafikus eszközök</a></li>
+<li class="chapter" data-level="7.1.2" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-felosztasa"><i class="fa fa-check"></i><b>7.1.2</b> Az eszközfelület felosztása</a></li>
+<li class="chapter" data-level="7.1.3" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-reszei"><i class="fa fa-check"></i><b>7.1.3</b> Az eszközfelület részei</a></li>
+<li class="chapter" data-level="7.1.4" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#magas-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.4</b> Magas-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.5" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#alacsony-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.5</b> Alacsony-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.6" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#interaktiv-grafikus-fuggvenyek"><i class="fa fa-check"></i><b>7.1.6</b> Interaktív grafikus függvények</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> A modern grafika (ggplot2)</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#hisztogram-rajzolasa"><i class="fa fa-check"></i><b>7.2.1</b> Hisztogram rajzolása</a></li>
+<li class="chapter" data-level="7.2.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#gyakorisagi-poligon-simitott-hisztogram-es-osszevetes-a-normalis-eloszlas-surusegfuggvenyevel"><i class="fa fa-check"></i><b>7.2.2</b> Gyakorisági poligon, simított hisztogram és összevetés a normális eloszlás sűrűségfüggvényével</a></li>
+<li class="chapter" data-level="7.2.3" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#hisztogram-csoportokra"><i class="fa fa-check"></i><b>7.2.3</b> Hisztogram csoportokra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#gyakorisagi-poligon-es-simitott-hisztogram-csoportokra-de-egy-abran"><i class="fa fa-check"></i><b>7.2.4</b> Gyakorisági poligon és simított hisztogram csoportokra, de egy ábrán</a></li>
+<li class="chapter" data-level="7.2.5" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#atlagok-egy-faktor-eseten"><i class="fa fa-check"></i><b>7.2.5</b> Átlagok egy faktor esetén</a></li>
+<li class="chapter" data-level="7.2.6" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#atlagok-ket-faktor-eseten"><i class="fa fa-check"></i><b>7.2.6</b> Átlagok két faktor esetén</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="feladatok-5.html"><a href="feladatok-5.html"><i class="fa fa-check"></i><b>7.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="feladatok-megoldasa.html"><a href="feladatok-megoldasa.html"><i class="fa fa-check"></i><b>8</b> Feladatok megoldása</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="konstansok" class="section level2">
+<h2><span class="header-section-number">5.1</span> Konstansok</h2>
+<p>Mért adatokat közvetlenül az R-be konstansok segítségével írhatunk le. A konstansok olyan objektumoknak is tekinthetők, amelyeknek nincs nevük, csak értékük, és azt nem is tudjuk megváltoztatni. Ha Péter 18 éves, akkor azt a <code>18</code> leírásával közölhetjük az R-rel, és ez nem is jelenthet mást (nem lehet más az értéke), mint 18.</p>
+<div id="numerikus-konstansok" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Numerikus konstansok</h3>
+<p>A numerikus konstansok többféle alakban is megjelenhetnek az R-ben. Az <em>integer</em> szóval az egész számok tárolását végző konstansra hivatkozunk, a <em>double</em> konstansok pedig törtrészt is tartalmazhatnak. Ha nem érdekes, hogy a szám integer vagy double, akkor egyszerűen a numerikus (R-ben <em>numeric</em>) kifejezést használjuk.</p>
+<table>
+<caption>(#tab:numerikus_konstansok)Numerikus konstansok írása</caption>
+<thead>
+<tr class="header">
+<th align="left">Numerikus konstans formája az R-ben</th>
+<th align="left">Értéke</th>
+<th align="left">Leírás</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>1</code>, <code>-1</code>, <code>2</code>, <code>100</code>, <code>3.5</code>, <code>.4</code></td>
+<td align="left"><code>1</code>, <code>-1</code>, <code>2</code>, <code>100</code>, <code>3.5</code>, <code>0.4</code></td>
+<td align="left">pozitív és negatív double számok</td>
+</tr>
+<tr class="even">
+<td align="left"><code>1L</code>, <code>-1L</code>, <code>2L</code>, <code>100L</code></td>
+<td align="left"><code>1</code>, <code>-1</code>, <code>2</code>, <code>100</code></td>
+<td align="left">pozitív és negatív integer számok az ’L’ suffix-szal</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>1.2e3</code>, <code>3e+4</code>, <code>.6e-2</code>, <code>4e1L</code></td>
+<td align="left"><code>1200</code>, <code>30000</code>, <code>0.006</code>, <code>40</code></td>
+<td align="left">exponenciális alakú integer és double számok</td>
+</tr>
+<tr class="even">
+<td align="left"><code>0xef</code>, <code>0XF01</code>, <code>-0xEf03</code>, <code>0xd1L</code></td>
+<td align="left"><code>239</code>, <code>3841</code>, <code>-61187</code>, <code>209</code></td>
+<td align="left">hexadecimális integer és double számok</td>
+</tr>
+</tbody>
+</table>
+<p>A @ref(tab:numerikus_konstansok) táblázatban látható, hogy integer értékek írásához szükséges az <code>L</code> suffix használata, egyébként double-ként kezeli az R a számot, még akkor is ha nem adtunk meg törtrészt.</p>
+<p>Fontos szabály, hogy a tizedesvessző alakja az R-ben a pont. A nulla egészrészű tizedestörtek esetében az értéktelen 0-át elhagyhatjuk.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1"><span class="fl">0.04</span></a></code></pre></div>
+<pre><code>## [1] 0.04</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="fl">.04</span></a></code></pre></div>
+<pre><code>## [1] 0.04</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1"><span class="fl">-.04</span>    <span class="co"># negatív szám, a nulla egészrész megadása nélkül</span></a></code></pre></div>
+<pre><code>## [1] -0.04</code></pre>
+<p>Használhatunk az R-ben exponenciális alakú és hexadecimális (16-os számrendszerű) számokat is.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1"><span class="fl">12e3</span></a></code></pre></div>
+<pre><code>## [1] 12000</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1"><span class="fl">12E+3</span></a></code></pre></div>
+<pre><code>## [1] 12000</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1"><span class="fl">12e-3</span></a></code></pre></div>
+<pre><code>## [1] 0.012</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1"><span class="dv">0xa2e</span></a></code></pre></div>
+<pre><code>## [1] 2606</code></pre>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1"><span class="dv">0Xa2e</span></a></code></pre></div>
+<pre><code>## [1] 2606</code></pre>
+<p>Az exponenciális alakú számokat <code>e</code> vagy <code>E</code> karakter vágja ketté, egy bal oldali és egy jobb oldali részre. Az exponenciális alakú szám értéke: a bal oldali rész szorozva 10 annyiadik hatványával, mint amennyi a jobb oldali rész. Értsük jól az exponenciális alakú számokat: a szám előjelét a bal oldali rész előjele dönti el (pozitív vagy negatív lehet), viszont a nagyságrendjét a jobb oldali szám nagyságrendje és előjele együtt határozza meg.</p>
+<p>Az exponenciális alakú számok nagy előnye, hogy a nagyon kis, illetve nagyon nagy számok nagyságát jobban meg tudjuk ítélni, és persze az ilyen alakú számok leírásánál helyet is megtakarítunk.</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="fl">0.0000000000000000000000000016726</span>         <span class="co"># proton tömege</span></a></code></pre></div>
+<pre><code>## [1] 1.6726e-27</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1"><span class="fl">0.00000000000000000000000000000091093822</span>  <span class="co"># elektron tömege</span></a></code></pre></div>
+<pre><code>## [1] 9.109382e-31</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="dv">100000000</span>                                 <span class="co"># ennyi fele kell figyelni egy diáknak (százmillió)</span></a></code></pre></div>
+<pre><code>## [1] 1e+08</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1"><span class="dv">5970000000000000000000000</span>                <span class="co"># A Föld tömege</span></a></code></pre></div>
+<pre><code>## [1] 5.97e+24</code></pre>
+<p>Az R automatikusan exponenciális alakra vált túl kicsi vagy túl nagy számok konzolba írásánál. Ezt a viselkedést az R egyik globális opciójának beállításával tudjuk némileg szabályozni. A globális opciókat az<code>options()</code> függvénnyel tudjuk állítani az R-ben (<code>?options</code>), amelyben most a <code>scipen=</code> integer típusú paramétert kell megadunk. Minél nagyobb pozitív értéket adunk meg, annál jobban törekszik az R a számok fix alakú megjelenítésére, negatív érték megadásánál pedig ugyanez igaz az exponenciális alakra.</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">0</span>)      <span class="co"># az alapértelmezés</span></a>
+<a class="sourceLine" id="cb157-2" title="2"><span class="fl">0.0000001</span>                <span class="co">#  túl kicsi: exponenciális lesz</span></a></code></pre></div>
+<pre><code>## [1] 1e-07</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="dv">123</span>                      <span class="co">#  marad fix alakú </span></a></code></pre></div>
+<pre><code>## [1] 123</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="dv">100000000</span>                <span class="co">#  túl nagy: exponenciális lesz</span></a></code></pre></div>
+<pre><code>## [1] 1e+08</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">-8</span>)     <span class="co"># legyenek inkább exponenciális alakúak a számaink</span></a>
+<a class="sourceLine" id="cb163-2" title="2"><span class="fl">0.0000001</span>                <span class="co">#  exponenciális lesz</span></a></code></pre></div>
+<pre><code>## [1] 1e-07</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="dv">123</span>                      <span class="co">#  exponenciális lesz</span></a></code></pre></div>
+<pre><code>## [1] 1.23e+02</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="dv">100000000</span>                <span class="co">#  exponenciális lesz</span></a></code></pre></div>
+<pre><code>## [1] 1e+08</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">8</span>)      <span class="co"># legyenek inkább fix alakúak a számaink</span></a>
+<a class="sourceLine" id="cb169-2" title="2"><span class="fl">0.0000001</span>                <span class="co">#  fix lesz</span></a></code></pre></div>
+<pre><code>## [1] 0.0000001</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="dv">123</span>                      <span class="co">#  fix lesz</span></a></code></pre></div>
+<pre><code>## [1] 123</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="dv">100000000</span>                <span class="co">#  fix lesz</span></a></code></pre></div>
+<pre><code>## [1] 100000000</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1"><span class="kw">options</span>(<span class="dt">scipen =</span> <span class="dv">0</span>)      <span class="co"># az alapértelmezés visszaállítása</span></a></code></pre></div>
+<p>A 16-os számrendszerű számok írásához a <code>0-9</code> és a kis <code>a-f</code> vagy nagy <code>A-F</code> betűket használhatjuk fel. A hexadecimális számokat a <code>0x</code> vagy <code>0X</code> prefix vezeti be.</p>
+<p>Aritmetikai műveleteinkben rendszerint double típusú számokat, 10-es számrendszerben és fix (nem exponenciális) alakban használunk. De ettől bármikor eltérhetünk:</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">12L <span class="op">+</span><span class="st"> </span><span class="fl">-3.04</span> <span class="op">+</span><span class="st"> </span><span class="fl">3.4e2</span> <span class="op">+</span><span class="st"> </span><span class="dv">-0x1af</span>  <span class="co"># különböző formában írt pozitív és negatív számok összeadása</span></a></code></pre></div>
+<pre><code>## [1] -82.04</code></pre>
+<p>A számok megjelenését a konzolban még egy globális opció befolyásolja. A <code>digits</code> megszabja, hány értékes jegyre pontosan jelenjenek meg a számaink. Lehetséges értéke 1-22 tartományba esik, alapértelmezése a 7. A beállított érték csak egy ajánlás az R számára, és főképp tizedestörtek esetén okozhat meglepetést, ha túl kicsire állítjuk a <code>digits</code> értékét.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb178-2" title="2"><span class="fl">12.36</span></a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb180-2" title="2"><span class="fl">12.36</span></a></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb182-2" title="2"><span class="fl">12.36</span></a></code></pre></div>
+<pre><code>## [1] 12.4</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb184-2" title="2"><span class="fl">12.36</span></a></code></pre></div>
+<pre><code>## [1] 12.36</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1"><span class="kw">options</span>(<span class="dt">digits =</span> <span class="dv">7</span>)     <span class="co"># alapértelmezés visszaállítása</span></a></code></pre></div>
+<p>Természetesen névvel is rendelkező objektumokat is létrehozhatunk a numerikus értékek tárolására:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">peter.magassaga &lt;-<span class="st"> </span><span class="dv">181</span></a>
+<a class="sourceLine" id="cb187-2" title="2">peter.sulya     &lt;-<span class="st"> </span><span class="dv">72</span></a>
+<a class="sourceLine" id="cb187-3" title="3">peter.bmi       &lt;-<span class="st"> </span>peter.sulya <span class="op">/</span>(peter.magassaga<span class="op">/</span><span class="dv">100</span>)<span class="op">^</span><span class="dv">2</span></a></code></pre></div>
+</div>
+<div id="karakteres-konstansok" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Karakteres konstansok</h3>
+<p>Az R-ben a karakteres konstans (vagy más néven sztring vagy karaktersorozat) idézőjelekkel határolt, tetszőleges karaktereket tartalmazó sorozat. A karakteres konstans tehát nem egyetlen karaktert jelent tipikusan, hanem többet. Például:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1"><span class="st">&quot;Helló&quot;</span></a></code></pre></div>
+<pre><code>## [1] &quot;Helló&quot;</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1"><span class="st">&#39;Itt vagyok&#39;</span></a></code></pre></div>
+<pre><code>## [1] &quot;Itt vagyok&quot;</code></pre>
+<p>Az karakteres értékeket határoló idézőjel lehet egyszeres és dupla is, de egy konstanson belül nem keverhetjük őket. Az R a dupla idézőjelet részesíti előnyben az output kiírása esetén.</p>
+<p>Egy karakteres konstans tetszőleges karaktert (betűt, számjegyet, írásjeleket, szóközt stb.) tartalmazhat, egyedül azt az idézőjelet kell elkerülnünk, amelyet az érték létrehozásánál használtuk.</p>
+<p>A karakteres konstansok tartalmazhatnak ún. escape szekvenciákat, olyan backslash jellel (<code>\</code>, fordított perjel) kezdődő karaktersorozatokat, amelyeket speciálisan értelmez az R. A legfontosabb escape szekvenciák a következők:</p>
+<table>
+<caption><span id="tab:unnamed-chunk-93">TÁBLÁZAT 5.1: </span>Néhány escape szekvencia</caption>
+<thead>
+<tr class="header">
+<th align="left">Escape szekvencia</th>
+<th align="left">Jelentése</th>
+<th align="left">Példa</th>
+<th align="left">Példa értéke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>\r</code></td>
+<td align="left">kocsi vissza karakter</td>
+<td align="left"><code>gtools::asc("\r")</code></td>
+<td align="left"><code>13</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>\n</code></td>
+<td align="left">új sor karakter</td>
+<td align="left"><code>gtools::asc("\n")</code></td>
+<td align="left"><code>10</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>\"</code></td>
+<td align="left">dupla idézőjel (")</td>
+<td align="left"><code>writeLines("Dupla: \"")</code></td>
+<td align="left"><code>Dupla: "</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>\'</code></td>
+<td align="left">szimpla idézőjel (’)</td>
+<td align="left"><code>writeLines("Szimpla: \'")</code></td>
+<td align="left"><code>Szimpla: '</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>\\</code></td>
+<td align="left"> (backslash) karakter</td>
+<td align="left"><code>writeLines("Kettő (\\\\) kell egy \\ jelhez.")</code></td>
+<td align="left"><code>Kettő (\\) kell egy \ jelhez.</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>\u</code> (vagy <code>\U</code>) és 4-8 hexa számjegy</td>
+<td align="left">Unicode karakter<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></td>
+<td align="left"><code>cat("\U03B2 \U1f600 \U00002603")</code></td>
+<td align="left"><code>&lt;Futtassuk önállóan!&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>A fentiek alapján a következő idézőjel-használatok engedélyezettek a karakteres értékekben:</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" title="1"><span class="st">&#39;</span><span class="ch">\&#39;</span><span class="st">alma</span><span class="ch">\&#39;</span><span class="st">&#39;</span>; <span class="st">&quot;&#39;alma&#39;&quot;</span>; <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">alma</span><span class="ch">\&quot;</span><span class="st">&quot;</span>; <span class="st">&#39;&quot;alma&quot;&#39;</span></a></code></pre></div>
+<pre><code>## [1] &quot;&#39;alma&#39;&quot;</code></pre>
+<pre><code>## [1] &quot;&#39;alma&#39;&quot;</code></pre>
+<pre><code>## [1] &quot;\&quot;alma\&quot;&quot;</code></pre>
+<pre><code>## [1] &quot;\&quot;alma\&quot;&quot;</code></pre>
+<p>Karakteres objektumokat is létrehozhatunk.</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">nev &lt;-<span class="st"> &#39;Zsolt&#39;</span>; foglalkozas &lt;-<span class="st"> &quot;festő&quot;</span></a></code></pre></div>
+<p>Karakteres operátor az Alap R-ben nincs, de számos karakterkezelő függvény segíti a sztringek kezelését.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-96">TÁBLÁZAT 5.2: </span>Néhány karakterkezelő függvény</caption>
+<thead>
+<tr class="header">
+<th align="left">Függvény</th>
+<th align="left">Leírás</th>
+<th align="left">Példa</th>
+<th align="left">Példa értéke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>paste(..., sep=" ")</code> <code>paste0(..., sep="")</code></td>
+<td align="left">sztringek összefűzése</td>
+<td align="left"><code>paste("a", "b", sep="=")</code></td>
+<td align="left"><code>"a=b"</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>nchar(x)</code></td>
+<td align="left">karakterszrting hossza</td>
+<td align="left"><code>nchar("alma")</code></td>
+<td align="left"><code>4</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>substr(x, start, stop)</code></td>
+<td align="left">sztring egy része</td>
+<td align="left"><code>substr("alma", 3, 5)</code></td>
+<td align="left"><code>"ma"</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>tolower(x)</code></td>
+<td align="left">kisbetűsre konvertál</td>
+<td align="left"><code>tolower("Kiss Géza")</code></td>
+<td align="left"><code>"kiss géza"</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>toupper(x)</code></td>
+<td align="left">nagybetűsre konvertál</td>
+<td align="left"><code>toupper("Kiss Géza")</code></td>
+<td align="left"><code>"KISS GÉZA"</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>chartr(old, new, x)</code></td>
+<td align="left">karakterek cseréje</td>
+<td align="left"><code>chartr("it","ál","titik")</code></td>
+<td align="left"><code>"lálák"</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>cat(..., sep)</code></td>
+<td align="left">kiíratás</td>
+<td align="left"><code>cat("alma","fa\n",sep="")</code></td>
+<td align="left"><code>"almafa"</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>grep()</code>, <code>grepl()</code>, <code>regexpr()</code></td>
+<td align="left">részsztringek keresése</td>
+<td align="left"><code>grep(pattern = "lm", x = c("alma", "körte")); grepl(pattern = "lm", x = c("alma", "körte"))</code></td>
+<td align="left"><code>1</code> <code>TRUE FALSE</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sub(), gsub()</code></td>
+<td align="left">részsztringek cseréje</td>
+<td align="left"><code>sub(pattern = "lm", replacement = "nyj", x = c("alma-alma", "körte")); gsub(pattern = "lm", replacement = "nyj", x = c("alma-alma", "körte"))</code></td>
+<td align="left"><code>"anyja-alma" "körte"</code> <code>"anyja-anyja" "körte"</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="logikai-konstansok" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> Logikai konstansok</h3>
+<p>Az eddigiekben megismert numerikus és karakteres konstansok nagyon sokfélék lehetnek, de ugyanígy a numerikus és karakteres objektumokhoz nagyon sok lehetséges numerikus és karakteres érték rendelhető. A logikai adattípus ezektől lényegesen egyszerűbb típus, mivel összesen két értéket tárolására van módunk. Ezek a logikai igaz és a logikai hamis érték, amelyek az R nyelvben a <code>TRUE</code> és a <code>FALSE</code> logikai értékeket jelentik. Az R a logikai értékek írását a <code>T</code> és <code>F</code> globális változók bevezetésével segíti, ezek induló értéke a <code>TRUE</code> és <code>FALSE</code> logikai érték.</p>
+<p>Ezeket a logikai konstansokat értékadásban is szerepeltethetjük, így logikai objektumokat hozhatunk létre.</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" title="1">fiu &lt;-<span class="st"> </span><span class="ot">TRUE</span>; van.kocsija &lt;-<span class="st"> </span><span class="ot">FALSE</span>; hazas &lt;-<span class="st"> </span>T</a>
+<a class="sourceLine" id="cb198-2" title="2">fiu; van.kocsija; hazas</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<pre><code>## [1] FALSE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>Logikai értékeket vagy objektumokat relációs operátorok segítségével is létrehozhatunk.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-98">TÁBLÁZAT 5.3: </span>Relációs operátorok</caption>
+<thead>
+<tr class="header">
+<th align="left">Operátor formája</th>
+<th align="left">Művelet</th>
+<th align="left">Példa</th>
+<th align="left">Példa értéke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>&lt;</code></td>
+<td align="left">kisebb</td>
+<td align="left"><code>1&lt;2; "alma"&lt;"körte"</code></td>
+<td align="left"><code>TRUE</code> <code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>&gt;</code></td>
+<td align="left">nagyobb</td>
+<td align="left"><code>3&gt;(1+2); "abc"&gt;"ab"</code></td>
+<td align="left"><code>FALSE</code> <code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&lt;=</code></td>
+<td align="left">kisebb egyenlő</td>
+<td align="left"><code>1&lt;=-.3; "él"&lt;="elő"</code></td>
+<td align="left"><code>FALSE</code> <code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>&gt;=</code></td>
+<td align="left">nagyobb egyenlő</td>
+<td align="left"><code>3/4&gt;=7/9; "aki"&gt;="Ági"</code></td>
+<td align="left"><code>FALSE</code> <code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>==</code></td>
+<td align="left">egyenlő</td>
+<td align="left"><code>20==2e1; "Len"=="len"</code></td>
+<td align="left"><code>TRUE</code> <code>FALSE</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>!=</code></td>
+<td align="left">nem egyenlő</td>
+<td align="left"><code>exp(1)!=pi; "Len"!="len"</code></td>
+<td align="left"><code>TRUE</code> <code>TRUE</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>%in%</code></td>
+<td align="left">tartalmazás</td>
+<td align="left"><code>c(8, 12) %in% 1:10</code></td>
+<td align="left"><code>TRUE FALSE</code></td>
+</tr>
+</tbody>
+</table>
+<p>Numerikus és karakteres adatok is lehetnek a relációs operátorok bemenő adatai (operandusai). Numerikus adatok esetén a számok nagysága, karakteres adatok esetén az ábécében elfoglalt hely és a sztringek hossza (lexikografikus sorrend) alapján végzi az R az összehasonlítást. A sztringek lexikografikus összehasonlítása, magyar területi beállítások esetén, a magyar ékezetes karaktereket is helyesen kezeli.</p>
+<p>Az ilyen, logikai értékkel visszatérő kifejezéseket (egyszerű) logikai kifejezéseknek nevezzük. Ezekből az egyszerű logikai kifejezésekből a logikai operátorok segítségével összetett logikai kifejezéseket hozhatunk létre.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-99">TÁBLÁZAT 5.4: </span>Logikai operátorok</caption>
+<thead>
+<tr class="header">
+<th align="left">Operátor formája</th>
+<th align="left">Művelet</th>
+<th align="left">Példa</th>
+<th align="left">Példa értéke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>!</code></td>
+<td align="left">logikai NEM</td>
+<td align="left"><code>!(1&lt;2); !TRUE; !FALSE</code></td>
+<td align="left"><code>FALSE</code> <code>FALSE</code> <code>TRUE</code></td>
+</tr>
+<tr class="even">
+<td align="left"><code>&amp;</code> és <code>&amp;&amp;</code></td>
+<td align="left">logikai ÉS</td>
+<td align="left"><code>TRUE &amp; TRUE; TRUE &amp; FALSE; FALSE &amp; TRUE; FALSE &amp; FALSE</code></td>
+<td align="left"><code>TRUE</code> <code>FALSE</code> <code>FALSE</code> <code>FALSE</code></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>|</code> és <code>||</code></td>
+<td align="left">logikai VAGY</td>
+<td align="left"><code>TRUE | TRUE; TRUE | FALSE; FALSE | TRUE; FALSE | FALSE</code></td>
+<td align="left"><code>TRUE</code> <code>TRUE</code> <code>TRUE</code> <code>FALSE</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="3">
+<li id="fn3"><p><a href="http://www.unicode.org/charts/" class="uri">http://www.unicode.org/charts/</a><a href="konstansok.html#fnref3" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="adatszerkezetek.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="adatszerkezetek-attekintese.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["r_bioinf.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

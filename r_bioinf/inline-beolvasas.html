@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.1 Inline beolvasás | R alapok I. - RNS szekvenálási példákkal</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.1 Inline beolvasás | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.1 Inline beolvasás | R alapok I. - RNS szekvenálási példákkal" />
+  
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Abari Kálmán" />
+
+
+<meta name="date" content="2019-09-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="adatok-beolvasasa-es-kiirasa.html">
+<link rel="next" href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
+<li class="chapter" data-level="1.1" data-path="az-r.html"><a href="az-r.html"><i class="fa fa-check"></i><b>1.1</b> Az R</a></li>
+<li class="chapter" data-level="1.2" data-path="alapelvek-az-r-hasznalatahoz.html"><a href="alapelvek-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>1.2</b> Alapelvek az R használatához</a></li>
+<li class="chapter" data-level="1.3" data-path="Ralaptudas.html"><a href="Ralaptudas.html"><i class="fa fa-check"></i><b>1.3</b> Az R alaptudás</a></li>
+<li class="chapter" data-level="1.4" data-path="a-modern-r.html"><a href="a-modern-r.html"><i class="fa fa-check"></i><b>1.4</b> A modern R</a></li>
+<li class="chapter" data-level="1.5" data-path="jelolesi-konvenciok.html"><a href="jelolesi-konvenciok.html"><i class="fa fa-check"></i><b>1.5</b> Jelölési konvenciók</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="alapok.html"><a href="alapok.html"><i class="fa fa-check"></i><b>2</b> Alapok</a><ul>
+<li class="chapter" data-level="2.1" data-path="szereplok-es-fogalmak.html"><a href="szereplok-es-fogalmak.html"><i class="fa fa-check"></i><b>2.1</b> Szereplők és fogalmak</a></li>
+<li class="chapter" data-level="2.2" data-path="telepitesek.html"><a href="telepitesek.html"><i class="fa fa-check"></i><b>2.2</b> Telepítések</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="telepitesek.html"><a href="telepitesek.html#az-alap-r-telepitese"><i class="fa fa-check"></i><b>2.2.1</b> Az Alap R telepítése</a></li>
+<li class="chapter" data-level="2.2.2" data-path="telepitesek.html"><a href="telepitesek.html#az-rstudio-telepitese"><i class="fa fa-check"></i><b>2.2.2</b> Az RStudio telepítése</a></li>
+<li class="chapter" data-level="2.2.3" data-path="telepitesek.html"><a href="telepitesek.html#Csomagok_telepitese"><i class="fa fa-check"></i><b>2.2.3</b> Csomagok telepítése</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html"><i class="fa fa-check"></i><b>2.3</b> Az első lépések</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#a-konzol-hasznalata"><i class="fa fa-check"></i><b>2.3.1</b> A konzol használata</a></li>
+<li class="chapter" data-level="2.3.2" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok"><i class="fa fa-check"></i><b>2.3.2</b> Parancsállományok</a></li>
+<li class="chapter" data-level="2.3.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok-futtatasa"><i class="fa fa-check"></i><b>2.3.3</b> Parancsállományok futtatása</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="az-rstudio.html"><a href="az-rstudio.html"><i class="fa fa-check"></i><b>2.4</b> Az RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="az-rstudio.html"><a href="az-rstudio.html#panelek"><i class="fa fa-check"></i><b>2.4.1</b> Panelek</a></li>
+<li class="chapter" data-level="2.4.2" data-path="az-rstudio.html"><a href="az-rstudio.html#munka-az-rstudio-ban"><i class="fa fa-check"></i><b>2.4.2</b> Munka az RStudio-ban</a></li>
+<li class="chapter" data-level="2.4.3" data-path="az-rstudio.html"><a href="az-rstudio.html#projektek-hasznalata"><i class="fa fa-check"></i><b>2.4.3</b> Projektek használata</a></li>
+<li class="chapter" data-level="2.4.4" data-path="az-rstudio.html"><a href="az-rstudio.html#az-rmarkdown-hasznalata"><i class="fa fa-check"></i><b>2.4.4</b> Az RMarkdown használata</a></li>
+<li class="chapter" data-level="2.4.5" data-path="az-rstudio.html"><a href="az-rstudio.html#billenytuparancsok"><i class="fa fa-check"></i><b>2.4.5</b> Billenytűparancsok</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="segitseg-az-r-hasznalatahoz.html"><a href="segitseg-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>2.5</b> Segítség az R használatához</a></li>
+<li class="chapter" data-level="2.6" data-path="feladatok.html"><a href="feladatok.html"><i class="fa fa-check"></i><b>2.6</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>I Az R nyelv</b></span></li>
+<li class="chapter" data-level="3" data-path="adatobjektumok.html"><a href="adatobjektumok.html"><i class="fa fa-check"></i><b>3</b> Adatobjektumok</a><ul>
+<li class="chapter" data-level="3.1" data-path="szamolas-az-r-ben.html"><a href="szamolas-az-r-ben.html"><i class="fa fa-check"></i><b>3.1</b> Számolás az R-ben</a></li>
+<li class="chapter" data-level="3.2" data-path="objektumok.html"><a href="objektumok.html"><i class="fa fa-check"></i><b>3.2</b> Objektumok</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="objektumok.html"><a href="objektumok.html#objektumok-letrehozasa"><i class="fa fa-check"></i><b>3.2.1</b> Objektumok létrehozása</a></li>
+<li class="chapter" data-level="3.2.2" data-path="objektumok.html"><a href="objektumok.html#objektumok-ertekenek-lekerdezese"><i class="fa fa-check"></i><b>3.2.2</b> Objektumok értékének lekérdezése</a></li>
+<li class="chapter" data-level="3.2.3" data-path="objektumok.html"><a href="objektumok.html#objektumok-elnevezese"><i class="fa fa-check"></i><b>3.2.3</b> Objektumok elnevezése</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="feladatok-1.html"><a href="feladatok-1.html"><i class="fa fa-check"></i><b>3.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="fuggvenyek.html"><a href="fuggvenyek.html"><i class="fa fa-check"></i><b>4</b> Függvények</a><ul>
+<li class="chapter" data-level="4.1" data-path="a-fuggvenyhivas-szabalyai.html"><a href="a-fuggvenyhivas-szabalyai.html"><i class="fa fa-check"></i><b>4.1</b> A függvényhívás szabályai</a></li>
+<li class="chapter" data-level="4.2" data-path="a-munkaterulet-fuggvenyei.html"><a href="a-munkaterulet-fuggvenyei.html"><i class="fa fa-check"></i><b>4.2</b> A munkaterület függvényei</a></li>
+<li class="chapter" data-level="4.3" data-path="a-munkakonyvtar-fuggvenyei.html"><a href="a-munkakonyvtar-fuggvenyei.html"><i class="fa fa-check"></i><b>4.3</b> A munkakönyvtár függvényei</a></li>
+<li class="chapter" data-level="4.4" data-path="csomagkezelo-fuggvenyek.html"><a href="csomagkezelo-fuggvenyek.html"><i class="fa fa-check"></i><b>4.4</b> Csomagkezelő függvények</a></li>
+<li class="chapter" data-level="4.5" data-path="feladatok-2.html"><a href="feladatok-2.html"><i class="fa fa-check"></i><b>4.5</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="adatszerkezetek.html"><a href="adatszerkezetek.html"><i class="fa fa-check"></i><b>5</b> Adatszerkezetek</a><ul>
+<li class="chapter" data-level="5.1" data-path="konstansok.html"><a href="konstansok.html"><i class="fa fa-check"></i><b>5.1</b> Konstansok</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="konstansok.html"><a href="konstansok.html#numerikus-konstansok"><i class="fa fa-check"></i><b>5.1.1</b> Numerikus konstansok</a></li>
+<li class="chapter" data-level="5.1.2" data-path="konstansok.html"><a href="konstansok.html#karakteres-konstansok"><i class="fa fa-check"></i><b>5.1.2</b> Karakteres konstansok</a></li>
+<li class="chapter" data-level="5.1.3" data-path="konstansok.html"><a href="konstansok.html#logikai-konstansok"><i class="fa fa-check"></i><b>5.1.3</b> Logikai konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="adatszerkezetek-attekintese.html"><a href="adatszerkezetek-attekintese.html"><i class="fa fa-check"></i><b>5.2</b> Adatszerkezetek áttekintése</a></li>
+<li class="chapter" data-level="5.3" data-path="vektor.html"><a href="vektor.html"><i class="fa fa-check"></i><b>5.3</b> Vektor</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="vektor.html"><a href="vektor.html#vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.1</b> Vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vektor.html"><a href="vektor.html#szabalyos-vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.2</b> Szabályos vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vektor.html"><a href="vektor.html#a-vektoraritmetika-szabalyai"><i class="fa fa-check"></i><b>5.3.3</b> A vektoraritmetika szabályai</a></li>
+<li class="chapter" data-level="5.3.4" data-path="vektor.html"><a href="vektor.html#fuggvenyek-vektorokkal"><i class="fa fa-check"></i><b>5.3.4</b> Függvények vektorokkal</a></li>
+<li class="chapter" data-level="5.3.5" data-path="vektor.html"><a href="vektor.html#a-vektortipus-vizsgalata-es-konverzioja"><i class="fa fa-check"></i><b>5.3.5</b> A vektortípus vizsgálata és konverziója</a></li>
+<li class="chapter" data-level="5.3.6" data-path="vektor.html"><a href="vektor.html#az-na-hianyzo-ertek"><i class="fa fa-check"></i><b>5.3.6</b> Az <code>NA</code> hiányzó érték</a></li>
+<li class="chapter" data-level="5.3.7" data-path="vektor.html"><a href="vektor.html#az-inf-es-a-nan"><i class="fa fa-check"></i><b>5.3.7</b> Az <code>Inf</code> és a <code>NaN</code></a></li>
+<li class="chapter" data-level="5.3.8" data-path="vektor.html"><a href="vektor.html#objektumok-attributumai"><i class="fa fa-check"></i><b>5.3.8</b> Objektumok attribútumai</a></li>
+<li class="chapter" data-level="5.3.9" data-path="vektor.html"><a href="vektor.html#vektor-indexelese"><i class="fa fa-check"></i><b>5.3.9</b> Vektor indexelése</a></li>
+<li class="chapter" data-level="5.3.10" data-path="vektor.html"><a href="vektor.html#vektorok-rendezese"><i class="fa fa-check"></i><b>5.3.10</b> Vektorok rendezése</a></li>
+<li class="chapter" data-level="5.3.11" data-path="vektor.html"><a href="vektor.html#elore-definialt-objektumok-nevesitett-konstansok"><i class="fa fa-check"></i><b>5.3.11</b> Előre definiált objektumok, nevesített konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="faktor.html"><a href="faktor.html"><i class="fa fa-check"></i><b>5.4</b> Faktor</a></li>
+<li class="chapter" data-level="5.5" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html"><i class="fa fa-check"></i><b>5.5</b> Mátrix és tömb</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#matrix-es-tomb-letrehozasa"><i class="fa fa-check"></i><b>5.5.1</b> Mátrix és tömb létrehozása</a></li>
+<li class="chapter" data-level="5.5.2" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#matrix-es-tomb-indexelese"><i class="fa fa-check"></i><b>5.5.2</b> Mátrix és tömb indexelése</a></li>
+<li class="chapter" data-level="5.5.3" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#szamitasok-a-matrix-soraiban-es-oszlopaiban"><i class="fa fa-check"></i><b>5.5.3</b> Számítások a mátrix soraiban és oszlopaiban</a></li>
+<li class="chapter" data-level="5.5.4" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#sorok-es-oszlopok-kezelese"><i class="fa fa-check"></i><b>5.5.4</b> Sorok és oszlopok kezelése</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lista.html"><a href="lista.html"><i class="fa fa-check"></i><b>5.6</b> Lista</a></li>
+<li class="chapter" data-level="5.7" data-path="adattabla-dataframe.html"><a href="adattabla-dataframe.html"><i class="fa fa-check"></i><b>5.7</b> Adattábla (dataframe)</a></li>
+<li class="chapter" data-level="5.8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>5.8</b> Tibble</a></li>
+<li class="chapter" data-level="5.9" data-path="feladatok-3.html"><a href="feladatok-3.html"><i class="fa fa-check"></i><b>5.9</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>II Adatelemzés</b></span></li>
+<li class="chapter" data-level="6" data-path="adatok-beolvasasa-es-kiirasa.html"><a href="adatok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6</b> Adatok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.1" data-path="inline-beolvasas.html"><a href="inline-beolvasas.html"><i class="fa fa-check"></i><b>6.1</b> Inline beolvasás</a></li>
+<li class="chapter" data-level="6.2" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6.2</b> Tagolt szöveges állományok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-tagolt-szoveges-allomany"><i class="fa fa-check"></i><b>6.2.1</b> A tagolt szöveges állomány</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-read.table-csalad-ar"><i class="fa fa-check"></i><b>6.2.2</b> A <code>read.table()</code> család (AR)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-read_delim-fuggvenycsalad-tr"><i class="fa fa-check"></i><b>6.2.3</b> A <code>read_delim()</code> függvénycsalád (TR)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#tagolt-szoveges-allomany-kiirasa"><i class="fa fa-check"></i><b>6.2.4</b> Tagolt szöveges állomány kiírása</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fix-szeles-mezok.html"><a href="fix-szeles-mezok.html"><i class="fa fa-check"></i><b>6.3</b> Fix széles mezők</a></li>
+<li class="chapter" data-level="6.4" data-path="mas-tipusu-adatallomanyok.html"><a href="mas-tipusu-adatallomanyok.html"><i class="fa fa-check"></i><b>6.4</b> Más típusú adatállományok</a></li>
+<li class="chapter" data-level="6.5" data-path="r-objektumok-irasa-es-olvasasa.html"><a href="r-objektumok-irasa-es-olvasasa.html"><i class="fa fa-check"></i><b>6.5</b> R objektumok írása és olvasása</a></li>
+<li class="chapter" data-level="6.6" data-path="feladatok-4.html"><a href="feladatok-4.html"><i class="fa fa-check"></i><b>6.6</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="grafika-az-r-ben.html"><a href="grafika-az-r-ben.html"><i class="fa fa-check"></i><b>7</b> Grafika az R-ben</a><ul>
+<li class="chapter" data-level="7.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html"><i class="fa fa-check"></i><b>7.1</b> Hagyományos grafika</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#grafikus-eszkozok"><i class="fa fa-check"></i><b>7.1.1</b> Grafikus eszközök</a></li>
+<li class="chapter" data-level="7.1.2" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-felosztasa"><i class="fa fa-check"></i><b>7.1.2</b> Az eszközfelület felosztása</a></li>
+<li class="chapter" data-level="7.1.3" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-reszei"><i class="fa fa-check"></i><b>7.1.3</b> Az eszközfelület részei</a></li>
+<li class="chapter" data-level="7.1.4" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#magas-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.4</b> Magas-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.5" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#alacsony-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.5</b> Alacsony-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.6" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#interaktiv-grafikus-fuggvenyek"><i class="fa fa-check"></i><b>7.1.6</b> Interaktív grafikus függvények</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> A modern grafika (ggplot2)</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#hisztogram-rajzolasa"><i class="fa fa-check"></i><b>7.2.1</b> Hisztogram rajzolása</a></li>
+<li class="chapter" data-level="7.2.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#gyakorisagi-poligon-simitott-hisztogram-es-osszevetes-a-normalis-eloszlas-surusegfuggvenyevel"><i class="fa fa-check"></i><b>7.2.2</b> Gyakorisági poligon, simított hisztogram és összevetés a normális eloszlás sűrűségfüggvényével</a></li>
+<li class="chapter" data-level="7.2.3" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#hisztogram-csoportokra"><i class="fa fa-check"></i><b>7.2.3</b> Hisztogram csoportokra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#gyakorisagi-poligon-es-simitott-hisztogram-csoportokra-de-egy-abran"><i class="fa fa-check"></i><b>7.2.4</b> Gyakorisági poligon és simított hisztogram csoportokra, de egy ábrán</a></li>
+<li class="chapter" data-level="7.2.5" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#atlagok-egy-faktor-eseten"><i class="fa fa-check"></i><b>7.2.5</b> Átlagok egy faktor esetén</a></li>
+<li class="chapter" data-level="7.2.6" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#atlagok-ket-faktor-eseten"><i class="fa fa-check"></i><b>7.2.6</b> Átlagok két faktor esetén</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="feladatok-5.html"><a href="feladatok-5.html"><i class="fa fa-check"></i><b>7.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="feladatok-megoldasa.html"><a href="feladatok-megoldasa.html"><i class="fa fa-check"></i><b>8</b> Feladatok megoldása</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="inline-beolvasas" class="section level2">
+<h2><span class="header-section-number">6.1</span> Inline beolvasás</h2>
+<p>Az adatok inline beolvasása azt jelenti, hogy nem külső állományból, hanem az R parancsállományba gépelt adatokból indulunk ki. Felhasználjuk a <code>c()</code>, <code>factor()</code> és <code>data.frame()</code> függvényeket az Alap R-ből, valamint a<code>tibble()</code> és <code>tribble()</code> függvényeket a Tidyverse R-ből. De használhatjuk az állományok beolvasását végző, de később sorra kerülő <code>read.table()</code> (AR) és <code>read_delim()</code> (TR) függvénycsaládokat is.</p>
+<p>A legegyszerűbb adatfeldolgozási feladatok egyetlen változót érintenek, ezek pedig numerikus vektorban vagy faktorban tárolhatók az R-ben.</p>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb752-1" title="1">magassag &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>) <span class="co"># 4 óvodás testmagassága cm-ben</span></a>
+<a class="sourceLine" id="cb752-2" title="2"><span class="kw">mean</span>(magassag)</a></code></pre></div>
+<pre><code>## [1] 137.25</code></pre>
+<div class="sourceCode" id="cb754"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb754-1" title="1">nem &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;), <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;)) # a 4 óvodás neme</span></a>
+<a class="sourceLine" id="cb754-2" title="2"><span class="st">table(nem)</span></a></code></pre></div>
+<pre><code>## nem
+##  fiú lány 
+##    2    2</code></pre>
+<p>Több változó tárolása esetén data frame vagy tibble típusú objektumot hozunk létre, amelyhez most felhasználjuk a korábban létrehozott (oszlop)vektorokat. Ehhez már a <code>data.frame()</code> és a <code>tibble()</code> függvényeket használjuk, nagyon hasonló módon:</p>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb756-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb756-2" title="2">d.tbl &lt;-<span class="st"> </span><span class="kw">tibble</span>(magassag, nem)     <span class="co"># tibble létrehozása</span></a>
+<a class="sourceLine" id="cb756-3" title="3">d.df  &lt;-<span class="st"> </span><span class="kw">data.frame</span>(magassag, nem) <span class="co"># data frame létrehozása</span></a></code></pre></div>
+<p>A létrehozott adattáblák is nagyon hasonlítanak egymásra:</p>
+<div class="sourceCode" id="cb757"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb757-1" title="1">d.tbl   <span class="co"># tibble</span></a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   magassag nem  
+##      &lt;dbl&gt; &lt;fct&gt;
+## 1      132 fiú  
+## 2      143 lány 
+## 3      129 lány 
+## 4      145 fiú</code></pre>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb759-1" title="1">d.df    <span class="co"># data frame</span></a></code></pre></div>
+<pre><code>##   magassag  nem
+## 1      132  fiú
+## 2      143 lány
+## 3      129 lány
+## 4      145  fiú</code></pre>
+<p>Természetesen nem kell feltétlenül az adattáblát alkotó oszlopokat külön numerikus vagy faktor oszlopokban előzőleg elkészíteni, ezeket a <code>data.frame()</code> vagy <code>tibble()</code> argumentumába közvetlenül is beírhatjuk:</p>
+<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb761-1" title="1"><span class="kw">data.frame</span>(</a>
+<a class="sourceLine" id="cb761-2" title="2">  <span class="dt">magassag =</span> <span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>),</a>
+<a class="sourceLine" id="cb761-3" title="3">  <span class="dt">nem =</span> <span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;),</a>
+<a class="sourceLine" id="cb761-4" title="4">  <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb761-5" title="5">)</a></code></pre></div>
+<pre><code>##   magassag  nem
+## 1      132  fiú
+## 2      143 lány
+## 3      129 lány
+## 4      145  fiú</code></pre>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb763-1" title="1"><span class="kw">tibble</span>(</a>
+<a class="sourceLine" id="cb763-2" title="2">  <span class="dt">magassag =</span> <span class="kw">c</span>(<span class="dv">132</span>, <span class="dv">143</span>, <span class="dv">129</span>, <span class="dv">145</span>),</a>
+<a class="sourceLine" id="cb763-3" title="3">  <span class="dt">nem =</span> <span class="kw">c</span>(<span class="st">&quot;fiú&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>lány<span class="st">&quot;, &quot;</span>fiú&quot;)</a>
+<a class="sourceLine" id="cb763-4" title="4">)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   magassag nem  
+##      &lt;dbl&gt; &lt;chr&gt;
+## 1      132 fiú  
+## 2      143 lány 
+## 3      129 lány 
+## 4      145 fiú</code></pre>
+<p>Tibble esetében a <code>nem</code> karakteres vektor maradt, de data frame esetén az automatikus konverziót a <code>stringsAsFactors=FALSE</code> paraméterrel tudjuk csak megakadályozni. Érdemes minden esetben a karakteres vektort meghagyni, ugyanis a létrehozandó faktor szintjeit egy későbbi munkafázisban mindenképp pontosítani kell.</p>
+<p>Tibble létrehozásának másik módja a <code>tribble()</code> függvény, amelynek argumentumába táblázatos formában adhatjuk meg az adatokat. A változóneveket a <code>~</code> karakter vezeti be:</p>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb765-1" title="1"><span class="kw">tribble</span>(</a>
+<a class="sourceLine" id="cb765-2" title="2">  <span class="op">~</span>tortenelem,  <span class="op">~</span>matek, <span class="op">~</span>nem,</a>
+<a class="sourceLine" id="cb765-3" title="3">  <span class="dv">3</span>, <span class="dv">2</span>, <span class="st">&quot;fiú&quot;,</span></a>
+<a class="sourceLine" id="cb765-4" title="4"><span class="st">  2, 4, &quot;</span>fiú&quot;,</a>
+<a class="sourceLine" id="cb765-5" title="5">  <span class="dv">3</span>, <span class="dv">5</span>, <span class="st">&quot;lány&quot;</span></a>
+<a class="sourceLine" id="cb765-6" title="6">)</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 3
+##   tortenelem matek nem  
+##        &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
+## 1          3     2 fiú  
+## 2          2     4 fiú  
+## 3          3     5 lány</code></pre>
+<p>A következő részben ismertetjük a <code>read.table()</code> és <code>read_delim()</code> függvénycsaládokat, amelyek tagolt szöveges állományból olvasnak be adatokat. Azonban használhatjuk őket inline beolvasásra is. A függvények paramétereit a következő részben ismertetjük.</p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb767-1" title="1">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="kw">textConnection</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb767-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
+<a class="sourceLine" id="cb767-3" title="3"><span class="st">5 5 8</span></a>
+<a class="sourceLine" id="cb767-4" title="4"><span class="st">10 7 10</span></a>
+<a class="sourceLine" id="cb767-5" title="5"><span class="st">7 9 8</span></a>
+<a class="sourceLine" id="cb767-6" title="6"><span class="st">3 8 9</span></a>
+<a class="sourceLine" id="cb767-7" title="7"><span class="st">5 2 11</span></a>
+<a class="sourceLine" id="cb767-8" title="8"><span class="st">7 5 15</span></a>
+<a class="sourceLine" id="cb767-9" title="9"><span class="st">11 6 7</span></a>
+<a class="sourceLine" id="cb767-10" title="10"><span class="st">2 6 11</span></a>
+<a class="sourceLine" id="cb767-11" title="11"><span class="st">3 4 8</span></a>
+<a class="sourceLine" id="cb767-12" title="12"><span class="st">5 4 8</span></a>
+<a class="sourceLine" id="cb767-13" title="13"><span class="st">6 8 17</span></a>
+<a class="sourceLine" id="cb767-14" title="14"><span class="st">6 10 11</span></a>
+<a class="sourceLine" id="cb767-15" title="15"><span class="st">&quot;</span>), <span class="dt">header=</span>T, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb767-16" title="16"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    12 obs. of  3 variables:
+##  $ placebo         : int  5 10 7 3 5 7 11 2 3 5 ...
+##  $ alacsony.alkohol: int  5 7 9 8 2 5 6 6 4 4 ...
+##  $ magas.alkohol   : int  8 10 8 9 11 15 7 11 8 8 ...</code></pre>
+<div class="sourceCode" id="cb769"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb769-1" title="1">d.tbl &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb769-2" title="2"><span class="st">placebo alacsony.alkohol magas.alkohol</span></a>
+<a class="sourceLine" id="cb769-3" title="3"><span class="st">5 5 8</span></a>
+<a class="sourceLine" id="cb769-4" title="4"><span class="st">10 7 10</span></a>
+<a class="sourceLine" id="cb769-5" title="5"><span class="st">7 9 8</span></a>
+<a class="sourceLine" id="cb769-6" title="6"><span class="st">3 8 9</span></a>
+<a class="sourceLine" id="cb769-7" title="7"><span class="st">5 2 11</span></a>
+<a class="sourceLine" id="cb769-8" title="8"><span class="st">7 5 15</span></a>
+<a class="sourceLine" id="cb769-9" title="9"><span class="st">11 6 7</span></a>
+<a class="sourceLine" id="cb769-10" title="10"><span class="st">2 6 11</span></a>
+<a class="sourceLine" id="cb769-11" title="11"><span class="st">3 4 8</span></a>
+<a class="sourceLine" id="cb769-12" title="12"><span class="st">5 4 8</span></a>
+<a class="sourceLine" id="cb769-13" title="13"><span class="st">6 8 17</span></a>
+<a class="sourceLine" id="cb769-14" title="14"><span class="st">6 10 11</span></a>
+<a class="sourceLine" id="cb769-15" title="15"><span class="st">&quot;</span>, <span class="dt">col_names=</span>T, <span class="dt">delim=</span><span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb769-16" title="16">d.tbl</a></code></pre></div>
+<pre><code>## # A tibble: 12 x 3
+##    placebo alacsony.alkohol magas.alkohol
+##      &lt;dbl&gt;            &lt;dbl&gt;         &lt;dbl&gt;
+##  1       5                5             8
+##  2      10                7            10
+##  3       7                9             8
+##  4       3                8             9
+##  5       5                2            11
+##  6       7                5            15
+##  7      11                6             7
+##  8       2                6            11
+##  9       3                4             8
+## 10       5                4             8
+## 11       6                8            17
+## 12       6               10            11</code></pre>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="adatok-beolvasasa-es-kiirasa.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["r_bioinf.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

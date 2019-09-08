@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6.2 Tagolt szöveges állományok beolvasása és kiírása | R alapok I. - RNS szekvenálási példákkal</title>
+  <meta name="description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6.2 Tagolt szöveges állományok beolvasása és kiírása | R alapok I. - RNS szekvenálási példákkal" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6.2 Tagolt szöveges állományok beolvasása és kiírása | R alapok I. - RNS szekvenálási példákkal" />
+  
+  <meta name="twitter:description" content="Adatmanipuláció, egyváltozós elemzések és megismételhető kutatás bioinformatikai példákkal." />
+  <meta name="twitter:image" content="images/cover.png" />
+
+<meta name="author" content="Abari Kálmán" />
+
+
+<meta name="date" content="2019-09-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="inline-beolvasas.html">
+<link rel="next" href="fix-szeles-mezok.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css\style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R alapok I. - RNS szekvenálási példákkal</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Bevezetés</a><ul>
+<li class="chapter" data-level="1.1" data-path="az-r.html"><a href="az-r.html"><i class="fa fa-check"></i><b>1.1</b> Az R</a></li>
+<li class="chapter" data-level="1.2" data-path="alapelvek-az-r-hasznalatahoz.html"><a href="alapelvek-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>1.2</b> Alapelvek az R használatához</a></li>
+<li class="chapter" data-level="1.3" data-path="Ralaptudas.html"><a href="Ralaptudas.html"><i class="fa fa-check"></i><b>1.3</b> Az R alaptudás</a></li>
+<li class="chapter" data-level="1.4" data-path="a-modern-r.html"><a href="a-modern-r.html"><i class="fa fa-check"></i><b>1.4</b> A modern R</a></li>
+<li class="chapter" data-level="1.5" data-path="jelolesi-konvenciok.html"><a href="jelolesi-konvenciok.html"><i class="fa fa-check"></i><b>1.5</b> Jelölési konvenciók</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="alapok.html"><a href="alapok.html"><i class="fa fa-check"></i><b>2</b> Alapok</a><ul>
+<li class="chapter" data-level="2.1" data-path="szereplok-es-fogalmak.html"><a href="szereplok-es-fogalmak.html"><i class="fa fa-check"></i><b>2.1</b> Szereplők és fogalmak</a></li>
+<li class="chapter" data-level="2.2" data-path="telepitesek.html"><a href="telepitesek.html"><i class="fa fa-check"></i><b>2.2</b> Telepítések</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="telepitesek.html"><a href="telepitesek.html#az-alap-r-telepitese"><i class="fa fa-check"></i><b>2.2.1</b> Az Alap R telepítése</a></li>
+<li class="chapter" data-level="2.2.2" data-path="telepitesek.html"><a href="telepitesek.html#az-rstudio-telepitese"><i class="fa fa-check"></i><b>2.2.2</b> Az RStudio telepítése</a></li>
+<li class="chapter" data-level="2.2.3" data-path="telepitesek.html"><a href="telepitesek.html#Csomagok_telepitese"><i class="fa fa-check"></i><b>2.2.3</b> Csomagok telepítése</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html"><i class="fa fa-check"></i><b>2.3</b> Az első lépések</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#a-konzol-hasznalata"><i class="fa fa-check"></i><b>2.3.1</b> A konzol használata</a></li>
+<li class="chapter" data-level="2.3.2" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok"><i class="fa fa-check"></i><b>2.3.2</b> Parancsállományok</a></li>
+<li class="chapter" data-level="2.3.3" data-path="az-elso-lepesek.html"><a href="az-elso-lepesek.html#parancsallomanyok-futtatasa"><i class="fa fa-check"></i><b>2.3.3</b> Parancsállományok futtatása</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="az-rstudio.html"><a href="az-rstudio.html"><i class="fa fa-check"></i><b>2.4</b> Az RStudio</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="az-rstudio.html"><a href="az-rstudio.html#panelek"><i class="fa fa-check"></i><b>2.4.1</b> Panelek</a></li>
+<li class="chapter" data-level="2.4.2" data-path="az-rstudio.html"><a href="az-rstudio.html#munka-az-rstudio-ban"><i class="fa fa-check"></i><b>2.4.2</b> Munka az RStudio-ban</a></li>
+<li class="chapter" data-level="2.4.3" data-path="az-rstudio.html"><a href="az-rstudio.html#projektek-hasznalata"><i class="fa fa-check"></i><b>2.4.3</b> Projektek használata</a></li>
+<li class="chapter" data-level="2.4.4" data-path="az-rstudio.html"><a href="az-rstudio.html#az-rmarkdown-hasznalata"><i class="fa fa-check"></i><b>2.4.4</b> Az RMarkdown használata</a></li>
+<li class="chapter" data-level="2.4.5" data-path="az-rstudio.html"><a href="az-rstudio.html#billenytuparancsok"><i class="fa fa-check"></i><b>2.4.5</b> Billenytűparancsok</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="segitseg-az-r-hasznalatahoz.html"><a href="segitseg-az-r-hasznalatahoz.html"><i class="fa fa-check"></i><b>2.5</b> Segítség az R használatához</a></li>
+<li class="chapter" data-level="2.6" data-path="feladatok.html"><a href="feladatok.html"><i class="fa fa-check"></i><b>2.6</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>I Az R nyelv</b></span></li>
+<li class="chapter" data-level="3" data-path="adatobjektumok.html"><a href="adatobjektumok.html"><i class="fa fa-check"></i><b>3</b> Adatobjektumok</a><ul>
+<li class="chapter" data-level="3.1" data-path="szamolas-az-r-ben.html"><a href="szamolas-az-r-ben.html"><i class="fa fa-check"></i><b>3.1</b> Számolás az R-ben</a></li>
+<li class="chapter" data-level="3.2" data-path="objektumok.html"><a href="objektumok.html"><i class="fa fa-check"></i><b>3.2</b> Objektumok</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="objektumok.html"><a href="objektumok.html#objektumok-letrehozasa"><i class="fa fa-check"></i><b>3.2.1</b> Objektumok létrehozása</a></li>
+<li class="chapter" data-level="3.2.2" data-path="objektumok.html"><a href="objektumok.html#objektumok-ertekenek-lekerdezese"><i class="fa fa-check"></i><b>3.2.2</b> Objektumok értékének lekérdezése</a></li>
+<li class="chapter" data-level="3.2.3" data-path="objektumok.html"><a href="objektumok.html#objektumok-elnevezese"><i class="fa fa-check"></i><b>3.2.3</b> Objektumok elnevezése</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="feladatok-1.html"><a href="feladatok-1.html"><i class="fa fa-check"></i><b>3.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="fuggvenyek.html"><a href="fuggvenyek.html"><i class="fa fa-check"></i><b>4</b> Függvények</a><ul>
+<li class="chapter" data-level="4.1" data-path="a-fuggvenyhivas-szabalyai.html"><a href="a-fuggvenyhivas-szabalyai.html"><i class="fa fa-check"></i><b>4.1</b> A függvényhívás szabályai</a></li>
+<li class="chapter" data-level="4.2" data-path="a-munkaterulet-fuggvenyei.html"><a href="a-munkaterulet-fuggvenyei.html"><i class="fa fa-check"></i><b>4.2</b> A munkaterület függvényei</a></li>
+<li class="chapter" data-level="4.3" data-path="a-munkakonyvtar-fuggvenyei.html"><a href="a-munkakonyvtar-fuggvenyei.html"><i class="fa fa-check"></i><b>4.3</b> A munkakönyvtár függvényei</a></li>
+<li class="chapter" data-level="4.4" data-path="csomagkezelo-fuggvenyek.html"><a href="csomagkezelo-fuggvenyek.html"><i class="fa fa-check"></i><b>4.4</b> Csomagkezelő függvények</a></li>
+<li class="chapter" data-level="4.5" data-path="feladatok-2.html"><a href="feladatok-2.html"><i class="fa fa-check"></i><b>4.5</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="adatszerkezetek.html"><a href="adatszerkezetek.html"><i class="fa fa-check"></i><b>5</b> Adatszerkezetek</a><ul>
+<li class="chapter" data-level="5.1" data-path="konstansok.html"><a href="konstansok.html"><i class="fa fa-check"></i><b>5.1</b> Konstansok</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="konstansok.html"><a href="konstansok.html#numerikus-konstansok"><i class="fa fa-check"></i><b>5.1.1</b> Numerikus konstansok</a></li>
+<li class="chapter" data-level="5.1.2" data-path="konstansok.html"><a href="konstansok.html#karakteres-konstansok"><i class="fa fa-check"></i><b>5.1.2</b> Karakteres konstansok</a></li>
+<li class="chapter" data-level="5.1.3" data-path="konstansok.html"><a href="konstansok.html#logikai-konstansok"><i class="fa fa-check"></i><b>5.1.3</b> Logikai konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="adatszerkezetek-attekintese.html"><a href="adatszerkezetek-attekintese.html"><i class="fa fa-check"></i><b>5.2</b> Adatszerkezetek áttekintése</a></li>
+<li class="chapter" data-level="5.3" data-path="vektor.html"><a href="vektor.html"><i class="fa fa-check"></i><b>5.3</b> Vektor</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="vektor.html"><a href="vektor.html#vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.1</b> Vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.2" data-path="vektor.html"><a href="vektor.html#szabalyos-vektorok-letrehozasa"><i class="fa fa-check"></i><b>5.3.2</b> Szabályos vektorok létrehozása</a></li>
+<li class="chapter" data-level="5.3.3" data-path="vektor.html"><a href="vektor.html#a-vektoraritmetika-szabalyai"><i class="fa fa-check"></i><b>5.3.3</b> A vektoraritmetika szabályai</a></li>
+<li class="chapter" data-level="5.3.4" data-path="vektor.html"><a href="vektor.html#fuggvenyek-vektorokkal"><i class="fa fa-check"></i><b>5.3.4</b> Függvények vektorokkal</a></li>
+<li class="chapter" data-level="5.3.5" data-path="vektor.html"><a href="vektor.html#a-vektortipus-vizsgalata-es-konverzioja"><i class="fa fa-check"></i><b>5.3.5</b> A vektortípus vizsgálata és konverziója</a></li>
+<li class="chapter" data-level="5.3.6" data-path="vektor.html"><a href="vektor.html#az-na-hianyzo-ertek"><i class="fa fa-check"></i><b>5.3.6</b> Az <code>NA</code> hiányzó érték</a></li>
+<li class="chapter" data-level="5.3.7" data-path="vektor.html"><a href="vektor.html#az-inf-es-a-nan"><i class="fa fa-check"></i><b>5.3.7</b> Az <code>Inf</code> és a <code>NaN</code></a></li>
+<li class="chapter" data-level="5.3.8" data-path="vektor.html"><a href="vektor.html#objektumok-attributumai"><i class="fa fa-check"></i><b>5.3.8</b> Objektumok attribútumai</a></li>
+<li class="chapter" data-level="5.3.9" data-path="vektor.html"><a href="vektor.html#vektor-indexelese"><i class="fa fa-check"></i><b>5.3.9</b> Vektor indexelése</a></li>
+<li class="chapter" data-level="5.3.10" data-path="vektor.html"><a href="vektor.html#vektorok-rendezese"><i class="fa fa-check"></i><b>5.3.10</b> Vektorok rendezése</a></li>
+<li class="chapter" data-level="5.3.11" data-path="vektor.html"><a href="vektor.html#elore-definialt-objektumok-nevesitett-konstansok"><i class="fa fa-check"></i><b>5.3.11</b> Előre definiált objektumok, nevesített konstansok</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="faktor.html"><a href="faktor.html"><i class="fa fa-check"></i><b>5.4</b> Faktor</a></li>
+<li class="chapter" data-level="5.5" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html"><i class="fa fa-check"></i><b>5.5</b> Mátrix és tömb</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#matrix-es-tomb-letrehozasa"><i class="fa fa-check"></i><b>5.5.1</b> Mátrix és tömb létrehozása</a></li>
+<li class="chapter" data-level="5.5.2" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#matrix-es-tomb-indexelese"><i class="fa fa-check"></i><b>5.5.2</b> Mátrix és tömb indexelése</a></li>
+<li class="chapter" data-level="5.5.3" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#szamitasok-a-matrix-soraiban-es-oszlopaiban"><i class="fa fa-check"></i><b>5.5.3</b> Számítások a mátrix soraiban és oszlopaiban</a></li>
+<li class="chapter" data-level="5.5.4" data-path="matrix-es-tomb.html"><a href="matrix-es-tomb.html#sorok-es-oszlopok-kezelese"><i class="fa fa-check"></i><b>5.5.4</b> Sorok és oszlopok kezelése</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="lista.html"><a href="lista.html"><i class="fa fa-check"></i><b>5.6</b> Lista</a></li>
+<li class="chapter" data-level="5.7" data-path="adattabla-dataframe.html"><a href="adattabla-dataframe.html"><i class="fa fa-check"></i><b>5.7</b> Adattábla (dataframe)</a></li>
+<li class="chapter" data-level="5.8" data-path="tibble.html"><a href="tibble.html"><i class="fa fa-check"></i><b>5.8</b> Tibble</a></li>
+<li class="chapter" data-level="5.9" data-path="feladatok-3.html"><a href="feladatok-3.html"><i class="fa fa-check"></i><b>5.9</b> Feladatok</a></li>
+</ul></li>
+<li class="part"><span><b>II Adatelemzés</b></span></li>
+<li class="chapter" data-level="6" data-path="adatok-beolvasasa-es-kiirasa.html"><a href="adatok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6</b> Adatok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.1" data-path="inline-beolvasas.html"><a href="inline-beolvasas.html"><i class="fa fa-check"></i><b>6.1</b> Inline beolvasás</a></li>
+<li class="chapter" data-level="6.2" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><i class="fa fa-check"></i><b>6.2</b> Tagolt szöveges állományok beolvasása és kiírása</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-tagolt-szoveges-allomany"><i class="fa fa-check"></i><b>6.2.1</b> A tagolt szöveges állomány</a></li>
+<li class="chapter" data-level="6.2.2" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-read.table-csalad-ar"><i class="fa fa-check"></i><b>6.2.2</b> A <code>read.table()</code> család (AR)</a></li>
+<li class="chapter" data-level="6.2.3" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#a-read_delim-fuggvenycsalad-tr"><i class="fa fa-check"></i><b>6.2.3</b> A <code>read_delim()</code> függvénycsalád (TR)</a></li>
+<li class="chapter" data-level="6.2.4" data-path="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html"><a href="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa.html#tagolt-szoveges-allomany-kiirasa"><i class="fa fa-check"></i><b>6.2.4</b> Tagolt szöveges állomány kiírása</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fix-szeles-mezok.html"><a href="fix-szeles-mezok.html"><i class="fa fa-check"></i><b>6.3</b> Fix széles mezők</a></li>
+<li class="chapter" data-level="6.4" data-path="mas-tipusu-adatallomanyok.html"><a href="mas-tipusu-adatallomanyok.html"><i class="fa fa-check"></i><b>6.4</b> Más típusú adatállományok</a></li>
+<li class="chapter" data-level="6.5" data-path="r-objektumok-irasa-es-olvasasa.html"><a href="r-objektumok-irasa-es-olvasasa.html"><i class="fa fa-check"></i><b>6.5</b> R objektumok írása és olvasása</a></li>
+<li class="chapter" data-level="6.6" data-path="feladatok-4.html"><a href="feladatok-4.html"><i class="fa fa-check"></i><b>6.6</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="grafika-az-r-ben.html"><a href="grafika-az-r-ben.html"><i class="fa fa-check"></i><b>7</b> Grafika az R-ben</a><ul>
+<li class="chapter" data-level="7.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html"><i class="fa fa-check"></i><b>7.1</b> Hagyományos grafika</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#grafikus-eszkozok"><i class="fa fa-check"></i><b>7.1.1</b> Grafikus eszközök</a></li>
+<li class="chapter" data-level="7.1.2" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-felosztasa"><i class="fa fa-check"></i><b>7.1.2</b> Az eszközfelület felosztása</a></li>
+<li class="chapter" data-level="7.1.3" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#az-eszkozfelulet-reszei"><i class="fa fa-check"></i><b>7.1.3</b> Az eszközfelület részei</a></li>
+<li class="chapter" data-level="7.1.4" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#magas-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.4</b> Magas-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.5" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#alacsony-szintu-rajzfuggvenyek"><i class="fa fa-check"></i><b>7.1.5</b> Alacsony-szintű rajzfüggvények</a></li>
+<li class="chapter" data-level="7.1.6" data-path="hagyomanyos-grafika.html"><a href="hagyomanyos-grafika.html#interaktiv-grafikus-fuggvenyek"><i class="fa fa-check"></i><b>7.1.6</b> Interaktív grafikus függvények</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html"><i class="fa fa-check"></i><b>7.2</b> A modern grafika (ggplot2)</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#hisztogram-rajzolasa"><i class="fa fa-check"></i><b>7.2.1</b> Hisztogram rajzolása</a></li>
+<li class="chapter" data-level="7.2.2" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#gyakorisagi-poligon-simitott-hisztogram-es-osszevetes-a-normalis-eloszlas-surusegfuggvenyevel"><i class="fa fa-check"></i><b>7.2.2</b> Gyakorisági poligon, simított hisztogram és összevetés a normális eloszlás sűrűségfüggvényével</a></li>
+<li class="chapter" data-level="7.2.3" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#hisztogram-csoportokra"><i class="fa fa-check"></i><b>7.2.3</b> Hisztogram csoportokra</a></li>
+<li class="chapter" data-level="7.2.4" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#gyakorisagi-poligon-es-simitott-hisztogram-csoportokra-de-egy-abran"><i class="fa fa-check"></i><b>7.2.4</b> Gyakorisági poligon és simított hisztogram csoportokra, de egy ábrán</a></li>
+<li class="chapter" data-level="7.2.5" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#atlagok-egy-faktor-eseten"><i class="fa fa-check"></i><b>7.2.5</b> Átlagok egy faktor esetén</a></li>
+<li class="chapter" data-level="7.2.6" data-path="a-modern-grafika-ggplot2.html"><a href="a-modern-grafika-ggplot2.html#atlagok-ket-faktor-eseten"><i class="fa fa-check"></i><b>7.2.6</b> Átlagok két faktor esetén</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="feladatok-5.html"><a href="feladatok-5.html"><i class="fa fa-check"></i><b>7.3</b> Feladatok</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="feladatok-megoldasa.html"><a href="feladatok-megoldasa.html"><i class="fa fa-check"></i><b>8</b> Feladatok megoldása</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R alapok I. - RNS szekvenálási példákkal</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tagolt-szoveges-allomanyok-beolvasasa-es-kiirasa" class="section level2">
+<h2><span class="header-section-number">6.2</span> Tagolt szöveges állományok beolvasása és kiírása</h2>
+<p>A tagolt szöveges állományok kitüntetett szerepet játszanak a statisztikai adatfeldolgozásban, ugyanis adataink tárolásának ez a legbiztonságosabb módja. Minden statisztikai programcsomag és táblázatkezelő be tud olvasni ilyen formátumú állományokat, és ki tud exportálni ilyen formátumba. A tagolt szöveges állományok létrehozásához pedig egy jegyzettömbszerű szövegszerkesztő is elegendő, tehát ez a formátum elég nagy szabadságot ad az adataink kezeléshez.</p>
+<div id="a-tagolt-szoveges-allomany" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> A tagolt szöveges állomány</h3>
+<p>A tagolt szöveges állomány egy egyszerű, formázást nem tartalmazó szöveges állomány, amelyet azonos szerkezetű sorok alkotnak. A sorokat az operációs rendszernek megfelelő sorvége karakterek zárják. Jegyzettömbszerű szövegszerkesztő használata során, az ENTER leütésével ezek a sorvége karakterek kerülnek fizikailag a szöveges állományba. Linux és macOS operációs rendszer alatt az LF karakter, Windows platformon a CR és LF karakterek. Ezeket sorvége karaktereknek hívjuk, az LF a soremelés (<code>\n</code>), a CR a kocsi vissza (<code>\r</code>) karakter. Annak ellenére, hogy különböző platformokon más-más jelzi a sorvégét, a beolvasó függvények felismerik ezeket, és helyesen értelmezik. Ezzel nekünk nem kell külön foglalkoznunk, nem úgy a sorokon belüli azonos szerkezet biztosításával.</p>
+<p>Minden tagolt szöveges állományban van egy kitüntetett karakter, a tagoló karakter. Ez tipikusan a pontosvessző (<code>;</code>), a szóköz (<code></code>), a tabulátor (<code>\t</code>) vagy a vessző (<code>,</code>) karakter. A tagolt szöveges állomány minden sorában ezek egyikét használjuk az adatértékek elválasztására, ráadásul minden sorban azonos számú adatértéknek kell szerepelni, ennek megfelelően minden sorban azonos számú tagoló karakter van.</p>
+<p>Nézzünk példát pontosvesszővel tagolt szöveges állományra:</p>
+<div class="sourceCode" id="cb771"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb771-1" title="1">nem;kor;pulzus</a>
+<a class="sourceLine" id="cb771-2" title="2">fiú;12;71</a>
+<a class="sourceLine" id="cb771-3" title="3">fiú;11;69</a>
+<a class="sourceLine" id="cb771-4" title="4">lány;14;70</a></code></pre></div>
+<p>Összesen 4 sora van, soronként 3 adatértékkel, és 2 pontosvesszővel. Látható, hogy az első sor kitüntetett, azaz igazából nem mért adatokat tartalmaz, hanem megnevezi azokat. Gyakori, hogy a tagolt szöveges állományok első sora ilyen speciális fejlécsor, amely tehát oszlopneveket tartalmaz. Ez nem kötelező, elképzelhető, hogy az első sorban már adatértékek vannak.</p>
+<p>Nézzünk egy szóközzel tagolt szöveges állományt:</p>
+<div class="sourceCode" id="cb772"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb772-1" title="1">nem kor pulzus atlag</a>
+<a class="sourceLine" id="cb772-2" title="2">fiú 12 71 3,92</a>
+<a class="sourceLine" id="cb772-3" title="3">fiú 11 69 4,12</a>
+<a class="sourceLine" id="cb772-4" title="4">lány 14 70 5,00</a></code></pre></div>
+<p>Ez a tagolt szöveges állomány 4 sort, soronként 4 adatértéket és 3 elválasztó szóközt tartalmaz. Az első sora fejlécsor. Látható, hogy tizedestörtek is szerepelnek az állományban, a tizedesvesszőt valóban vesszővel jelöltük. Ez nem minden esetben van így.</p>
+<p>Tekintsünk egy elsőre kicsit rendezetlen szöveges állományt:</p>
+<div class="sourceCode" id="cb773"><pre class="sourceCode markdown"><code class="sourceCode markdown"><a class="sourceLine" id="cb773-1" title="1">Általános iskolai felmérés</a>
+<a class="sourceLine" id="cb773-2" title="2">2019.03.02.</a>
+<a class="sourceLine" id="cb773-3" title="3"></a>
+<a class="sourceLine" id="cb773-4" title="4"><span class="fu"># 2.b</span></a>
+<a class="sourceLine" id="cb773-5" title="5">nem,kor,pulzus,atlag</a>
+<a class="sourceLine" id="cb773-6" title="6">fiú,12,71,3.92</a>
+<a class="sourceLine" id="cb773-7" title="7">#fiú,11,69,4.12</a>
+<a class="sourceLine" id="cb773-8" title="8">lány,14,70,5.00 # ellenőrizni</a></code></pre></div>
+<p>Az állomány második felében valóban felfedezhetjük a rendezettséget, a fejlécet 4 oszlopnévvel, és alatta a sorokat 4-4 adatértékkel. Ez a rész olyan, mint egy vesszővel elválasztott szöveges állomány, ahol a tizedestörtekben pontot használunk az egész- és törtrész elválasztására.</p>
+<p>Az állomány eleje azonban egyáltalán nem hasonlít a tagolt szöveges állományokra, és ráadásul kettőskereszttel (<code>#</code>), vagyis megjegyzésnek szánt szövegekkel tarkított soraink is vannak. Az ilyen szabadabb stílusú állományok is beolvashatók az R-be, csupán meg kell adnunk, hogy az elejéről hány sort hagyjon figyelmen kívül (3 sort), és mit tekintsen megjegyzésnek (a kettőskeresztet) a beolvasását végző eljárás. Ebben az esetben a fejlécen kívül még 2 adatsor lesz a beolvasott adattáblában.</p>
+<p>A tagolt szöveges állományok fontos jellemzői:</p>
+<ul>
+<li>tagoló karakter,</li>
+<li>decimális elválasztó,</li>
+<li>van-e fejlécsor,</li>
+<li>hány sort lépjünk át az elejéről,</li>
+<li>mi a megjegyzés karakter,</li>
+<li>milyen kódolású az állomány.</li>
+</ul>
+<p>Ahogyan említettük tagolt szöveges állományt egy jegyzettömbszerű szövegszerkesztővel mi is létrehozhatunk, de ha módunk van rá, akkor a minél kényelmesebb adatbevitel miatt, használjunk táblázatkezelőt, és az abban elkészült táblázatos formában lévő adatokat exportáljuk ki tagolt szöveges állományba. Például magyar Excel esetén választhatjuk a “CSV (pontosvesszővel tagolt)”, vagy a “Szöveges (tabulátorral tagolt)” formátumot. Érdemes minden esetben megőrizni a táblázatkezelő saját formátumában az adatokat, mert a kényelmes szerkesztés miatt továbbra is itt érdemes az adatokat módosítani, de változtatások után, utolsó lépésként, végezzük el az exportot a tagolt szöveges állományba.</p>
+</div>
+<div id="a-read.table-csalad-ar" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> A <code>read.table()</code> család (AR)</h3>
+<p>Tagolt szöveges állományok beolvasásának hagyományos módja a <code>read.table()</code> függvénycsalád használata. Azért nevezzük függvénycsaládnak, mert valójában több függvényt használhatunk, amelyek csak a paraméterek alapértelmezett értékében térnek el egymástól:</p>
+<ul>
+<li><code>read.table(sep="", dec=".")</code>,</li>
+<li><code>read.csv(sep=",", dec=".")</code>,</li>
+<li><code>read.csv2(sep=";", dec=",")</code>,</li>
+<li><code>read.delim(sep="\t", dec=".")</code>,</li>
+<li><code>read.delim2(sep="\t", dec=",")</code>.</li>
+</ul>
+<p>Érdemes a fenti függvénynevek megtanulása helyett egyetlen függvényt, a <code>read.table()</code>-t használni, és inkább a lehetséges paraméterek jelentését tanuljuk meg:</p>
+<ul>
+<li><code>file=</code><br />
+A beolvasandó állomány elérési útja.</li>
+<li><code>sep=</code><br />
+Az elválasztó karakter a beolvasandó állományban. Tipikus értékei: <code>sep=";"</code>, <code>sep=" "</code>, <code>sep=","</code>, és tabulátor elválasztó esetén <code>sep="\t"</code>.</li>
+<li><code>dec=</code><br />
+A decimális elválasztó, vagyis a tizedesvessző alakja az állományban. Tipikusan a <code>dec=","</code> beállítást kell használnunk, de előfordulhat, hogy a pont a tizedes elválasztó, így a <code>dec="."</code>-ra van szükségünk.</li>
+<li><code>header=</code><br />
+Ha van fejléc a szöveges állományban, akkor <code>header=TRUE</code>, egyébként a <code>header=FALSE</code> beállítást használjuk.</li>
+<li><code>na.strings=</code><br />
+A hiányzó érték jelölése a szöveges állományban. Az alapértelmezett beállítás a legtöbb esetben megfelelő, hiszen a <code>""</code> (semmi) és az <code>"NA"</code> jelölésből alapértelmezés szerint hiányzó érték lesz.</li>
+<li><code>comment.char=</code><br />
+A tipikus megjegyzés karakter a <code>#</code>, de meg tudjuk változtatni, ha szükséges.</li>
+<li><code>skip=</code><br />
+A szöveges állomány első néhány sorát figyelmen kívül hagyhatjuk.</li>
+<li><code>stringsAsFactors=</code><br />
+A <code>stringsAsFactors=FALSE</code> beállítással elkerülhetjük a karakteres oszlopok automatikus faktorrá konvertálását.</li>
+<li><code>fileEncoding=</code><br />
+A szöveges állományt alkotó karakterek kódolási szabványát adhatjuk meg. Tipikusan az UTF-8 kódulású szöveges állományok beolvasása során kell használnunk (<code>fileEncoding="UTF-8"</code>), de a magyar környezetben készült szöveges állományok esetében is rögzíthetjük a kódolási szabványt (<code>fileEncoding="latin2"</code>).</li>
+<li><code>strip.white=</code><br />
+A felesleges szóközök és tabulátorok eltávolítása az adatok elejéről és végéről.</li>
+<li><code>quote=</code><br />
+A szöveges állományban lévő adatvédő idézőjelek alakja.</li>
+</ul>
+<p>A következő példa beolvasó parancsa egy első sorában oszlopneveket tartalmazó szöveges állomány tartalmát helyezi el a <code>d.df</code> adattáblában. Az állományban az adatokat (és az oszlopneveket is) a pontosvessző (<code>;</code>) választja el, a numerikus értékekben pedig vesszőt használ a tizedesvessző jelölésére.</p>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb774-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
+<a class="sourceLine" id="cb774-2" title="2">d.df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> data.file, <span class="dt">header=</span>T, </a>
+<a class="sourceLine" id="cb774-3" title="3">                                     <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, </a>
+<a class="sourceLine" id="cb774-4" title="4">                                     <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>, </a>
+<a class="sourceLine" id="cb774-5" title="5">                                     <span class="dt">strip.white =</span> T, </a>
+<a class="sourceLine" id="cb774-6" title="6">                                     <span class="dt">stringsAsFactors =</span> F, </a>
+<a class="sourceLine" id="cb774-7" title="7">                                     <span class="dt">fileEncoding =</span> <span class="st">&quot;latin2&quot;</span>)</a>
+<a class="sourceLine" id="cb774-8" title="8"><span class="kw">str</span>(d.df)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    657 obs. of  6 variables:
+##  $ hallgato: int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Height  : num  67 64 61 61 70 63 61 64 66 65 ...
+##  $ neme    : chr  &quot;female&quot; &quot;female&quot; &quot;female&quot; &quot;female&quot; ...
+##  $ lefekves: num  -2.5 1.5 -1.5 2 0 1 1.5 0.5 -0.5 2.5 ...
+##  $ felkeles: num  5.5 8 7.5 8.5 9 8.5 7.5 7.5 7 8.5 ...
+##  $ Drink   : chr  &quot;víz&quot; &quot;üdítő&quot; &quot;tej&quot; &quot;víz&quot; ...</code></pre>
+</div>
+<div id="a-read_delim-fuggvenycsalad-tr" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> A <code>read_delim()</code> függvénycsalád (TR)</h3>
+<p>A Tidyverse R is biztosít tagolt szöveges állományokat beolvasó parancsokat. Lényeges különbség az előző részben látott <code>read.table()</code> családhoz képest, hogy minden esetben tibble adattábla a beolvasás eredménye, illetve a karakteres adatok alapértelmezés szerint nem lesznek faktorok a beolvasás során. Ezen kívül beolvasás gyorsaságán is sokat javítottak.</p>
+<p>A <code>read_delim()</code> család tagjai:</p>
+<ul>
+<li><code>read_delim()</code>,</li>
+<li><code>read_csv</code>,</li>
+<li><code>read_csv2</code>,</li>
+<li><code>read_tsv</code>.</li>
+</ul>
+<p>Minden esetben használjuk a <code>read_delim()</code> függvényt, amely nagyon hasonló paraméterekkel rendelkezik, mint a <code>read.table()</code>:</p>
+<ul>
+<li><code>file=</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél.</li>
+<li><code>delim=</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél a <code>sep=</code> argumentum.</li>
+<li><code>locale=</code><br />
+A decimális elválasztó és a kódolási szabvány beállításához a <code>locale()</code> függvényt használjuk. Ha a szokásos vessző a tizdesvessző alakja, akkor a <code>locale = locale(decimal_mark = ",")</code>, egyébként a <code>locale = locale(decimal_mark = ".")</code> beállítást használjuk. Ha a kódolási szabványt is be szeretnénk állítani a vesző decimális elválasztó mellett, akkor a <code>locale = locale(decimal_mark = ".", encoding = "UTF-8")</code> beállításra van szükségünk az UTF-8 beállításához.</li>
+<li><code>col_names=</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél a <code>header=</code> argumentum.</li>
+<li><code>na=</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél a <code>na.strings=</code> argumentum.</li>
+<li><code>comment=</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél a <code>comment.char=</code> argumentum.</li>
+<li><code>skip=</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél.</li>
+<li><code>trim_ws</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél a <code>strip.white=</code> argumentum.</li>
+<li><code>quote</code><br />
+Ugyanaz, mint a <code>read.table()</code> függvénynél.</li>
+</ul>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb776-1" title="1">data.file &lt;-<span class="st"> &quot;https://github.com/abarik/rdata/raw/master/r_alapok/egyetem.csv&quot;</span></a>
+<a class="sourceLine" id="cb776-2" title="2"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb776-3" title="3">d.tbl &lt;-<span class="st"> </span><span class="kw">read_delim</span>(<span class="dt">file =</span> data.file, <span class="dt">col_names=</span>T, </a>
+<a class="sourceLine" id="cb776-4" title="4">                                      <span class="dt">delim=</span><span class="st">&quot;;&quot;</span>, </a>
+<a class="sourceLine" id="cb776-5" title="5">                                      <span class="dt">locale=</span><span class="kw">locale</span>(<span class="dt">decimal_mark=</span><span class="st">&quot;,&quot;</span>, <span class="dt">encoding =</span> <span class="st">&quot;latin2&quot;</span>), </a>
+<a class="sourceLine" id="cb776-6" title="6">                                      <span class="dt">trim_ws=</span> T)</a>
+<a class="sourceLine" id="cb776-7" title="7"><span class="kw">str</span>(d.tbl)</a></code></pre></div>
+<pre><code>## Classes &#39;spec_tbl_df&#39;, &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;: 657 obs. of  6 variables:
+##  $ hallgato: num  1 2 3 4 5 6 7 8 9 10 ...
+##  $ Height  : num  67 64 61 61 70 63 61 64 66 65 ...
+##  $ neme    : chr  &quot;female&quot; &quot;female&quot; &quot;female&quot; &quot;female&quot; ...
+##  $ lefekves: num  -2.5 1.5 -1.5 2 0 1 1.5 0.5 -0.5 2.5 ...
+##  $ felkeles: num  5.5 8 7.5 8.5 9 8.5 7.5 7.5 7 8.5 ...
+##  $ Drink   : chr  &quot;víz&quot; &quot;üdítő&quot; &quot;tej&quot; &quot;víz&quot; ...
+##  - attr(*, &quot;spec&quot;)=
+##   .. cols(
+##   ..   hallgato = col_double(),
+##   ..   Height = col_double(),
+##   ..   neme = col_character(),
+##   ..   lefekves = col_double(),
+##   ..   felkeles = col_double(),
+##   ..   Drink = col_character()
+##   .. )</code></pre>
+</div>
+<div id="tagolt-szoveges-allomany-kiirasa" class="section level3">
+<h3><span class="header-section-number">6.2.4</span> Tagolt szöveges állomány kiírása</h3>
+<p>Adattáblák és mátrixok kiírására a <code>write.table()</code> függvényt használhatjuk az Alap R-ből és a <code>write_delim()</code> függvényt a Tidyverse R-ből. Mindkét függvény egy-egy függvénycsalád reprezentánsa, de az Alap R-ből elegendő ismerni az említett tagot, a Tidyverse R-ből pedig az említetten kívül a <code>write_csv2()</code> függvényt. Néhány új argumentummal kell megismerkednünk, a korábban tanult argumentumok jelentését még egyszer nem soroljuk fel.</p>
+<p>A <code>write.table()</code> mátrixok és adattáblák kiírására is alkalmas, míg a <code>write_delim()</code> és a <code>write_csv2()</code> csak az adattáblákat rögzít. Az első paraméter (<code>x=</code>) a kiírandó objektum neve mindhárom függvény esetében.</p>
+<p>Az első példában a <code>write.table()</code> függvénnyel egy mátrixot és a korábban létrehozott <code>d.df</code> adattáblát írjuk ki. A <code>row.names=</code> és a <code>col.names=</code> logikai paraméterek szabályozzák, hogy a sor és oszlopnevek szerepeljenek-e a kimeneti állományban. Ezek alapértelmezett értéke <code>TRUE</code>.</p>
+<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb778-1" title="1">x.mat &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">12</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb778-2" title="2"><span class="kw">write.table</span>(x.mat, <span class="st">&quot;x_mat.txt&quot;</span>, <span class="dt">col.names=</span>F, <span class="dt">row.names=</span>F)                    <span class="co"># mátrix kiírása</span></a>
+<a class="sourceLine" id="cb778-3" title="3"><span class="kw">write.table</span>(<span class="dt">x =</span> d.df, <span class="dt">file =</span> <span class="st">&quot;df_out.txt&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">quote =</span> F,            <span class="co"># adattábla kiírása</span></a>
+<a class="sourceLine" id="cb778-4" title="4">            <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">row.names =</span> F, <span class="dt">col.names =</span> T, <span class="dt">fileEncoding =</span> <span class="st">&quot;UTF-8&quot;</span>)</a></code></pre></div>
+<p>A Tidyverse kiíró függvényei UTF-8 kódolású állományt hoznak létre minden esetben, és a decimális elválasztó alakja <code>write_delim()</code> esetében pont, <code>write_csv2()</code> esetében pedig vessző. A sornevek soha nem íródnak ki, az oszlopnevek kiírását a <code>col_names=</code> argumentummal szabályozhatjuk.</p>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb779-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb779-2" title="2"><span class="kw">write_delim</span>(<span class="dt">x =</span> d.tbl, <span class="dt">path =</span> <span class="st">&quot;tbl_out.txt&quot;</span>, <span class="dt">delim =</span> <span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>, <span class="dt">col_names =</span> T)</a>
+<a class="sourceLine" id="cb779-3" title="3"><span class="kw">write_csv2</span>(<span class="dt">x =</span> d.tbl, <span class="dt">path =</span> <span class="st">&quot;tbl_out.csv&quot;</span>, <span class="dt">col_names =</span> T)</a></code></pre></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inline-beolvasas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fix-szeles-mezok.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["r_bioinf.epub"],
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
